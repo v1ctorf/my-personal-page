@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: victorf.ch
+Token: 0089a81ddc6740a212d72b6a9253129a86455533ead55801b549a62002d0bfcf
