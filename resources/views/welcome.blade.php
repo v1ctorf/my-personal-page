@@ -75,56 +75,39 @@
         </div>
     </header>
 
-    <!-- About Section -->
-    <section class="page-section bg-primary" id="about">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">We've got what you need!</h2>
-                    <hr class="divider light my-4">
-                    <p class="text-white-50 mb-4">
-                        Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!
-                    </p>
-                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">
-                        Get Started!
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Services Section -->
-    <section class="page-section" id="services">
+    <section class="page-section" id="about">
         <div class="container">
-            <h2 class="text-center mt-0">At Your Service</h2>
+            <h2 class="text-center mt-0">{{__('About')}}</h2>
             <hr class="divider my-4">
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
-                        <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-                        <h3 class="h4 mb-2">Sturdy Themes</h3>
-                        <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+                        <i class="fas fa-4x fa-code text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">{{__('Front-End')}}</h3>
+                        <p class="text-muted mb-0">{{__('Responsive, intuitive and fast UX/UI solutions using modern JS libraries')}}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
-                        <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-                        <h3 class="h4 mb-2">Up to Date</h3>
-                        <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+                        <i class="fas fa-4x fas fa-database text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">{{__('Back-End')}}</h3>
+                        <p class="text-muted mb-0">{{__('MVC frameworks, RESTful APIs and an efficient database management')}}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Ready to Publish</h3>
-                    <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+                    <i class="fas fa-4x fa-server text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">{{__('DevOps')}}</h3>
+                    <p class="text-muted mb-0">{{__('Shorter cycles for continuous gains: TDD, PaaS and version control')}}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
-                        <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-                        <h3 class="h4 mb-2">Made with Love</h3>
-                        <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
+                        <i class="fas fa-4x fa-sticky-note text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">{{__('Methodology')}}</h3>
+                        <p class="text-muted mb-0">{{__('Lean development and agile methods for MVPs or legacy systems')}}</p>
                     </div>
                 </div>
             </div>
