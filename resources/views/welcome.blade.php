@@ -113,7 +113,7 @@
             </div>
             
             
-            <div class="row" style="margin-top:20px;">
+            <div class="row" style="margin-top:100px;">
                 <div class="col-lg-6 col-md-6 text-center">
                     <img src="{{ asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:300px;">
                     <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
