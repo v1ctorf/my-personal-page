@@ -113,8 +113,16 @@
             </div>
             
             
-            <div class="row mt-4">
+            <div class="row" style="margin-top:20px;">
                 <div class="col-lg-6 col-md-6 text-center">
+                    <img src="{{ asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:300px;">
+                    <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <p class="text-secondary">Anha zhilak yera norethaan. Ifas maisi yeri san athchomari yeraan. San athchomari yeraan. Khal ahhas arakh. Ki fin yeni? Hash anha atihak yera save?</p>
+                            
+                        </div>
+                    </div>
                 </div>
                 @php
                     $skills = [
@@ -135,10 +143,10 @@
                 <div class="col-lg-6 col-md-6">
                     @foreach ($skills as $skill => $pct)
                         
-                        <div class="progress mb-2" style="height: 25px;">
+                        <div class="progress mb-2" style="height: 30px;">
                             <div class="progress-bar bg-info text-left" role="progressbar" 
                                 style="width: {{$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                                <h7 class="ml-2">{{$skill}}</h7>
+                                <span class="ml-2 font-weight-bolder text-monospace text-uppercase">{{$skill}}</span>
                             </div>
                         </div>
                     
