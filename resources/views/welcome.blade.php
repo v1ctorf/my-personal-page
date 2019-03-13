@@ -97,10 +97,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <i class="fas fa-4x fa-server text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">{{__('DevOps')}}</h3>
-                    <p class="text-muted mb-0">{{__('Shorter cycles for continuous gains: TDD, PaaS and version control')}}</p>
+                    <div class="mt-5">
+                        <i class="fas fa-4x fa-server text-primary mb-4"></i>
+                        <h3 class="h4 mb-2">{{__('DevOps')}}</h3>
+                        <p class="text-muted mb-0">{{__('Shorter cycles for continuous gains: TDD, PaaS and version control')}}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -111,6 +111,42 @@
                     </div>
                 </div>
             </div>
+            
+            
+            <div class="row">
+                <div class="col-lg-6 col-md-6 text-center">
+                </div>
+                @php
+                    $skills = [
+                        'HTML' => 90,
+                        'CSS' => 80,
+                        'Bootstrap' => 90,
+                        'React' => 40,
+                        'JavaScript' => 80,
+                        'PHP' => 90,
+                        'Laravel' => 80,
+                        'Ruby On Rails' => 50,
+                        'Java' => 60,
+                        'Heroku' => 60,
+                        'MySQL' => 70,
+                    ];
+                @endphp
+                <div class="col-lg-6 col-md-6 text-center">
+                    @foreach ($skills as $skill => $pct)
+                    
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar" role="progressbar" 
+                                style="width: {{$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                {{$skill}}
+                            </div>
+                        </div>
+                    
+                    @endforeach
+
+                </div>
+            </div>
+           
+           
         </div>
     </section>
 
