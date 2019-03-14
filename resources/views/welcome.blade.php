@@ -122,13 +122,10 @@
                             <p class="text-secondary mb-0">
                                 {{__('I have 7 years of work experience in software development and a degree in Bachelor of Technology in IT.')}}
                             </p>
-                            <p class="text-secondary mb-0">
-                                {{__('I love to build solutions quickly, measure their results and learn what customers really want. The best way to prove an idea is turning it into a reality in the simplest way possible.')}}
-                            </p>
-                            <p class="text-secondary mb-0">
-                                {{__("Feel free to")}}
+                            <p class="text-secondary">
+                                {{__('I love to build solutions quickly, measure their results and learn what customers really want.')}}
                                 <a href="#contact" class="js-scroll-trigger alert-link text-info">
-                                    {{__("contact me")}}
+                                    {{__("Feel free to contact me")}}
                                 </a> {{__("if you want to share something about new projects or partnerships.")}}
                             </p>
                         </div>
@@ -165,19 +162,18 @@
                         </div>
                     
                     @endforeach
-
                 </div>
             </div>
-           
-           
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio">
-        <div class="container-fluid p-0">
+        <div class="container-fluid p-0 mb-4 mt-4">
+            <h2 class="text-center mt-0">{{__('Recent Works')}}</h2>
+            <hr class="divider my-4">
             <div class="row no-gutters">
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-sm-6 offset-lg-2">
                     <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
                         <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
                         <div class="portfolio-box-caption">
@@ -203,7 +199,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-sm-6 offset-lg-2">
                     <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
                         <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
                         <div class="portfolio-box-caption">
@@ -229,32 +225,6 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-                        <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-                        <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
-                        <div class="portfolio-box-caption p-3">
-                            <div class="project-category text-white-50">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -266,7 +236,7 @@
             <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
         </div>
     </section>
-
+     <!-- The best way to prove an idea is turning it into a reality in the simplest way possible. -->
     <!-- Contact Section -->
     <section class="page-section" id="contact">
         <div class="container">
