@@ -38,13 +38,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                        <a class="nav-link js-scroll-trigger" href="#about">{{__('About')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#portfolio">Recent Work</a>
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">{{__('Recent Work')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        <a class="nav-link js-scroll-trigger" href="#contact">{{__('Contact')}}</a>
                     </li>
                 </ul>
             </div>
@@ -170,7 +170,7 @@
     <!-- Portfolio Section -->
     <section id="portfolio">
         <div class="container-fluid p-0 mb-4 mt-4">
-            <h2 class="text-center mt-0">{{__('Recent Works')}}</h2>
+            <h2 class="text-center mt-0">{{__('Recent Work')}}</h2>
             <hr class="divider my-4">
             <div class="row no-gutters">
                 <div class="col-lg-4 col-sm-6 offset-lg-2">
@@ -178,10 +178,10 @@
                         <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
-                                Category
+                                Laravel (PHP)
                             </div>
                             <div class="project-name">
-                                Project Name
+                                Zygä
                             </div>
                         </div>
                     </a>
@@ -191,10 +191,10 @@
                         <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
-                                Category
+                                Laravel (PHP)
                             </div>
                             <div class="project-name">
-                                Project Name
+                                Korjuu
                             </div>
                         </div>
                     </a>
@@ -204,10 +204,10 @@
                         <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
-                                Category
+                                Grails (Java & Groovy)
                             </div>
                             <div class="project-name">
-                                Project Name
+                                Victory Consulting
                             </div>
                         </div>
                     </a>
@@ -217,10 +217,10 @@
                         <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
-                            Category
+                                Symfony (PHP)
                             </div>
                             <div class="project-name">
-                                Project Name
+                                DuoSystem
                             </div>
                         </div>
                     </a>
@@ -229,13 +229,6 @@
         </div>
     </section>
 
-    <!-- Call to Action Section -->
-    <section class="page-section bg-dark text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-            <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
-        </div>
-    </section>
      <!-- The best way to prove an idea is turning it into a reality in the simplest way possible. -->
     <!-- Contact Section -->
     <section class="page-section" id="contact">
