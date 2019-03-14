@@ -41,10 +41,10 @@
                         <a class="nav-link js-scroll-trigger" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Recent Work</a>
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Recent Work</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#portfolio">Contact</a>
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -126,7 +126,10 @@
                                 {{__('I love to build solutions quickly, measure their results and learn what customers really want. The best way to prove an idea is turning it into a reality in the simplest way possible.')}}
                             </p>
                             <p class="text-secondary mb-0">
-                                
+                                {{__("Feel free to")}}
+                                <a href="#contact" class="js-scroll-trigger alert-link text-info">
+                                    {{__("contact me")}}
+                                </a> {{__("if you want to share something about new projects or partnerships.")}}
                             </p>
                         </div>
                     </div>
