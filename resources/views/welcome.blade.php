@@ -107,7 +107,7 @@
                     <div class="mt-5">
                         <i class="fas fa-4x fa-sticky-note text-info mb-4"></i>
                         <h3 class="h4 mb-2">{{__('Methodology')}}</h3>
-                        <p class="text-muted mb-0">{{__('Lean development and agile methods for MVPs or legacy systems')}}</p>
+                        <p class="text-muted mb-0">{{__('Lean development, A/B testing or agile methods for MVPs or legacy systems')}}</p>
                     </div>
                 </div>
             </div>
@@ -115,12 +115,19 @@
             
             <div class="row" style="margin-top:100px;">
                 <div class="col-lg-6 col-md-6 text-center">
-                    <img src="{{ secure_asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:300px;">
+                    <img src="{{ secure_asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
                     <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
                     <div class="row">
-                        <div class="col-md-10 offset-md-1">
-                            <p class="text-secondary">Anha zhilak yera norethaan. Ifas maisi yeri san athchomari yeraan. San athchomari yeraan. Khal ahhas arakh. Ki fin yeni? Hash anha atihak yera save?</p>
-                            
+                        <div class="col-md-10 offset-md-1" style="font-size:95%">
+                            <p class="text-secondary mb-0">
+                                {{__('I have 7 years of work experience in software development and a degree in Bachelor of Technology in IT.')}}
+                            </p>
+                            <p class="text-secondary mb-0">
+                                {{__('I love to build solutions quickly, measure their results and learn what customers really want. The best way to prove an idea is turning it into a reality in the simplest way possible.')}}
+                            </p>
+                            <p class="text-secondary mb-0">
+                                
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -147,6 +154,10 @@
                             <div class="progress-bar bg-info text-left" role="progressbar" 
                                 style="width: {{$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
                                 <span class="ml-2 font-weight-bolder text-monospace text-uppercase">{{$skill}}</span>
+                            </div>
+                            <div class="progress-bar bg-light text-right" role="progressbar" 
+                                style="width: {{100-$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                <span class="mr-2 font-weight-bolder text-monospace text-uppercase text-secondary">{{$pct}}%</span>
                             </div>
                         </div>
                     
