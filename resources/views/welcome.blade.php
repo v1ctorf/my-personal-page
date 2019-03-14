@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 //EN">
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
     <title>victorf - web developer</title>
 
     <!-- Font Awesome Icons -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ secure_asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
@@ -18,7 +18,7 @@
         rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="{{ asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
 
     <!-- Theme CSS - Includes Bootstrap -->
     <link href="css/creative.min.css" rel="stylesheet">
@@ -115,7 +115,7 @@
             
             <div class="row" style="margin-top:100px;">
                 <div class="col-lg-6 col-md-6 text-center">
-                    <img src="{{ asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:300px;">
+                    <img src="{{ secure_asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:300px;">
                     <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
                     <div class="row">
                         <div class="col-md-10 offset-md-1">
