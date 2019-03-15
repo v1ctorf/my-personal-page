@@ -174,7 +174,7 @@
             <hr class="divider my-4">
             <div class="row no-gutters">
                 <div class="col-lg-4 col-sm-6 offset-lg-2">
-                    <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
+                    <a class="portfolio-box" href="javascript:;" data-toggle="modal" data-target="#exampleModal">
                         <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
@@ -260,6 +260,28 @@
         <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap</div>
         </div>
     </footer>
+    
+    
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -267,7 +289,6 @@
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
