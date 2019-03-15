@@ -204,10 +204,10 @@
                         <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
-                                Grails (Java & Groovy)
+                                Symfony (PHP)
                             </div>
                             <div class="project-name">
-                                Victory Consulting
+                                DuoSystem
                             </div>
                         </div>
                     </a>
@@ -217,10 +217,10 @@
                         <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
-                                Symfony (PHP)
+                                Grails (Java & Groovy)
                             </div>
                             <div class="project-name">
-                                DuoSystem
+                                Victory Consulting
                             </div>
                         </div>
                     </a>
