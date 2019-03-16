@@ -5,7 +5,7 @@
         <hr class="divider my-4">
         <div class="row no-gutters">
             <div class="col-lg-4 col-sm-6 offset-lg-2">
-                <a class="portfolio-box" href="javascript:;" data-toggle="modal" data-target="#exampleModal">
+                <a class="portfolio-box" href="javascript:;" data-toggle="modal" data-target="#Modal_1">
                     <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">
@@ -18,7 +18,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
+                <a class="portfolio-box" href="javascript:;" data-toggle="modal" data-target="#Modal_2">
                     <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">
@@ -31,7 +31,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 offset-lg-2">
-                <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
+                <a class="portfolio-box" href="javascript:;" data-toggle="modal" data-target="#Modal_3">
                     <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">
@@ -44,7 +44,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
+                <a class="portfolio-box" href="javascript:;" data-toggle="modal" data-target="#Modal_4">
                     <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">
