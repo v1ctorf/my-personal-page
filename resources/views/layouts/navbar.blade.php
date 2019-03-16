@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">{{__('Contact')}}</a>
                 </li>
+                {{-- <li class="nav-item">
+                    <a class="nav-link text-secondary" href="mailto:mail@victorf.ch">mail@victorf.ch</a>
+                </li> --}}
             </ul>
         </div>
     </div>
