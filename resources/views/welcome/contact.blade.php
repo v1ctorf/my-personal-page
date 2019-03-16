@@ -20,7 +20,7 @@
                     <u>lean software development</u></a>, so if you also think the best way to prove an idea is turning it into a reality in the simplest way possible and learn more about your users from the results, let's get in touch.
                 </p>
                 <a class="d-block text-left" href="mailto:mail@victorf.ch?subject=Hi">
-                    <h5><u>mail@victorf.ch</u></h5>
+                    <h5>mail@victorf.ch</h5>
                 </a>
             </div>
         </div>
