@@ -12,7 +12,7 @@
                     <u>Laravel</u></a> and <a href="https://grails.org" target="_blank" 
                     class="text-dark"><u>Grails</u></a> on the back-end and <a 
                     href="https://getbootstrap.com" target="_blank" class="text-dark"><u>Bootstrap</u></a> and <a 
-                    href="https://reactjs.org" target="_blank" class="text-dark"><u>React</u></a> on the front-end but picking up new languages or frameworks isn’t a problem.
+                    href="https://reactjs.org" target="_blank" class="text-dark"><u>React</u></a> on the front-end but learning new languages or frameworks isn't a problem.
                 </p>
                 <p class="text-secondary text-left"> 
                     I appreciate <a 
