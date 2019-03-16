@@ -49,6 +49,5 @@
                 <div class="text-secondary">Copyright &copy; 2019 - victorf</div>
             </div>
         </div>
-
     </div>
 </footer>
