@@ -3,13 +3,13 @@
 $recent_works = [
     [
         'title' => 'Zygä',
-        'body' => 'Zygä is a bike registry and sharing platform, aimed to increase the use of the already existing resources, such as bicycles, encouraging their repair. In this temporary project, I acted remotely as Technical Lead, System Design and Full-Stack Developer.',
+        'body' => 'Zygä is a bike registry and sharing platform, aimed to increase the use of the already existing resources, such as bicycles, encouraging their repair. In this project, I acted remotely as Technical Lead, System Design and Full-Stack Developer.',
         'url' => 'https://zyga.zone',
         'tech' => ['PHP 7.1', 'Laravel 5.6', 'Eloquent', 'JavaScript', 'jQuery', 'CSS3', 'HTML5', 'Bootstrap', 'Git', 'MySQL']
     ],
     [
         'title' => 'Korjuu',
-        'body' => 'Based in Helsinki, Korjuu is a P2P market platform, aiming to minimize overproduction and wastage of agricultural products and services. In this temporary project, I acted remotely as Technical Lead, System Design and Full-Stack Developer.',
+        'body' => 'Based in Helsinki, Korjuu is a P2P market platform, aiming to minimize overproduction and wastage of agricultural products and services. In this project, I acted remotely as Technical Lead, System Design and Full-Stack Developer.',
         'url' => 'https://korjuu.com',
         'tech' => ['PHP 7.1', 'Laravel 5.7', 'Eloquent', 'JavaScript', 'jQuery', 'CSS3', 'HTML5', 'Bootstrap', 'Git', 'MySQL']
     ],
@@ -38,7 +38,7 @@ $recent_works = [
             <div class="modal-content">
                 <div class="modal-body">
                     <img class="img-fluid mb-2" src="img/portfolio/thumbnails/{{ ($key+1) }}.jpg" alt="">
-                    <h5 class="modal-title mt-2 mb-1" id="Modal_{{ ($key+1) }}_Label">
+                    <h5 class="modal-title mt-2 mb-2" id="Modal_{{ ($key+1) }}_Label">
                         {{ $work['title'] }}
                     </h5>
                     
