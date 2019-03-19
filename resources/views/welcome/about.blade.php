@@ -69,7 +69,7 @@
                     'MySQL' => 80,
                 ];
             @endphp
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6" id="skills">
                 @foreach ($skills as $skill => $pct)
                     
                     <div class="progress mb-2" style="height: 30px;">
