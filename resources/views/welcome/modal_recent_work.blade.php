@@ -15,7 +15,7 @@ $recent_works = [
     ],
     [
         'title' => 'DuoSystem',
-        'body' => 'DuoSystem is a company focused on public health management systems in some brazilian states such as São Paulo, Goiás and Mato Grosso do Sul. I was part of their team as Full-Stack Web Developer, using Symfony for new projects, but also maintaining legacy systems, solving issues and implementing enhancements.',
+        'body' => 'DuoSystem is a company focused on public health management systems in important brazilian states such as São Paulo, Goiás and Mato Grosso do Sul. I was part of their team as Full-Stack Web Developer, using Symfony for new projects, but also maintaining legacy systems, solving issues and implementing enhancements.',
         'url' => 'https://duosystem.com.br',
         'tech' => ['PHP', 'Symfony', 'JavaScript', 'jQuery', 'CSS3', 'HTML5', 'Bootstrap', 'Git', 'MS SQL Server']
     ],
