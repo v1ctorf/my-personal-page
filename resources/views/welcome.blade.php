@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @if(env('APP_ENV') != 'production')
+    @if(env('APP_ENV') == 'production')
         @include('layouts.ga')
     @endif
     
