@@ -37,7 +37,15 @@
         
         <div class="row" style="margin-top:100px;">
             <div class="col-lg-6 col-md-6 text-center">
-                <img src="{{ secure_asset('img/photo.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
+                
+                @test('teaser1')
+                    <img src="{{ secure_asset('img/photo1.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
+                @endtest
+                
+                @test('teaser2')
+                    <img src="{{ secure_asset('img/photo2.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
+                @endtest
+                
                 <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
                 <div class="row">
                     <div class="col-md-10 offset-md-1" style="font-size:95%">
