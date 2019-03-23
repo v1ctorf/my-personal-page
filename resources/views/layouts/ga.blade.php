@@ -10,5 +10,5 @@
         'custom_map': {'dimension1': 'thumbnail'}
     });
 
-    gtag('event', 'thumbnail_dimension', {'thumbnail': '{{ AB::getCurrentTest() }}'});
+    gtag('event', 'better_thumbnail', {'thumbnail': '{{ AB::getCurrentTest() }}'});
 </script>
