@@ -38,11 +38,11 @@
         <div class="row" style="margin-top:100px;">
             <div class="col-lg-6 col-md-6 text-center">
                 
-                @test('teaser1')
+                @test('informal')
                     <img src="{{ secure_asset('img/photo1.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
                 @endtest
                 
-                @test('teaser2')
+                @test('formal')
                     <img src="{{ secure_asset('img/photo2.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
                 @endtest
                 

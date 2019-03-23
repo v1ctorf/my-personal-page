@@ -16,9 +16,20 @@
                     href="https://en.wikipedia.org/wiki/Lean_software_development" target="_blank" class="text-dark">
                     <u>lean software development</u></a>, so if you think the best way to prove an idea is turning it into a reality in the simplest way possible and learn more about your users from the results, let's get in touch.
                 </p>
-                <a class="d-block text-left" href="mailto:mail@victorf.ch?subject=Hi">
-                    <h5>mail@victorf.ch</h5>
-                </a>
+                
+                @test('informal')
+                    <a class="d-block text-left" href="mailto:mail@victorf.ch?subject=Hi">
+                        <h5>mail@victorf.ch</h5>
+                    </a>
+                @endtest
+                
+                @test('formal')
+                    <a class="d-block text-left" href="mailto:mail@victorf.ch?subject=Hello">
+                        <h5>mail@victorf.ch</h5>
+                    </a>
+                @endtest
+                
+
             </div>
         </div>
     </div> 

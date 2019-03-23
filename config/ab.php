@@ -6,8 +6,8 @@ return [
     'default' => 'none',
 
     'tests' => [
-        'teaser1' => 1,
-        'teaser2' => 1,
+        'informal' => 1,
+        'formal' => 1,
     ],
 
 ];
