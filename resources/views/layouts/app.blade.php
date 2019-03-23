@@ -6,6 +6,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    @if(env('APP_ENV') == 'production')
+        @include('layouts.ga')
+    @endif
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
