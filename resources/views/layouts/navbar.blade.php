@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">{{__('About')}}</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('/#about')}}">{{__('About')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#portfolio">{{__('Recent Work')}}</a>
@@ -21,9 +21,6 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{route('blog')}}">{{__('Blog')}}</a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link text-secondary" href="mailto:mail@victorf.ch">mail@victorf.ch</a>
-                </li> --}}
             </ul>
         </div>
     </div>
