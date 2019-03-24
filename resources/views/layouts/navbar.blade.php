@@ -19,8 +19,13 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">{{__('Contact')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{route('blog')}}">{{__('Blog')}}</a>
+                    <a class="nav-link" href="{{route('blog')}}">{{__('Blog')}}</a>
                 </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('home')}}">{{__('Dashboard')}}</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>

@@ -13,8 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <ul>
+                        <li><a href="{{url('/')}}">welcome</a></li>
+                        <li><a href="{{route('logout')}}">logout</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
