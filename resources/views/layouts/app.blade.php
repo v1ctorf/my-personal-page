@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>victorf - web developer</title>
+    <title>victorf - dashboard</title>
 
     <link href="{{ secure_asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
@@ -21,6 +21,7 @@
     <link href="{{ secure_asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
     <link href="css/creative.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <main class="py-4">
