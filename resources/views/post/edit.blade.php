@@ -18,6 +18,6 @@
 
 @stop
 
-@section('pagespecificscripts')
+@section('js')
     <script src="{{asset('js/confirmdelete.js')}}"></script>
 @stop
