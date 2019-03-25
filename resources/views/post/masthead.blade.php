@@ -13,7 +13,7 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white font-weight-light mb-5">
-                    {{__('(primarily about technology)')}}
+                    {{__('primarily about technology; mostly in English, eventually in Portuguese')}}
                 </p>
             </div>
         </div>

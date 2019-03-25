@@ -26,7 +26,7 @@
 
 <body id="page-top">
     @yield('content')
-
+    @include('layouts.footer')
     <script src="{{secure_asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{secure_asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{secure_asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
