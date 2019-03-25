@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->boolean('visible')->default(false);
             $table->timestamps();
             $table->softDeletes();
+            $table->engine = 'InnoDB';
         });
     }
 
