@@ -46,8 +46,9 @@ class PostController extends Controller
         $post->visible = !is_null($request->get('visible'));
         $post->save();
         
-        //return redirect()->route('post.index')->with('message', 'Post created successfully!');
-        return redirect()->route('post.index');
+        return redirect()
+            ->route('blog')
+            ->with('message', 'Post created successfully!');
     }
 
     /**
@@ -87,8 +88,9 @@ class PostController extends Controller
         $post->visible = !is_null($request->get('visible'));
         $post->save();
         
-        //return redirect()->route('post.index')->with('message', 'Post created successfully!');
-        return redirect()->route('post.index');
+        return redirect()
+            ->route('blog')
+            ->with('message', 'Post created successfully!');
     }
 
     /**
@@ -99,6 +101,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        
+        return redirect()
+            ->route('blog')
+            ->with('message','Post has been deleted!');
     }
 }

@@ -7,6 +7,17 @@
     {!! Form::model($post, ['method' => 'PATCH', 'action' => ['PostController@update', $post->id]]) !!}
         @include('post.form', ['submitButtonText' => __('Save')])
     {!! Form::close() !!}
+    
 </div>
 
+<form action="{{action('PostController@destroy', $post->id)}}" method="post" 
+    id="delete_post" class="delete">
+    @csrf
+    <input name="_method" type="hidden" value="DELETE">
+</form>
+
+@stop
+
+@section('pagespecificscripts')
+    <script src="{{asset('js/confirmdelete.js')}}"></script>
 @stop

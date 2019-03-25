@@ -57,7 +57,12 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12  text-right">
+    <div class="col-md-12 text-right">
+        @if(isset($post))
+            <button type="submit" class="btn btn-danger" form="delete_post" class="delete">
+                Delete
+            </button>
+        @endif
         <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
         {!! Form::submit($submitButtonText, ['class' => 'btn btn-success']) !!}
     </div>
