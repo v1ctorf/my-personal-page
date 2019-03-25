@@ -10,7 +10,6 @@
 
 @section('content')
     @include('layouts.navbar')
-    <!-- Masthead -->
     <header>
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center text-center">
@@ -31,6 +30,14 @@
                         victorf</a> on {{ date('F d, Y - H:i', strtotime($post->created_at)) }}
                     </p>
                 </div>
+                @auth
+                    <div class="col-lg-8 align-self-baseline mb-4 text-right">
+                        <a href="{{route('post.edit',['id'=>$post->id])}}"
+                            class="btn btn-primary">
+                            Edit
+                        </a>
+                    </div>
+                @endauth
             </div>
         </div>
     </header>
