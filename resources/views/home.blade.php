@@ -13,11 +13,21 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <ul>
-                        <li><a href="{{url('/')}}">welcome</a></li>
-                        <li><a href="{{route('post.create')}}">create a post</a></li>
-                        <li><a href="{{route('blog')}}">blog</a></li>
-                        <li><a href="{{route('logout')}}">logout</a></li>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{{url('/')}}">View Welcome Page</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('post.create')}}">Create A Post</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('blog')}}">View Blog</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('logout')}}" class="text-muted">
+                                Logout
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
