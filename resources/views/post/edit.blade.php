@@ -7,7 +7,6 @@
     {!! Form::model($post, ['method' => 'PATCH', 'action' => ['PostController@update', $post->id]]) !!}
         @include('post.form', ['submitButtonText' => __('Save')])
     {!! Form::close() !!}
-    
 </div>
 
 @stop

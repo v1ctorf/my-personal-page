@@ -81,7 +81,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->headline = $request->headline;
+        $post->subhead = $request->subhead;
+        $post->body_copy = $request->body_copy;
+        $post->visible = !is_null($request->get('visible'));
+        $post->save();
+        
+        //return redirect()->route('post.index')->with('message', 'Post created successfully!');
+        return redirect()->route('post.index');
     }
 
     /**
