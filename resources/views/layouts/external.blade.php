@@ -20,6 +20,8 @@
 
     <link href="{{secure_asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{secure_asset('css/creative.min.css')}}" rel="stylesheet">
+    
+    @yield('style')
 </head>
 
 <body id="page-top">

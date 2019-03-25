@@ -23,7 +23,7 @@
                     </h5>
                     <p class="text-muted mt-0">posted by <a href="{{ url('/#about') }}" 
                         target="_blank" class="text-dark">
-                        victorf</a> on {{ date('F d, Y', strtotime($post->created_at)) }}</p>
+                        victorf</a> on {{ date('F d, Y - H:i', strtotime($post->created_at)) }}</p>
                 </li>
             @endforeach
         </ul>

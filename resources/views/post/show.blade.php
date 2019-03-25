@@ -1,13 +1,21 @@
 @extends('layouts.external')
 
+@section('style')
+    <style>
+        .text-large{font-size:120%;}
+        header{background-color:#16161d;}
+        .headline{margin-top:150px;}
+    </style>
+@stop
+
 @section('content')
     @include('layouts.navbar')
     <!-- Masthead -->
-    <header style="background-color:#16161d;">
+    <header>
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center text-center">
-                <div class="col-lg-10 align-self-end" style="margin-top:150px;">
-                    <h1 class="text-white font-weight-bold">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold headline">
                         {{ $post->headline }}
                     </h1>
                     <hr class="divider my-4">
@@ -20,18 +28,21 @@
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-light font-weight-light mb-5">posted by <a href="{{ url('/#about') }}" 
                         target="_blank" class="text-light">
-                        victorf</a> on {{ date('F d, Y', strtotime($post->created_at)) }}
+                        victorf</a> on {{ date('F d, Y - H:i', strtotime($post->created_at)) }}
                     </p>
                 </div>
             </div>
         </div>
     </header>
-    
-    <section class="page-section">
+    <article>
         <div class="container">
-            <p>{{ $post->body_copy }}</p>
+            <div class="row mt-5">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <p class="text-large">{{ $post->body_copy }}</p>
+                </div>
+            </div>
         </div>
-    </section>
-        
+    </article>
+
     
 @endsection
