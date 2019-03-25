@@ -48,7 +48,7 @@ class PostController extends Controller
         
         return redirect()
             ->route('blog')
-            ->with('message', 'Post created successfully!');
+            ->with('message', 'Post created successfully.');
     }
 
     /**
@@ -90,7 +90,7 @@ class PostController extends Controller
         
         return redirect()
             ->route('blog')
-            ->with('message', 'Post created successfully!');
+            ->with('message', 'Post updated successfully.');
     }
 
     /**
@@ -105,6 +105,6 @@ class PostController extends Controller
         
         return redirect()
             ->route('blog')
-            ->with('message','Post has been deleted!');
+            ->with('message','Post has been deleted.');
     }
 }

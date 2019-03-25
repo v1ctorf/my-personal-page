@@ -1,5 +1,14 @@
 <section class="page-section">
     <div class="container">
+        @if(Session::has('message'))
+            <div class="alert alert-info alert-dismissible"> 
+                {{ Session::get('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        
         <ul class="list-group list-group-flush">
             @foreach($posts as $post)
                 <li class="list-group-item border-top-0 mt-3">
