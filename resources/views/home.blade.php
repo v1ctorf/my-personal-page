@@ -13,8 +13,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{{url('/')}}">View Welcome Page</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('post.create')}}">Create A Post</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('blog')}}">View Blog</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('logout')}}" class="text-muted">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
