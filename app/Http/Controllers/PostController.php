@@ -47,7 +47,7 @@ class PostController extends Controller
         $post->save();
         
         return redirect()
-            ->route('blog')
+            ->route('post.show',['id' => $post->id])
             ->with('message', 'Post created successfully.');
     }
 
@@ -89,7 +89,7 @@ class PostController extends Controller
         $post->save();
         
         return redirect()
-            ->route('blog')
+            ->route('post.show',['id' => $post->id])
             ->with('message', 'Post updated successfully.');
     }
 
