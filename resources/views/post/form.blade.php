@@ -14,20 +14,33 @@
 <div class="row">
     <div class="col-md-12">
         <div class='form-group'>
-            {{ Form::label('title', 'Title') }}
-            {{ Form::text('title', null, [
-                'id' => 'title',
+            {{ Form::label('headline', 'Headline') }}
+            {{ Form::text('headline', null, [
+                'id' => 'headline',
                 'class' => 'form-control',
-                'placeholder' => __('A cool title here')
+                'placeholder' => __('A cool headline here')
+            ]) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class='form-group'>
+            {{ Form::label('subhead', 'Subhead') }}
+            {{ Form::text('subhead', null, [
+                'id' => 'subhead',
+                'class' => 'form-control',
+                'placeholder' => __('A clever subhead here')
             ]) }}
         </div>
     </div>
 </div>
 
 <div class='form-group'>
-    {!! Form::label('text', __('Text')) !!}
-    {!! Form::textarea('text', null, [
-        'id' => 'text', 
+    {!! Form::label('body_copy', __('Body Copy')) !!}
+    {!! Form::textarea('body_copy', null, [
+        'id' => 'body_copy', 
         'class' => 'form-control', 
         'placeholder' => __('Just write something nice here')
     ]) !!}
@@ -36,9 +49,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="active" id="active" 
-                value="true" {{ ((isset($post) && $post->active) ? 'checked' : '') }}>
-            {!! Form::label('active', __('Active', ['class'=>'form-check-label'])) !!}
+            <input type="checkbox" class="form-check-input" name="visible" id="visible" 
+                value="true" {{ ((isset($post) && $post->visible) ? 'checked' : '') }}>
+            {!! Form::label('visible', __('Active', ['class'=>'form-check-label'])) !!}
         </div>
     </div>
 </div>
