@@ -27,9 +27,9 @@
 <body id="page-top">
     @yield('content')
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{secure_asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{secure_asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{secure_asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{secure_asset('js/creative.min.js')}}"></script>
 </body>
 
