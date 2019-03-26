@@ -13,10 +13,10 @@
                     <a class="nav-link js-scroll-trigger" href="{{url('/#about')}}">{{__('About')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">{{__('Recent Work')}}</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('/#portfolio')}}">{{__('Recent Work')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">{{__('Contact')}}</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('/#contact')}}">{{__('Contact')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('blog')}}">{{__('Blog')}}</a>
