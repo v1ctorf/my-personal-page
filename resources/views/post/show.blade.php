@@ -45,7 +45,7 @@
         <div class="container mb-5">
             <div class="row mt-5">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <p class="text-large">{{ $post->body_copy }}</p>
+                    @markdown($post->body_copy)
                 </div>
             </div>
         </div>
