@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('visible', 1)
-            ->orderBy('created_at','desc')
-            ->get();
+        $posts;
+        
+        if (Auth::guest())
+        {
+            $posts = Post::where('visible', 1)
+                ->orderBy('created_at','desc')
+                ->get();
+        }
+        else
+        {
+            $posts = Post::orderBy('created_at','desc')->get();
+        }
         
         return view('post.index',['posts' => $posts]);
     }

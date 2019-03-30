@@ -51,7 +51,7 @@
         <div class="form-check">
             <input type="checkbox" class="form-check-input" name="visible" id="visible" 
                 value="true" {{ ((isset($post) && $post->visible) ? 'checked' : '') }}>
-            {!! Form::label('visible', __('Active', ['class'=>'form-check-label'])) !!}
+            {!! Form::label('visible', __('Visible', ['class'=>'form-check-label'])) !!}
         </div>
     </div>
 </div>
@@ -60,7 +60,7 @@
     <div class="col-md-12 text-right">
         @if(isset($post))
             <button type="submit" class="btn btn-danger" form="delete_post" class="delete">
-                Delete
+                {{ __('Delete') }}
             </button>
         @endif
         <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
