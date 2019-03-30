@@ -41,6 +41,7 @@
     {!! Form::label('body_copy', __('Body Copy')) !!}
     {!! Form::textarea('body_copy', null, [
         'id' => 'body_copy', 
+        'style' => 'font-family:monospace;',
         'class' => 'form-control', 
         'placeholder' => __('Just write something nice here')
     ]) !!}
