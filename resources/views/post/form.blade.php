@@ -43,7 +43,7 @@
         'id' => 'body_copy', 
         'style' => 'font-family:monospace;',
         'class' => 'form-control', 
-        'placeholder' => __('Just write something nice here')
+        'placeholder' => __('Just write something nice here. Markdown is supported.')
     ]) !!}
 </div>
 
