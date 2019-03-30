@@ -13,6 +13,9 @@
             @foreach($posts as $post)
                 <li class="list-group-item border-top-0 mt-3">
                     <h3>
+                        @if (Auth::check() && $post->visible == false)
+                            <i class="fas fa-eye-slash text-danger" title="{{__('Invisible')}}"></i>
+                        @endif
                         <a href="{{route('post.show',['id' => $post->id])}}" 
                             class="text-dark">
                             {{ $post->headline }}
