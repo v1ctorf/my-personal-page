@@ -16,7 +16,7 @@
                         @if (Auth::check() && $post->visible == false)
                             <i class="fas fa-eye-slash text-danger" title="{{__('Invisible')}}"></i>
                         @endif
-                        <a href="{{route('post.show',['id' => $post->id])}}" 
+                        <a href="{{route('post.show',['criteria' => $post->slug ?? $post->id])}}" 
                             class="text-dark">
                             {{ $post->headline }}
                         </a>

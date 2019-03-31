@@ -15,5 +15,6 @@ Route::redirect('/about', '/#about');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('post', 'PostController');
 Route::get('/blog', 'PostController@index')->name('blog');
+Route::get('/post/{criteria}', 'PostController@show');
 
 

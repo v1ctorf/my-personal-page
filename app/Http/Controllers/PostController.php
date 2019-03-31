@@ -69,8 +69,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($criteria)
     {
+        $post = Post::where('slug', $criteria)
+            ->orWhere('id',$criteria)->first();
+        
+        
         return view('post.show',compact('post'));
     }
 
