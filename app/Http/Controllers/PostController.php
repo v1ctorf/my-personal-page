@@ -71,9 +71,7 @@ class PostController extends Controller
      */
     public function show($criteria)
     {
-        $post = Post::where('slug', $criteria)
-            ->orWhere('id',$criteria)->first();
-        
+        $post = Post::where('slug', $criteria)->orWhere('id', $criteria)->first();
         
         return view('post.show',compact('post'));
     }
