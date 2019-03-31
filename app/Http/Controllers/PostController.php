@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -54,6 +55,7 @@ class PostController extends Controller
         $post->subhead = $request->subhead;
         $post->body_copy = $request->body_copy;
         $post->visible = !is_null($request->get('visible'));
+        $post->slug = Str::slug($post->headline);
         $post->save();
         
         return redirect()
@@ -96,6 +98,7 @@ class PostController extends Controller
         $post->subhead = $request->subhead;
         $post->body_copy = $request->body_copy;
         $post->visible = !is_null($request->get('visible'));
+        $post->slug = Str::slug($post->headline);
         $post->save();
         
         return redirect()
