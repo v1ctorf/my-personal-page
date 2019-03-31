@@ -1,10 +1,3 @@
-@section('page_style')
-    <style type="text/css">
-        .just-dark,.just-dark:focus{background-color:#16161d;color:#ccc;}
-        textarea{font-family:monospace;}
-    </style>
-@endsection
-
 @if ($errors->any())
     <div class="alert alert-danger alert-dismissible"> 
        <ul>
@@ -25,6 +18,7 @@
             {{ Form::text('headline', null, [
                 'id' => 'headline',
                 'class' => 'form-control just-dark',
+                'required' => 'required',
                 'placeholder' => __('A cool headline here')
             ]) }}
         </div>
@@ -38,6 +32,7 @@
             {{ Form::text('subhead', null, [
                 'id' => 'subhead',
                 'class' => 'form-control just-dark',
+                'required' => 'required',
                 'placeholder' => __('A clever subhead here')
             ]) }}
         </div>
@@ -48,6 +43,7 @@
     {!! Form::label('body_copy', __('Body Copy'), ['class'=>'text-secondary']) !!}
     {!! Form::textarea('body_copy', null, [
         'id' => 'body_copy', 
+        'required' => 'required',
         'class' => 'form-control just-dark', 
         'placeholder' => __('Just write something nice here. Markdown is supported.')
     ]) !!}
