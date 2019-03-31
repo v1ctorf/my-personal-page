@@ -18,10 +18,10 @@
                             <a href="{{url('/')}}">View Welcome Page</a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <a href="{{route('post.create')}}">Create A Post</a>
+                            <a href="{{route('blog')}}">View Blog/Posts</a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <a href="{{route('blog')}}">View Blog</a>
+                            <a href="{{route('post.create')}}">Create A Post</a>
                         </li>
                         <li class="list-group-item bg-dark">
                             <a href="{{route('logout')}}" class="text-muted">
