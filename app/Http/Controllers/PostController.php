@@ -20,18 +20,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts;
+        $query = Post::query();
         
-        if (Auth::guest())
-        {
-            $posts = Post::where('visible', 1)
-                ->orderBy('created_at','desc')
-                ->get();
-        }
-        else
-        {
-            $posts = Post::orderBy('created_at','desc')->get();
-        }
+        $query->when(Auth::guest(), function($q){
+            return $q->where('visible', 1);
+        });
+        
+        $posts = $query->orderBy('created_at','desc')->get();
         
         return view('post.index',['posts' => $posts]);
     }
