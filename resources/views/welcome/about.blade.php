@@ -8,28 +8,36 @@
                 <div class="mt-5">
                     <i class="fas fa-4x fa-code text-info mb-4"></i>
                     <h3 class="h4 mb-2">{{__('Front-End')}}</h3>
-                    <p class="text-muted mb-0">{{__('Responsive, intuitive and fast UX/UI solutions using modern JS libraries')}}</p>
+                    <p class="text-muted mb-0">
+                        {{__('Responsive, intuitive and fast UX/UI solutions using modern JS libraries')}}
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <i class="fas fa-4x fas fa-database text-info mb-4"></i>
                     <h3 class="h4 mb-2">{{__('Back-End')}}</h3>
-                    <p class="text-muted mb-0">{{__('MVC frameworks, RESTful APIs and an efficient database management')}}</p>
+                    <p class="text-muted mb-0">
+                        {{__('MVC frameworks, RESTful APIs and an efficient database management')}}
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <i class="fas fa-4x fa-server text-info mb-4"></i>
                     <h3 class="h4 mb-2">{{__('DevOps')}}</h3>
-                    <p class="text-muted mb-0">{{__('Shorter cycles for continuous gains: TDD, PaaS and version control')}}</p>
+                    <p class="text-muted mb-0">
+                        {{__('Shorter cycles for continuous gains: TDD, PaaS and version control')}}
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <i class="fas fa-4x fa-sticky-note text-info mb-4"></i>
                     <h3 class="h4 mb-2">{{__('Methodology')}}</h3>
-                    <p class="text-muted mb-0">{{__('Lean development, A/B testing or agile methods for MVPs or legacy systems')}}</p>
+                    <p class="text-muted mb-0">
+                        {{__('Lean development, A/B testing or agile methods for MVPs or legacy systems')}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -38,13 +46,7 @@
         <div class="row" style="margin-top:100px;">
             <div class="col-lg-6 col-md-6 text-center">
                 
-                @test('informal')
-                    <img src="{{ secure_asset('img/photo1.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
-                @endtest
-                
-                @test('formal')
-                    <img src="{{ secure_asset('img/photo2.jpg') }}" alt="..." class="rounded-circle" style="max-height:250px;">
-                @endtest
+                <img src="{{ secure_asset('img/photo2.jpg') }}" class="rounded-circle" style="max-height:250px;">
                 
                 <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
                 <div class="row">
@@ -65,12 +67,10 @@
                 $skills = [
                     'HTML' => 90,
                     'CSS' => 80,
-                    'Bootstrap' => 90,
-                    'React' => 40,
+                    'Bootstrap' => 90,                    
                     'JavaScript' => 80,
                     'PHP' => 90,
                     'Laravel' => 80,
-                    'Ruby On Rails' => 50,
                     'Java' => 60,
                     'Python' => '40',
                     'Heroku' => 70,
