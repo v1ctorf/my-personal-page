@@ -71,8 +71,8 @@
                     'JavaScript' => 80,
                     'PHP' => 90,
                     'Laravel' => 80,
-                    'Java' => 60,
-                    'Python' => '40',
+                    'Java' => 50,
+                    'Python' => 60,
                     'Heroku' => 70,
                     'MySQL' => 80,
                 ];
