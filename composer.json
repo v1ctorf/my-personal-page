@@ -12,6 +12,7 @@
         "bart/ab": "^1.1",
         "fideloper/proxy": "^4.0",
         "graham-campbell/markdown": "^10.3",
+        "guzzlehttp/guzzle": "^6.4",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "~5.0"
