@@ -24,18 +24,23 @@ class ArbitrageController extends Controller
 
     }
 
+
+
     public function index()
     {
         $resp = $this->client->get('scenarios');
         $scenarios = collect(json_decode($resp->getBody()->getContents())->data);
+        
         return view('arbitrage.scenarios', compact('scenarios'));
     }
     
+
     
     public function show($scenarioName)
     {
         $resp = $this->client->get("scenarios/$scenarioName");
         $scenario = json_decode($resp->getBody()->getContents())->data;
-        dd($scenario);
+        
+        return view('arbitrage.scenario', compact('scenario'));
     }
 }

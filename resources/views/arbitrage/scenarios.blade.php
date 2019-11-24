@@ -22,12 +22,8 @@
             <tbody>
                 @foreach ($scenarios as $scenario)
                     <tr>
-                        <td>
-                            {{ $scenario->active ? 'Yes' : 'No' }}
-                        </td>
-                        <td>
-                            {{ $scenario->lastPremiumFound }}%
-                        </td>
+                        <td>{{ $scenario->active ? 'Yes' : 'No' }}</td>
+                        <td>{{ $scenario->lastPremiumFound }}%</td>
                         <td>
                             <a href="{{ route('scenario', ['name' => $scenario->name]) }}">
                                 {{ $scenario->name }}
