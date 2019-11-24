@@ -16,5 +16,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('post', 'PostController');
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/post/{criteria}', 'PostController@show');
-
+Route::get('arbitrage', 'ArbitrageController@index')->name('arbitrage');
 

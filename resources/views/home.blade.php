@@ -15,13 +15,24 @@
                     @endif
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item bg-dark">
-                            <a href="{{url('/')}}">View Welcome Page</a>
+                            <a href="{{url('/')}}">
+                                View Welcome Page
+                            </a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <a href="{{route('blog')}}">View Blog/Posts</a>
+                            <a href="{{route('blog')}}">
+                                View Blog/Posts
+                            </a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <a href="{{route('post.create')}}">Create A Post</a>
+                            <a href="{{route('post.create')}}">
+                                Create A Post
+                            </a>
+                        </li>
+                        <li class="list-group-item bg-dark">
+                            <a href="{{ route('arbitrage') }}">
+                                Arbitrage
+                            </a>
                         </li>
                         <li class="list-group-item bg-dark">
                             <a href="{{route('logout')}}" class="text-muted">
