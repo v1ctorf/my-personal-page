@@ -15,7 +15,6 @@
                     <th>Name</th>
                     <th>Investment</th>
                     <th>Investment (USD)</th>
-                    {{-- <th scope="col">Active</th> --}}
                     <th>Updated At</th>
                 </tr>
             </thead>
