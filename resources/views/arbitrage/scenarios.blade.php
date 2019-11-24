@@ -11,10 +11,11 @@
         <table class="table table-dark">
             <thead>
                 <tr>
+                    <th>Active</th>
                     <th>Premium</th>
                     <th>Name</th>
                     <th>Investment</th>
-                    <th>Investment (USD)</th>
+                    <th>in USD</th>
                     <th>Updated At</th>
                 </tr>
             </thead>
@@ -22,9 +23,16 @@
                 @foreach ($scenarios as $scenario)
                     <tr>
                         <td>
+                            {{ $scenario->active ? 'Yes' : 'No' }}
+                        </td>
+                        <td>
                             {{ $scenario->lastPremiumFound }}%
-                        </th>
-                        <td>{{ $scenario->name }}</td>
+                        </td>
+                        <td>
+                            <a href="{{ route('scenario', ['name' => $scenario->name]) }}">
+                                {{ $scenario->name }}
+                            </a>
+                        </td>
                         <td>{{ strtoupper($scenario->currency) }} {{ floatval($scenario->investment) }}</td>
                         <td>{{ number_format($scenario->inUSD, 2) }}</td>
                         <td>
