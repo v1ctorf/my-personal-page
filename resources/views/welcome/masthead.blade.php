@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white font-weight-light mb-5">
-                    {{__('I am a full-stack developer and I can help you to design, build and maintain your web applications.')}}
+                    {{__('I am a Senior Web Developer and I can help you to design, build and maintain your web applications.')}}
                 </p>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">
                     {{__('View My Work')}}

@@ -6,15 +6,6 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <i class="fas fa-4x fa-code text-info mb-4"></i>
-                    <h3 class="h4 mb-2">{{__('Front-End')}}</h3>
-                    <p class="text-muted mb-0">
-                        {{__('Responsive, intuitive and fast UX/UI solutions using modern JS libraries')}}
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
                     <i class="fas fa-4x fas fa-database text-info mb-4"></i>
                     <h3 class="h4 mb-2">{{__('Back-End')}}</h3>
                     <p class="text-muted mb-0">
@@ -24,10 +15,19 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
+                    <i class="fas fa-4x fa-code text-info mb-4"></i>
+                    <h3 class="h4 mb-2">{{__('Front-End')}}</h3>
+                    <p class="text-muted mb-0">
+                        {{__('Responsive, intuitive and fast UX/UI solutions using modern JS libraries')}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
                     <i class="fas fa-4x fa-server text-info mb-4"></i>
                     <h3 class="h4 mb-2">{{__('DevOps')}}</h3>
                     <p class="text-muted mb-0">
-                        {{__('Shorter cycles for continuous gains: TDD, PaaS and version control')}}
+                        {{__('Shorter cycles for continuous gains: BDD, PaaS and version control')}}
                     </p>
                 </div>
             </div>
