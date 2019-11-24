@@ -26,8 +26,8 @@ class ArbitrageController extends Controller
 
     public function index()
     {
-        // $resp = $this->client->get('scenarios');
-        // $scenarios = collect(json_decode($resp->getBody()->getContents())->data);
-        return view('arbitrage.scenarios');
+        $resp = $this->client->get('scenarios');
+        $scenarios = collect(json_decode($resp->getBody()->getContents())->data);
+        return view('arbitrage.scenarios', compact('scenarios'));
     }
 }
