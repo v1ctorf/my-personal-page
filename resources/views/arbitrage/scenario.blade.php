@@ -14,6 +14,10 @@
     </div>    
 
     <div class="row">
+        {{ var_dump($scenario->actions) }}
+    </div>    
+
+    <div class="row">
         <div class="col-md-12 text-right">
             <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
         </div>

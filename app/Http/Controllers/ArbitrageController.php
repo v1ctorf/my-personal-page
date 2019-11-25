@@ -40,7 +40,7 @@ class ArbitrageController extends Controller
     {
         $resp = $this->client->get("scenarios/$scenarioName");
         $scenario = json_decode($resp->getBody()->getContents())->data;
-        
+                
         return view('arbitrage.scenario', compact('scenario'));
     }
 }
