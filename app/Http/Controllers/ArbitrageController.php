@@ -50,6 +50,7 @@ class ArbitrageController extends Controller
     {
         $this->client->post("scenarios/$scenarioName/snapshot");
 
-        return redirect()->route('scenario', ['name' => $scenarioName]);
+        return redirect()->back();
+        // return redirect()->route('scenario', ['name' => $scenarioName]);
     }
 }

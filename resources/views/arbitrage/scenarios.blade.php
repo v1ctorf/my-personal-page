@@ -11,32 +11,44 @@
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th>Active</th>
-                    <th>Premium</th>
+                    <th>Status</th>
+                    <th>Last Premium Found</th>
                     <th>Name</th>
                     <th>Investment</th>
                     <th>in USD</th>
-                    <th>Updated At</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($scenarios as $scenario)
                     <tr>
-                        <td>{{ $scenario->active ? 'Yes' : 'No' }}</td>
-                        <td>{{ $scenario->lastPremiumFound }}%</td>
+                        <td class="text-{{ $scenario->active ? 'success' : 'secondary' }}">
+                            {{ $scenario->active ? 'Active' : 'Inactive' }}
+                        </td>
+                        <td class="text-{{ $scenario->lastPremiumFound < 0 ? 
+                            'danger' : ($scenario->lastPremiumFound > 0.25 ? 'success' : 'warning')
+                            }}">{{ $scenario->lastPremiumFound }}% <small class="text-white">({{ $scenario->updatedAt ?
+                                Carbon\Carbon::parse($scenario->updatedAt)->diffForHumans() :
+                                'no data'
+                            }})</small>
+                        </td>
                         <td>
-                            <a href="{{ route('scenario', ['name' => $scenario->name]) }}">
+                            <a href="{{ route('scenario', ['name' => $scenario->name]) }}"
+                                class="text-white">
                                 {{ $scenario->name }}
                             </a>
                         </td>
                         <td>{{ strtoupper($scenario->currency) }} {{ floatval($scenario->investment) }}</td>
                         <td>{{ number_format($scenario->inUSD, 2) }}</td>
                         <td>
-                            @if ($scenario->updatedAt)
-                                {{ Carbon\Carbon::parse($scenario->updatedAt)->diffForHumans() }}
-                            @else
-                                -
-                            @endif
+                            <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
+                                class="btn btn-sm btn-success">
+                                Snapshot
+                            </a>
+                            <a href="{{ route('scenario', ['name' => $scenario->name]) }}" 
+                                class="btn btn-sm btn-info">
+                                Details
+                            </a>
                         </td>
                     </tr>
                 @endforeach
