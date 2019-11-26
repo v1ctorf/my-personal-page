@@ -61,7 +61,7 @@
     </dl>    
 
     <div class="row">
-        {{ var_dump($scenario->actions) }}
+        @include('arbitrage.actions')
     </div>    
 
     <div class="row">
