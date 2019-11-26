@@ -66,6 +66,10 @@
 
     <div class="row">
         <div class="col-md-12 text-right">
+            <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
+                class="btn btn-info">
+                Snapshot
+            </a>
             <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
         </div>
     </div>    
