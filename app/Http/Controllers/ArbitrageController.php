@@ -43,4 +43,13 @@ class ArbitrageController extends Controller
                 
         return view('arbitrage.scenario', compact('scenario'));
     }
+
+
+
+    public function snapshot($scenarioName)
+    {
+        $this->client->post("scenarios/$scenarioName/snapshot");
+
+        return redirect()->route('scenario', ['name' => $scenarioName]);
+    }
 }

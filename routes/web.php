@@ -20,7 +20,5 @@ Route::get('/post/{criteria}', 'PostController@show');
 Route::middleware('auth')->group(function(){
     Route::get('arbitrage', 'ArbitrageController@index')->name('arbitrage');
     Route::get('scenario/{name}', 'ArbitrageController@show')->name('scenario');
-    Route::get('snapshot/{name}', function(){
-        return 'SNAPSHOT!';
-    })->name('snapshot');
+    Route::get('snapshot/{name}', 'ArbitrageController@snapshot')->name('snapshot');
 });
