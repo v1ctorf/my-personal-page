@@ -15,7 +15,7 @@
     </h2>
 
     <div class="row">
-        <canvas id="myChart"></canvas>
+        <canvas id="historyChart"></canvas>
     </div>    
     
     <div class="row">
@@ -38,25 +38,50 @@
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
 
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+<script>
+$(function(){
+    var history = {!! $history !!};
+
+    var labels = Object.keys(history.data).map(function(key, index){
+        return history.data[key].createdAt
+    });
+
+    var premium = Object.keys(history.data).map(function(key, index){
+        return history.data[key].premiumPct
+    });
+
+    var chartData = {
+        type: 'line',
+        options: {
+            legend: {
+                display: false
+            },
+            // scales: {
+            //     xAxes: [{
+            //         type: 'time',
+            //         display: true,
+            //         time: {
+            //             format: timeFormat
+            //         }
+            //     }]
+            // }
+        }
+    }
+
+    chartData.data = {
+        labels: labels,
         datasets: [{
-            label: 'My First dataset',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
+            data: premium
         }]
-    },
+    }
 
-    // Configuration options go here
-    options: {}
+    var ctx = document.getElementById('historyChart').getContext('2d');
+    var chart = new Chart(ctx, chartData);    
 });
+
+
 </script>
 @endsection

@@ -25,8 +25,6 @@
                     @endif
                 </td>                
                 
-                {{-- <td>{{ $action->amount->currency }} {{ $action->amount->value }}</td>                
-                <td>{{ $action->result->currency }} {{ $action->result->value }}</td>                 --}}
             </tr>
         @endforeach
     </tbody>

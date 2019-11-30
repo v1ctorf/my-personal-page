@@ -38,10 +38,13 @@ class ArbitrageController extends Controller
     
     public function show($scenarioName)
     {
-        $resp = $this->client->get("scenarios/$scenarioName");
+        $resp = $this->client->get("scenarios/{$scenarioName}");
         $scenario = json_decode($resp->getBody()->getContents())->data;
-                
-        return view('arbitrage.scenario', compact('scenario'));
+        
+        $resp = $this->client->get("scenarios/{$scenarioName}/history");
+        $history = $resp->getBody()->getContents();
+
+        return view('arbitrage.scenario', compact('scenario','history'));
     }
 
 
@@ -51,6 +54,5 @@ class ArbitrageController extends Controller
         $this->client->post("scenarios/$scenarioName/snapshot");
 
         return redirect()->back();
-        // return redirect()->route('scenario', ['name' => $scenarioName]);
     }
 }
