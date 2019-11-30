@@ -1,4 +1,4 @@
-<table class="table table-dark col-md-6">
+<table class="table table-dark table-sm table-striped col-md-6">
     <thead>
         <tr>
             <th scope="col">#</th>

@@ -6,63 +6,22 @@
 
 <div class="container mt-4">
     <h2 class="mb-4 text-secondary">
-        Scenario <span class="text-white">{{ $scenario->name }}</span>
-    </h2>   
-    
-    <dl class="row text-secondary">
-        <dt class="col-md-3">Status</dt>
-        <dd class="col-md-9 text-{{ $scenario->active ? 'success' : 'danger' }}">
-            {{ $scenario->active ? 'Active' : 'Inactive' }}
-        </dt>
-
-        <dt class="col-md-3">Description</dt>
-        <dd class="col-md-9 text-white">
-            {{ $scenario->description }}
-        </dt>
-
-        <dt class="col-md-3">Investment</dt>
-        <dd class="col-md-9 text-white">
-            {{ strtoupper($scenario->currency) }} {{ floatval($scenario->investment) }} <span class="text-muted">
-                (USD {{ number_format($scenario->inUSD, 2) }})
-            </span>
-        </dt>
-
-        <dt class="col-md-3">Last Premium Found</dt>
-        <dd class="col-md-9 text-{{ $scenario->lastPremiumFound < 0 ? 
-            'danger' : ($scenario->lastPremiumFound > 0.25 ? 'success' : 'warning')
-        }}">
-            {{ $scenario->lastPremiumFound }}% <span class="text-secondary">
-                ({{ $scenario->updatedAt ?
-                    Carbon\Carbon::parse($scenario->updatedAt)->diffForHumans() :
-                    'no data'
-                }})
-            </span>
-        </dt>
-
-        <dt class="col-md-3">Created At</dt>
-        <dd class="col-md-9 text-white">
-            {{ Carbon\Carbon::parse($scenario->createdAt)->toDayDateTimeString() }} <span class="text-secondary">
-                    ({{ $scenario->createdAt ?
-                        Carbon\Carbon::parse($scenario->createdAt)->diffForHumans() :
-                        'no data'
-                    }})
-                </span>
-        </dt>
-
-        <dt class="col-md-3">Updated At</dt>
-        <dd class="col-md-9 text-white">
-            {{ Carbon\Carbon::parse($scenario->updatedAt)->toDayDateTimeString() }} <span class="text-secondary">
-                    ({{ $scenario->updatedAt ?
-                        Carbon\Carbon::parse($scenario->updatedAt)->diffForHumans() :
-                        'no data'
-                    }})
-                </span>
-        </dt>
-    </dl>    
+        <span class="text-white">{{ $scenario->name }}</span> 
+        <small class="text-{{ $scenario->lastPremiumFound < 0 ? 
+                'danger' : ($scenario->lastPremiumFound > 0.25 ? 'success' : 'warning')
+            }}">
+                {{ $scenario->lastPremiumFound }}%
+        </small>
+    </h2>
 
     <div class="row">
-        @include('arbitrage.actions')
+        <canvas id="myChart"></canvas>
     </div>    
+    
+    <div class="row">
+        @include ('arbitrage.scenario-details')
+        @include('arbitrage.actions')
+    </div>
 
     <div class="row">
         <div class="col-md-12 text-right">
@@ -77,8 +36,27 @@
 
 @endsection
 
-{{-- @section('js')
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
-    
+    var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
 </script>
-@endsection --}}
+@endsection
