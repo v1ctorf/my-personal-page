@@ -42,9 +42,10 @@
 <script>
 $(function(){
     var history = {!! $history !!};
+    var timeFormat = 'MM/DD/YYYY HH:mm:ss';
 
     var labels = Object.keys(history.data).map(function(key, index){
-        return history.data[key].createdAt
+        return moment(history.data[key].createdAt).format(timeFormat)
     });
 
     var premium = Object.keys(history.data).map(function(key, index){
@@ -54,18 +55,23 @@ $(function(){
     var chartData = {
         type: 'line',
         options: {
+            elements: {
+                line: {
+                    tension: 0 // disables bezier curves
+                }
+            },
             legend: {
                 display: false
             },
-            // scales: {
-            //     xAxes: [{
-            //         type: 'time',
-            //         display: true,
-            //         time: {
-            //             format: timeFormat
-            //         }
-            //     }]
-            // }
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    display: true,
+                    time: {
+                        parser: timeFormat
+                    }
+                }]
+            }
         }
     }
 
@@ -74,7 +80,11 @@ $(function(){
         datasets: [{
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: premium
+            data: premium,
+            fill: false,
+            gridLines:{
+                color:'#CCCCC'
+            }
         }]
     }
 
