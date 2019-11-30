@@ -10,10 +10,12 @@
         @foreach ($scenario->actions as $step => $a)
             <tr>
                 <th scope="row">{{ $step + 1 }}</th>
-                <td class="text-capitalize">{{ $a->type }}</td>                
+                <td class="text-capitalize">
+                    {{ $a->type == 'order' ? ucfirst($a->orderType) : $a->type }}
+                </td>                
                 <td>                
                     @if ($a->type == 'order')
-                        {{ ucfirst($a->orderType) }} {{strtoupper($a->pair)}} @ {{ 
+                        {{ strtoupper($a->pair) }} @ {{ 
                             strtoupper(implode(' ', explode('-',$a->exchange)))
                         }}
                     @else

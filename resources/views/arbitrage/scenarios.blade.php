@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($scenarios as $scenario)
                     <tr>
-                        <td class="text-{{ $scenario->active ? 'success' : 'secondary' }}">
+                        <td class="text-{{ $scenario->active ? 'success' : 'white' }}">
                             {{ $scenario->active ? 'Active' : 'Inactive' }}
                         </td>
                         <td class="text-{{ $scenario->lastPremiumFound < 0 ? 
@@ -65,9 +65,3 @@
 </div>
 
 @endsection
-
-{{-- @section('js')
-<script>
-    
-</script>
-@endsection --}}
