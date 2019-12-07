@@ -24,12 +24,18 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 text-right">
+        <div class="col-md-6 text-left">
+            <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
+                class="btn btn-{{ $scenario->active ? 'outline-' : '' }}warning">
+                {{ $scenario->active ? 'Deactivate' : 'Activate' }}
+            </a>
             <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
                 class="btn btn-success">
                 Snapshot
             </a>
-            <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
         </div>
     </div>    
 </div>
