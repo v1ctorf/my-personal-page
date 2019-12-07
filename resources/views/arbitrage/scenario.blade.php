@@ -28,8 +28,8 @@
             <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
-                class="btn btn-{{ $scenario->active ? 'outline-' : '' }}warning">
+            <a href="{{ route($scenario->active ? 'deactivate' : 'activate', ['name' => $scenario->name]) }}" 
+                class="btn btn-{{ $scenario->active ? 'outline-' : '' }}light">
                 {{ $scenario->active ? 'Deactivate' : 'Activate' }}
             </a>
             <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 

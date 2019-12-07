@@ -21,4 +21,6 @@ Route::middleware('auth')->group(function(){
     Route::get('arbitrage', 'ArbitrageController@index')->name('arbitrage');
     Route::get('scenario/{name}', 'ArbitrageController@show')->name('scenario');
     Route::get('snapshot/{name}', 'ArbitrageController@snapshot')->name('snapshot');
+    Route::get('activate/{name}', 'ArbitrageController@activate')->name('activate');
+    Route::get('deactivate/{name}', 'ArbitrageController@deactivate')->name('deactivate');
 });
