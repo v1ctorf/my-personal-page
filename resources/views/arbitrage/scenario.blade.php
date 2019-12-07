@@ -18,7 +18,7 @@
         <canvas id="historyChart"></canvas>
     </div>    
     
-    <div class="row">
+    <div class="row mt-5">
         @include ('arbitrage.scenario-details')
         @include('arbitrage.actions')
     </div>

@@ -1,31 +1,19 @@
-<table class="table table-dark table-sm table-striped col-md-6">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th>Action</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="col-md-6">
+    <dl class="row text-secondary">
         @foreach ($scenario->actions as $step => $a)
-            <tr>
-                <th scope="row">{{ $step + 1 }}</th>
-                <td class="text-capitalize">
-                    {{ $a->type == 'order' ? ucfirst($a->orderType) : $a->type }}
-                </td>                
-                <td>                
-                    @if ($a->type == 'order')
-                        {{ strtoupper($a->pair) }} @ {{ 
-                            strtoupper(implode(' ', explode('-',$a->exchange)))
-                        }}
-                    @else
-                        {{ strtoupper($a->currency) }} from {{ strtoupper(implode(' ', explode('-', $a->from))) }} to {{
-                            strtoupper(implode(' ', explode('-', $a->to)))
-                        }}
-                    @endif
-                </td>                
-                
-            </tr>
+            <dt class="col-md-1 text-capitalize">{{ $step + 1 }}</dt>
+            <dd class="col-md-11 text-white">
+                {{ $a->type == 'order' ? $a->orderType : $a->type }}
+                @if ($a->type == 'order')
+                    {{ strtoupper($a->pair) }} @ {{ 
+                        strtoupper(implode(' ', explode('-',$a->exchange)))
+                    }}
+                @else
+                    {{ strtoupper($a->currency) }} from {{ strtoupper(implode(' ', explode('-', $a->from))) }} to {{
+                        strtoupper(implode(' ', explode('-', $a->to)))
+                    }}
+                @endif
+            </dd>
         @endforeach
-    </tbody>
-</table>
+    </dl>    
+</div>
