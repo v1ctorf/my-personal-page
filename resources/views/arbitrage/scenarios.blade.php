@@ -58,8 +58,15 @@
 
 
     <div class="row">
-        <div class="col-md-12 text-right">
-            <a href="{{ route('home') }}" class="btn btn-outline-secondary">Back</a>
+        <div class="col-md-6 text-left">
+            <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                Home
+            </a>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="{{ route('snapshot-all') }}" class="btn btn-success">
+                Snapshot All
+            </a>
         </div>
     </div>    
 </div>
