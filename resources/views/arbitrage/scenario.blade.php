@@ -19,18 +19,28 @@
     </div>    
     
     <div class="row mt-5">
-        @include ('arbitrage.scenario-details')
+        @include('arbitrage.scenario-details')
         @include('arbitrage.actions')
+    </div>
+
+    <div class="row collapse mt-5" id="snapshotHistory">
+        <div class="col-md-12">
+            <h2 class="text-secondary">History</h2>
+            @include('arbitrage.history-table')
+        </div>
     </div>
 
     <div class="row">
         <div class="col-md-6 text-left">
             <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-6 text-right">            
             <a href="{{ route($scenario->active ? 'deactivate' : 'activate', ['name' => $scenario->name]) }}" 
                 class="btn btn-{{ $scenario->active ? 'outline-' : '' }}light">
                 {{ $scenario->active ? 'Deactivate' : 'Activate' }}
+            </a>
+            <a class="btn btn-info" data-toggle="collapse" href="#snapshotHistory">
+                History
             </a>
             <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
                 class="btn btn-success">
