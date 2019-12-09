@@ -9,6 +9,8 @@ class ArbitrageController extends Controller
 {
     private $client;
 
+
+    
     public function __construct()
     {
         $options = [				
