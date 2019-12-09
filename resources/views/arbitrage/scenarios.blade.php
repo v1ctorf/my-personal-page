@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Arbitrage')
+@section('title', 'Arbitrage - Scenarios')
 
 @section('content')
 
 <div class="container mt-4">
-    <h2 class="mb-4 text-secondary">Arbitrage</h2>   
+    <h2 class="mb-4 text-secondary">Arbitrage - Scenarios</h2>   
     
     <div class="row">
         <table class="table table-dark">
@@ -64,8 +64,8 @@
             </a>
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{ route('home') }}" class="btn btn-outline-secondary">
-                Home
+            <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">
+                Back
             </a>
         </div>
     </div>    

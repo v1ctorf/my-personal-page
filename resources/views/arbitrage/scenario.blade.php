@@ -49,7 +49,7 @@
             </a>
         </div>
         <div class="col-md-6 text-right">            
-            <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">Back</a>
+            <a href="{{ route('scenarios') }}" class="btn btn-outline-secondary">Back</a>
         </div>
     </div>    
 </div>

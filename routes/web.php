@@ -12,16 +12,21 @@ Route::get('/logout', function(){
 Auth::routes();
 
 Route::redirect('about', '/#about');
-Route::get('home', 'HomeController@index')->name('home');
 Route::get('blog', 'PostController@index')->name('blog');
 
 Route::resource('post', 'PostController');
 Route::get('post/{criteria}', 'PostController@show');
 
 Route::middleware('auth')->group(function(){
-    Route::prefix('arbitrage')->group(function(){        
+    Route::view('home', 'home')->name('home');
+
+    // Route::view('', 'arbitrage.index')->name('arbitrage');
+
+    Route::prefix('arbitrage')->group(function(){
+        Route::view('', 'arbitrage.index')->name('arbitrage');
+
         Route::prefix('scenarios')->group(function(){
-            Route::get('', 'ArbitrageController@index')->name('arbitrage');
+            Route::get('', 'ArbitrageController@index')->name('scenarios');
             Route::get('snapshot', 'ArbitrageController@snapshotAll')->name('snapshot-all');
 
             Route::prefix('{name}')->group(function(){
