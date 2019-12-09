@@ -22,7 +22,11 @@ Route::middleware('auth')->group(function(){
 
     Route::prefix('arbitrage')->group(function(){
         Route::view('', 'arbitrage.index')->name('arbitrage');
-        Route::get('currencies', 'ArbitrageController@currencies')->name('currencies');
+        
+        Route::prefix('currencies')->group(function(){
+            Route::get('', 'ArbitrageController@currencies')->name('currencies');
+            Route::get('{identifier}/update-tx-fee', 'ArbitrageController@updateTxFee')->name('update-tx-fee');
+        });
 
         Route::prefix('scenarios')->group(function(){
             Route::get('', 'ArbitrageController@index')->name('scenarios');

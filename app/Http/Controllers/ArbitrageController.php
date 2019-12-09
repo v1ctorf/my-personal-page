@@ -86,13 +86,20 @@ class ArbitrageController extends Controller
     }
 
 
+    public function updateTxFee($identifier)
+    {        
+        $this->client->put("currencies/{$identifier}/tx-fee");
+
+        return redirect()->back();
+    }
+
+
 
     public function currencies()
     {
         $resp =  $this->client->get('currencies');
         $currencies = json_decode($resp->getBody()->getContents())->data;
 
-        // dd($currencies); 
         return view('arbitrage.currencies', compact('currencies'));
     }
 }

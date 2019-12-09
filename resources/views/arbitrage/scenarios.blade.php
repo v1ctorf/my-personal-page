@@ -8,7 +8,7 @@
     <h2 class="mb-4 text-secondary">Arbitrage - Scenarios</h2>   
     
     <div class="row">
-        <table class="table table-dark">
+        <table class="table table-dark text-center">
             <thead>
                 <tr>
                     <th>Status</th>

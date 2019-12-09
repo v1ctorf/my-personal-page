@@ -15,7 +15,9 @@
                     <th>Currency</th>
                     <th>Name</th>
                     <th>Tx Fee</th>
+                    <th>in USD</th>
                     <th>Verified In</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,11 +34,18 @@
                             {{ $c->identifier }}
                         </td>
                         <td>{{ $c->txFee }}</td>
+                        <td>TBC</td>
                         <td>
                             {{ $c->txFeeVerifiedIn ?
                                 Carbon\Carbon::parse($c->txFeeVerifiedIn)->diffForHumans() :
                                 'no data'}} 
                         </td>                        
+                        <td>
+                            <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}"
+                                class="btn btn-sm btn-info">
+                                Check Fee
+                            </a>
+                        </td>
                     </tr>
                     @endisset
                 @endforeach
