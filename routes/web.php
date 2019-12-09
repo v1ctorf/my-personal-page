@@ -11,11 +11,12 @@ Route::get('/logout', function(){
 
 Auth::routes();
 
-Route::redirect('/about', '/#about');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::redirect('about', '/#about');
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('blog', 'PostController@index')->name('blog');
+
 Route::resource('post', 'PostController');
-Route::get('/blog', 'PostController@index')->name('blog');
-Route::get('/post/{criteria}', 'PostController@show');
+Route::get('post/{criteria}', 'PostController@show');
 
 Route::middleware('auth')->group(function(){
     Route::get('arbitrage', 'ArbitrageController@index')->name('arbitrage');
