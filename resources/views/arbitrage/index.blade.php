@@ -16,11 +16,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <ul class="list-group list-group-flush">
-                        
+                    <ul class="list-group list-group-flush">                        
                         <li class="list-group-item bg-dark">
                             <a href="{{ route('scenarios') }}">
                                 Scenarios
+                            </a>
+                        </li>
+                        <li class="list-group-item bg-dark">
+                            <a href="{{ route('currencies') }}">
+                                Currencies
                             </a>
                         </li>
                         <li class="list-group-item bg-dark">
@@ -30,6 +34,7 @@
                         </li>
                     </ul>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -84,4 +84,15 @@ class ArbitrageController extends Controller
 
         return redirect()->back();
     }
+
+
+
+    public function currencies()
+    {
+        $resp =  $this->client->get('currencies');
+        $currencies = json_decode($resp->getBody()->getContents())->data;
+
+        // dd($currencies); 
+        return view('arbitrage.currencies', compact('currencies'));
+    }
 }

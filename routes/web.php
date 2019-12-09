@@ -20,10 +20,9 @@ Route::get('post/{criteria}', 'PostController@show');
 Route::middleware('auth')->group(function(){
     Route::view('home', 'home')->name('home');
 
-    // Route::view('', 'arbitrage.index')->name('arbitrage');
-
     Route::prefix('arbitrage')->group(function(){
         Route::view('', 'arbitrage.index')->name('arbitrage');
+        Route::get('currencies', 'ArbitrageController@currencies')->name('currencies');
 
         Route::prefix('scenarios')->group(function(){
             Route::get('', 'ArbitrageController@index')->name('scenarios');
