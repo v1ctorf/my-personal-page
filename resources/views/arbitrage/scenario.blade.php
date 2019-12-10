@@ -6,7 +6,7 @@
 
 <div class="container mt-4">
     <h2 class="mb-4">
-        <a href="{{ route('scenarios', ['name' => $scenario->name]) }}" 
+        <a href="{{ route('scenario', ['name' => $scenario->name]) }}" 
             class="text-secondary">{{ $scenario->name }}</a> <small 
             class="text-{{ $scenario->lastPremiumFound < 0 ? 
                 'danger' : ($scenario->lastPremiumFound > 0.25 ? 'success' : 'warning')
@@ -39,12 +39,12 @@
                 class="btn btn-{{ $scenario->active ? 'outline-' : '' }}light">
                 {{ $scenario->active ? 'Deactivate' : 'Activate' }}
             </a>
-            <a class="btn btn-info" data-toggle="collapse" href="#snapshotHistory">
-                History
-            </a>
             <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
                 class="btn btn-success">
                 Snapshot
+            </a>
+            <a class="btn btn-info" data-toggle="collapse" href="#snapshotHistory">
+                History
             </a>
         </div>
         <div class="col-md-6 text-right">            
