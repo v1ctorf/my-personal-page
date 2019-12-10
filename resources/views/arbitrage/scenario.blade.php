@@ -5,13 +5,12 @@
 @section('content')
 
 <div class="container mt-4">
-    <h2 class="mb-4 text-secondary">
-        <span class="text-white">{{ $scenario->name }}</span> 
-        <small class="text-{{ $scenario->lastPremiumFound < 0 ? 
+    <h2 class="mb-4">
+        <a href="{{ route('scenarios', ['name' => $scenario->name]) }}" 
+            class="text-secondary">{{ $scenario->name }}</a> <small 
+            class="text-{{ $scenario->lastPremiumFound < 0 ? 
                 'danger' : ($scenario->lastPremiumFound > 0.25 ? 'success' : 'warning')
-            }}">
-                {{ $scenario->lastPremiumFound }}%
-        </small>
+            }}">{{ $scenario->lastPremiumFound }}%</small>
     </h2>
 
     <div class="row">

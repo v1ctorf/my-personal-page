@@ -54,11 +54,7 @@
     </div>    
 
     <div class="row">
-        <div class="col-md-6 text-left">
-            {{-- <a href="{{ route('snapshot-all') }}" class="btn btn-success">
-                Snapshot All
-            </a> --}}
-        </div>
+        <div class="col-md-6 text-left"></div>
         <div class="col-md-6 text-right">
             <a href="{{ route('arbitrage') }}" class="btn btn-outline-secondary">
                 Back

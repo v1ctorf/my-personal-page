@@ -5,7 +5,11 @@
 @section('content')
 
 <div class="container mt-4">
-    <h2 class="mb-4 text-secondary">Arbitrage - Scenarios</h2>   
+    <h2 class="mb-4">
+        <a href="{{ route('scenarios') }}" class="text-secondary">
+            Arbitrage - Scenarios
+        </a>
+    </h2>   
     
     <div class="row">
         <table class="table table-dark text-center">
