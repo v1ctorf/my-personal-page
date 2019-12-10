@@ -41,10 +41,6 @@
                         <td>{{ strtoupper($scenario->currency) }} {{ floatval($scenario->investment) }}</td>
                         <td>{{ number_format($scenario->inUSD, 2) }}</td>
                         <td>
-                            <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" 
-                                class="btn btn-sm btn-success">
-                                Snapshot
-                            </a>
                             <a href="{{ route('scenario', ['name' => $scenario->name]) }}" 
                                 class="btn btn-sm btn-info">
                                 Details
