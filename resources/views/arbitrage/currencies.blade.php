@@ -8,7 +8,7 @@
     <h2 class="mb-4 text-secondary">Arbitrage - Currencies</h2>
     
     <div class="row">
-        <table class="table table-dark text-center">
+        <table class="table table-dark text-center table-sm">
             <thead>
                 <tr>
                     <th>Currency</th>
@@ -31,16 +31,15 @@
                                 {{ $c->identifier }}
                             </span>{{ rtrim($c->txFee, 0) }}
                             <br><small>
-                                (USD 999.99)
+                                (USD {{ $c->txFeeInUSD }})
                             </small>
                         </td>
                         <td>
                             <span>{{ $c->txFeeVerifiedIn ?
                                 Carbon\Carbon::parse($c->txFeeVerifiedIn)->diffForHumans() :
                                 'no data'}}</span><br><small> 
-                                <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}"
-                                    class="">
-                                    Check Fee
+                                <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}">
+                                    (Check Fee)
                                 </a>
                             </small>
                         </td>                        
