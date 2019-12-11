@@ -11,41 +11,39 @@
         <table class="table table-dark text-center">
             <thead>
                 <tr>
-                    <th>Active</th>
                     <th>Currency</th>
-                    <th>Name</th>
                     <th>Tx Fee</th>
-                    <th>in USD</th>
-                    <th>Verified In</th>
-                    <th>Actions</th>
+                    <th>Verified</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($currencies as $c)
                     @isset($c->txFee)
                     <tr>
-                        <td class="text-{{ $c->active ? 'success' : 'white' }}">
-                            {{ $c->active ? 'Active' : 'Inactive' }}
-                        </td>
                         <td>
                             {{ $c->name }}
+                            @if ($c->active == false)
+                                <br><small>(Inactive)</small>
+                            @endif
                         </td>
-                        <td class="text-uppercase">
-                            {{ $c->identifier }}
-                        </td>
-                        <td>{{ $c->txFee }}</td>
-                        <td>TBC</td>
                         <td>
-                            {{ $c->txFeeVerifiedIn ?
+                            <span class="text-uppercase">
+                                {{ $c->identifier }}
+                            </span>{{ rtrim($c->txFee, 0) }}
+                            <br><small>
+                                (USD 999.99)
+                            </small>
+                        </td>
+                        <td>
+                            <span>{{ $c->txFeeVerifiedIn ?
                                 Carbon\Carbon::parse($c->txFeeVerifiedIn)->diffForHumans() :
-                                'no data'}} 
+                                'no data'}}</span><br><small> 
+                                <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}"
+                                    class="">
+                                    Check Fee
+                                </a>
+                            </small>
                         </td>                        
-                        <td>
-                            <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}"
-                                class="btn btn-sm btn-info">
-                                Check Fee
-                            </a>
-                        </td>
                     </tr>
                     @endisset
                 @endforeach

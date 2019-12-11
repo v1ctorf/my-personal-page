@@ -9,7 +9,6 @@ class ArbitrageController extends Controller
 {
     private $client;
 
-
     
     public function __construct()
     {
@@ -23,9 +22,7 @@ class ArbitrageController extends Controller
         ];
 
         $this->client = new GuzzleClient($options);
-
     }
-
 
 
     public function index()
@@ -36,7 +33,6 @@ class ArbitrageController extends Controller
         return view('arbitrage.scenarios', compact('scenarios'));
     }
     
-
     
     public function show($scenarioName)
     {
@@ -50,14 +46,12 @@ class ArbitrageController extends Controller
     }
 
 
-
     public function snapshot($scenarioName)
     {
         $this->client->post("scenarios/{$scenarioName}/snapshot");
 
         return redirect()->back();
     }
-
 
 
     public function snapshotAll()
@@ -68,7 +62,6 @@ class ArbitrageController extends Controller
     }
 
 
-
     public function activate($scenarioName)
     {
         $this->client->patch("scenarios/{$scenarioName}/activate");
@@ -77,14 +70,13 @@ class ArbitrageController extends Controller
     }
 
 
-
     public function deactivate($scenarioName)
     {
         $this->client->delete("scenarios/{$scenarioName}/activate");
 
         return redirect()->back();
     }
-
+    
 
     public function updateTxFee($identifier)
     {        
@@ -92,7 +84,6 @@ class ArbitrageController extends Controller
 
         return redirect()->back();
     }
-
 
 
     public function currencies()
