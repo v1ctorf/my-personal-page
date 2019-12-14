@@ -5,6 +5,11 @@
 @section('content')
 
 <div class="container mt-4">
+    <h2 class="mb-4">
+        <a href="{{ route('scenario-history', ['name' => $scenario->name]) }}" 
+            class="text-secondary">{{ $scenario->name }} - History
+        </a>
+    </h2>
 
     <div class="row">
         <table class="table table-dark table-borderless table-hover table-sm text-center mt-3"> 
@@ -36,10 +41,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 text-left">
-
-        </div>
-        <div class="col-md-6 text-right">            
+        <div class="col-md-12 text-right">            
             <a href="{{ route('scenario', ['name' => $scenario->name]) }}" class="btn btn-outline-secondary">
                 Back
             </a>
