@@ -28,6 +28,10 @@ Route::middleware('auth')->group(function(){
             Route::get('{identifier}/update-tx-fee', 'ArbitrageController@updateTxFee')->name('update-tx-fee');
         });
 
+        Route::prefix('exchanges')->group(function(){
+            Route::get('', 'ArbitrageController@exchanges')->name('exchanges');
+        });
+
         Route::prefix('scenarios')->group(function(){
             Route::get('', 'ArbitrageController@index')->name('scenarios');
             Route::get('snapshot', 'ArbitrageController@snapshotAll')->name('snapshot-all');

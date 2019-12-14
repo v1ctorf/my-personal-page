@@ -28,6 +28,11 @@
                             </a>
                         </li>
                         <li class="list-group-item bg-dark">
+                            <a href="{{ route('exchanges') }}">
+                                Exchanges
+                            </a>
+                        </li>
+                        <li class="list-group-item bg-dark">
                             <a href="{{route('home')}}" class="text-muted">
                                 Home
                             </a>

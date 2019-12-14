@@ -105,4 +105,13 @@ class ArbitrageController extends Controller
         
         return view('arbitrage.history-table', compact('scenario','history'));
     }
+    
+    
+    public function exchanges()
+    {
+        $resp =  $this->client->get('exchanges');
+        $exchanges = json_decode($resp->getBody()->getContents())->data;
+        
+        return view('arbitrage.exchanges', compact('exchanges'));
+    }
 }
