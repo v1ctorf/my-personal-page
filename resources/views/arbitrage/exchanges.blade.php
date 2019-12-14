@@ -16,8 +16,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Fees Page</th>
-                    <th>Verified In</th>
+                    <th>Fees Verified In</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,8 +28,11 @@
                                 {{ $e->name }}
                             {{-- </a> --}}
                         </td>
-                        <td>{{ $e->feesUrl }}</td>
-                        <td>{{ $e->feesPageVerifiedAt }}</td>
+                        <td>
+                            {{ $e->feesPageVerifiedAt ?
+                                Carbon\Carbon::parse($e->feesPageVerifiedAt)->diffForHumans() :
+                                'not verified' }}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
