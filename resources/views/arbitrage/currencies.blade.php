@@ -5,7 +5,11 @@
 @section('content')
 
 <div class="container mt-4">
-    <h2 class="mb-4 text-secondary">Arbitrage - Currencies</h2>
+    <h2 class="mb-4">
+        <a href="{{ route('currencies') }}" class="text-secondary">
+            Arbitrage - Currencies
+        </a>
+    </h2>   
     
     <div class="row">
         <table class="table table-dark text-center table-sm">
