@@ -11,9 +11,42 @@
         </a>
     </h2>   
     
-    <div class="row">
-        {{ var_dump($exchange) }}
-    </div>    
+    <div class="row text-white">
+        <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+                @foreach ($exchange->fees as $fee)
+                    @isset($fee->orderType)
+                        <li class="list-group-item bg-dark">
+                            {{ ucfirst($fee->orderType) }}: {{ rtrim($fee->percentage,0) }}%
+                        </li>
+                    @endisset
+                    @isset($fee->transactionType)
+                        <li class="list-group-item bg-dark">
+                            {{ ucfirst($fee->transactionType) }} ({{ strtoupper($fee->currency) }}): 
+                            @isset($fee->value)
+                                {{ $fee->value > 0 ? strtoupper($fee->currency) . ' '. rtrim($fee->value, 0) : 'free' }} 
+                            @endisset
+                            @isset($fee->percentage)
+                                {{ rtrim($fee->percentage,0) }}%
+                            @endisset
+                        </li>
+                    @endisset
+                @endforeach
+            </ul>
+        </div>    
+    </div> 
+
+    <div class="row text-white">
+        <div class="col-md-12">
+            <p>
+                <a href="{{ $exchange->feesUrl }}" target="_blank">
+                    Exchange Fee Page
+                </a>
+                <small>({{ $exchange->feesPageVerifiedAt ?? 'not verified'}})</small>   
+            </p>   
+        </div>
+    </div>
+    
 
 
     <div class="row">
