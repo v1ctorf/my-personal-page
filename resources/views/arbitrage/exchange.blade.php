@@ -55,9 +55,10 @@
 
     <div class="row">
         <div class="col-md-6 text-left">
-            {{-- <a href="{{ route('snapshot-all') }}" class="btn btn-success">
-                Snapshot All
-            </a> --}}
+            <a href="{{ route('check-exchange-fee', ['exchange' => $exchange->identifier]) }}" 
+                class="btn btn-success">
+                Mark Fee Page As Verified
+            </a>
         </div>
         <div class="col-md-6 text-right">
             <a href="{{ route('exchanges') }}" class="btn btn-outline-secondary">

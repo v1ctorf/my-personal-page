@@ -27,10 +27,13 @@ Route::middleware('auth')->group(function(){
             Route::get('', 'ArbitrageController@currencies')->name('currencies');
             Route::get('{identifier}/update-tx-fee', 'ArbitrageController@updateTxFee')->name('update-tx-fee');
         });
-
+        
         Route::prefix('exchanges')->group(function(){
             Route::get('', 'ArbitrageController@exchanges')->name('exchanges');
-            Route::get('{exchange}', 'ArbitrageController@exchange')->name('exchange');
+            Route::prefix('{exchange}')->group(function(){
+                Route::get('', 'ArbitrageController@exchange')->name('exchange');
+                Route::get('check-exchange-fee', 'ArbitrageController@checkExchangeFee')->name('check-exchange-fee');
+            });
         });
 
         Route::prefix('scenarios')->group(function(){

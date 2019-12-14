@@ -125,4 +125,10 @@ class ArbitrageController extends Controller
     }
     
     
+    public function checkExchangeFee($exchange)
+    {        
+        $this->client->put("exchanges/{$exchange}/check-fee");
+
+        return redirect()->back();
+    }
 }
