@@ -41,7 +41,7 @@ class ArbitrageController extends Controller
         
         $resp = $this->client->get("scenarios/{$scenarioName}/history");
         $history = $resp->getBody()->getContents();
-
+        
         return view('arbitrage.scenario', compact('scenario','history'));
     }
 
@@ -92,5 +92,17 @@ class ArbitrageController extends Controller
         $currencies = json_decode($resp->getBody()->getContents())->data;
 
         return view('arbitrage.currencies', compact('currencies'));
+    }
+    
+    
+    public function history($scenarioName)
+    {
+        $resp = $this->client->get("scenarios/{$scenarioName}");
+        $scenario = json_decode($resp->getBody()->getContents())->data;
+        
+        $resp = $this->client->get("scenarios/{$scenarioName}/history");
+        $history = $resp->getBody()->getContents();
+        
+        return view('arbitrage.history-table', compact('scenario','history'));
     }
 }

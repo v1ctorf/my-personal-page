@@ -1,3 +1,11 @@
+@extends('layouts.app')
+
+@section('title', $scenario->name)
+
+@section('content')
+
+<div class="container mt-4">
+
 <table class="table table-dark table-borderless table-hover table-sm text-center mt-3"> 
     <thead class="thead-dark">
         <tr>
@@ -24,3 +32,7 @@
         @endforeach
     </tbody>
 </table>
+
+</div>
+
+@endsection

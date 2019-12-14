@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function(){
                 Route::get('snapshot', 'ArbitrageController@snapshot')->name('snapshot');
                 Route::get('activate', 'ArbitrageController@activate')->name('activate');
                 Route::get('deactivate', 'ArbitrageController@deactivate')->name('deactivate');
+                Route::get('history', 'ArbitrageController@history')->name('scenario-history');
             });            
         });        
     });
