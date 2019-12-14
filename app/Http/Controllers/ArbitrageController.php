@@ -114,4 +114,15 @@ class ArbitrageController extends Controller
         
         return view('arbitrage.exchanges', compact('exchanges'));
     }
+    
+    
+    public function exchange($exchange)
+    {
+        $resp = $this->client->get("exchanges/{$exchange}");
+        $exchange = json_decode($resp->getBody()->getContents())->data;
+        
+        return view('arbitrage.exchange', compact('exchange'));
+    }
+    
+    
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Arbitrage - Scenarios')
+@section('title', 'Arbitrage - Exchanges')
 
 @section('content')
 
@@ -23,10 +23,9 @@
                 @foreach ($exchanges as $e)
                     <tr>
                         <td>
-                            {{-- <a href="{{ route('exchange', ['name' => $e->name]) }}" --}}
-                                {{-- class="text-white"> --}}
+                            <a href="{{ route('exchange', ['name' => $e->identifier]) }}" class="text-white">
                                 {{ $e->name }}
-                            {{-- </a> --}}
+                            </a>
                         </td>
                         <td>
                             {{ $e->feesPageVerifiedAt ?

@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function(){
 
         Route::prefix('exchanges')->group(function(){
             Route::get('', 'ArbitrageController@exchanges')->name('exchanges');
+            Route::get('{exchange}', 'ArbitrageController@exchange')->name('exchange');
         });
 
         Route::prefix('scenarios')->group(function(){
