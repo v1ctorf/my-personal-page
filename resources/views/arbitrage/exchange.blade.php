@@ -17,7 +17,7 @@
                 @foreach ($exchange->fees as $fee)
                     @isset($fee->orderType)
                         <li class="list-group-item bg-dark">
-                            {{ ucfirst($fee->orderType) }}: {{ rtrim($fee->percentage,0) }}%
+                            {{ ucfirst($fee->orderType) }}: {{ $fee->percentage > 0 ? rtrim($fee->percentage, 0) .'%' : 'free' }}
                         </li>
                     @endisset
                     @isset($fee->transactionType)
@@ -36,13 +36,17 @@
         </div>    
     </div> 
 
-    <div class="row text-white">
+    <div class="row text-white mt-2">
         <div class="col-md-12">
             <p>
                 <a href="{{ $exchange->feesUrl }}" target="_blank">
                     Exchange Fee Page
                 </a>
-                <small>({{ $exchange->feesPageVerifiedAt ?? 'not verified'}})</small>   
+                <small>({{ 
+                    $exchange->feesPageVerifiedAt ?
+                        Carbon\Carbon::parse($exchange->feesPageVerifiedAt)->diffForHumans() :
+                        'not verified'
+                }})</small>   
             </p>   
         </div>
     </div>
