@@ -32,7 +32,10 @@ Route::middleware('auth')->group(function(){
             Route::get('', 'ArbitrageController@exchanges')->name('exchanges');
             Route::prefix('{exchange}')->group(function(){
                 Route::get('', 'ArbitrageController@exchange')->name('exchange');
-                Route::get('check-exchange-fee', 'ArbitrageController@checkExchangeFee')->name('check-exchange-fee');
+                Route::prefix('fee')->group(function(){
+                    Route::get('check', 'ArbitrageController@checkExchangeFee')->name('check-exchange-fee');
+                    Route::get('verify', 'ArbitrageController@verifyExchangeFee')->name('verify-exchange-fee');
+                });
             });
         });
 

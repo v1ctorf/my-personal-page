@@ -14,6 +14,16 @@
     <div class="row text-white">
         <div class="col-md-6">
             <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-dark">
+                    <a href="{{ $exchange->feesUrl }}" target="_blank">
+                        Exchange Fee Page
+                    </a>
+                    <small>({{ 
+                        $exchange->feesPageVerifiedAt ?
+                            Carbon\Carbon::parse($exchange->feesPageVerifiedAt)->diffForHumans() :
+                            'Verification Pending'
+                    }})</small>   
+                </li>
                 @foreach ($exchange->fees as $fee)
                     @isset($fee->orderType)
                         <li class="list-group-item bg-dark">
@@ -36,29 +46,19 @@
         </div>    
     </div> 
 
-    <div class="row text-white mt-2">
-        <div class="col-md-12">
-            <p>
-                <a href="{{ $exchange->feesUrl }}" target="_blank">
-                    Exchange Fee Page
-                </a>
-                <small>({{ 
-                    $exchange->feesPageVerifiedAt ?
-                        Carbon\Carbon::parse($exchange->feesPageVerifiedAt)->diffForHumans() :
-                        'not verified'
-                }})</small>   
-            </p>   
-        </div>
-    </div>
-    
-
-
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-6 text-left">
-            <a href="{{ route('check-exchange-fee', ['exchange' => $exchange->identifier]) }}" 
-                class="btn btn-success">
-                Mark Fee Page As Verified
-            </a>
+            @if ($exchange->feesPageVerifiedAt)
+                <a href="{{ route('check-exchange-fee', ['exchange' => $exchange->identifier]) }}" 
+                    class="btn btn-info">
+                    Check Updates In Fee Page
+                </a>            
+            @else
+                <a href="{{ route('verify-exchange-fee', ['exchange' => $exchange->identifier]) }}" 
+                    class="btn btn-danger">
+                    Mark Fee Page As Verified
+                </a>                            
+            @endif
         </div>
         <div class="col-md-6 text-right">
             <a href="{{ route('exchanges') }}" class="btn btn-outline-secondary">
