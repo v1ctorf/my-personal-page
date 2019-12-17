@@ -12,6 +12,14 @@
     </h2>
 
     <div class="row">
+        <div class="col-md-12 text-left">            
+            <a href="{{ route('scenario', ['name' => $scenario->name]) }}" class="btn btn-outline-secondary">
+                Back
+            </a>
+        </div>
+    </div>  
+
+    <div class="row">
         <table class="table table-dark table-borderless table-hover table-sm text-center mt-3"> 
             <thead class="thead-dark">
                 <tr>
@@ -28,7 +36,7 @@
                 @foreach (json_decode($history)->data as $h)
                     <tr>
                         <td>{{ Carbon\Carbon::parse($h->createdAt)->format('Y-m-d H:i:s') }}</td>
-                        <td>{{ number_format($h->investment,6) }}</td>
+                        <td>{{ number_format($h->investment, 6) }}</td>
                         <td>{{ $h->result }}</td>
                         <td>{{ $h->inUSD }}</td>
                         <td>{{ $h->resultInUSD }}</td>
