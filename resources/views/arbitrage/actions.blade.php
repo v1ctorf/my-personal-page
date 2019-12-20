@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <dl class="row text-secondary">
+    {{-- <dl class="row text-secondary">
         @foreach ($scenario->actions as $step => $a)
             <dt class="col-md-2 text-capitalize">Step {{ $step + 1 }}</dt>
             <dd class="col-md-10 text-white">
@@ -15,5 +15,34 @@
                 @endif
             </dd>
         @endforeach
+    </dl>     --}}
+
+    <dl class="row text-secondary">
+        @foreach ($latest->steps as $key => $s)
+            <dt class="col-md-2 text-capitalize">
+                Step {{ $key + 1 }}
+            </dt>
+            <dd class="col-md-10 text-white">
+                @if ($s->action == 'transfer')
+                    @if ($s->details->sender->feesVerifiedIn)
+                        <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->sender->feesVerifiedIn }}"></i>
+                    @else
+                        <i class="fa fa-question-circle" title="Fee not verified"></i>
+                    @endif
+                    {{ ucfirst($s->action) }}
+                    {{ strtoupper($s->details->currency) }} from {{ 
+                        strtoupper(implode(' ', explode('-', $s->details->sender->identifier))) 
+                    }} to {{
+                        strtoupper(implode(' ', explode('-', $s->details->receiver->identifier)))
+                    }}
+                @else
+                    {{ ucfirst($s->action) }}
+                    {{-- {{ strtoupper($s->pair) }} @ {{ 
+                        strtoupper(implode(' ', explode('-',$s->exchange)))
+                    }} --}}
+                @endif
+            </dd>
+        @endforeach
     </dl>    
+
 </div>
