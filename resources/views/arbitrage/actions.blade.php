@@ -36,21 +36,25 @@
                         @else
                             <i class="fa fa-question-circle" title="Fee had expired."></i>
                         @endif
-                        {{ $s->amount->value }} - {{ $s->details->txFee->value }} - {{ rtrim($s->details->exchangesFees, 0) }} = {{ strtoupper($s->result->currency) }} {{ $s->result->value }}
+                        {{ $s->amount->value }} - {{ $s->details->txFee->value 
+                        }} - {{ rtrim($s->details->exchangesFees, 0) 
+                        }} = {{ strtoupper($s->result->currency) }} {{ $s->result->value }}
                     </small>
                 @else
                 <i class="fas fa-exchange-alt"></i> {{ ucfirst($s->action) 
                     }} {{ strtoupper($s->details->pair) }} in {{ 
                         strtoupper(implode(' ', explode('-',$s->details->exchange)))
-                    }} at {{ rtrim($s->details->ticker, 0) }}<br>
+                    }}<br>
                     <small class="text-secondary">
                         @if ($s->details->fee->fees_page_verified_at)
-                            <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->fee->fees_page_verified_at }}."></i>
+                            <i class="fa fa-check-circle" title="Fees verified in {{ $s->details->fee->fees_page_verified_at }}."></i>
                         @else
-                            <i class="fa fa-question-circle" title="Fee to be verified."></i>
+                            <i class="fa fa-question-circle" title="Exchange fees to be verified."></i>
                         @endif
-                        {{ strtoupper($s->amount->currency) }} {{ $s->amount->value 
-                        }} for {{ strtoupper($s->result->currency) }} {{ $s->result->value }} 
+                        ({{ strtoupper($s->amount->currency) }} {{ $s->amount->value 
+                        }} {{ $s->action == 'buy' ? '/' : '*'}} {{ rtrim($s->details->ticker, 0) 
+                        }}) - {{ number_format($s->details->fee->percentage, 2) 
+                        }}% = {{ strtoupper($s->result->currency) }} {{ $s->result->value }} 
                     </small>
                 @endif
             </dd>
