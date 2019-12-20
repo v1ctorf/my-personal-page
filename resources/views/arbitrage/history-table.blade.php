@@ -28,13 +28,16 @@
                     <th scope="col">Result ({{ strtoupper($scenario->currency) }})</th>
                     <th scope="col">Investment (USD)</th>
                     <th scope="col">Result (USD)</th>
-                    <th scope="col">Premium</th>
+                    <th scope="col">Premium ({{ strtoupper($scenario->currency) }})</th>
                     <th scope="col">Premium %</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (json_decode($history)->data as $h)
-                    <tr>
+                    <tr class="
+                        {{ $h->premiumPct > 0.3 ? 'table-success' : ( $h->premiumPct >= 0 ? 'table-warning' : '')}}
+                        {{ $h->premiumPct > 0 ? 'text-dark' : ''}}
+                        ">
                         <td>{{ Carbon\Carbon::parse($h->createdAt)->format('Y-m-d H:i:s') }}</td>
                         <td>{{ number_format($h->investment, 6) }}</td>
                         <td>{{ $h->result }}</td>
