@@ -51,7 +51,7 @@
                         @else
                             <i class="fa fa-question-circle" title="Exchange fees to be verified."></i>
                         @endif
-                        ({{ strtoupper($s->amount->currency) }} {{ $s->amount->value 
+                        ({{ strtoupper($s->amount->currency) }} {{ rtrim($s->amount->value, 0) 
                         }} {{ $s->action == 'buy' ? '/' : '*'}} {{ rtrim($s->details->ticker, 0) 
                         }}) - {{ number_format($s->details->fee->percentage, 2) 
                         }}% = {{ strtoupper($s->result->currency) }} {{ $s->result->value }} 
