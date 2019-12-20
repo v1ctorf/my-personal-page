@@ -25,16 +25,19 @@
             <dd class="col-md-10 text-white">
                 @if ($s->action == 'transfer')
                     @if ($s->details->sender->feesVerifiedIn)
-                        <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->sender->feesVerifiedIn }}"></i>
+                        <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->sender->feesVerifiedIn }}."></i>
                     @else
-                        <i class="fa fa-question-circle" title="Fee not verified"></i>
+                        <i class="fa fa-question-circle" title="Fee had expired."></i>
                     @endif
                     {{ ucfirst($s->action) }}
-                    {{ strtoupper($s->details->currency) }} from {{ 
+                    {{ strtoupper($s->amount->currency) }} {{ $s->amount->value }} from {{ 
                         strtoupper(implode(' ', explode('-', $s->details->sender->identifier))) 
                     }} to {{
                         strtoupper(implode(' ', explode('-', $s->details->receiver->identifier)))
-                    }}
+                    }}<br>
+                    <small class="text-secondary">
+                        {{ $s->amount->value }} - {{ $s->details->txFee->value }} =  {{ strtoupper($s->result->currency) }} {{ $s->result->value }}
+                    </small>
                 @else
                     {{ ucfirst($s->action) }}
                     {{-- {{ strtoupper($s->pair) }} @ {{ 
