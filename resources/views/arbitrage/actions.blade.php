@@ -24,25 +24,34 @@
             </dt>
             <dd class="col-md-10 text-white">
                 @if ($s->action == 'transfer')
-                    @if ($s->details->sender->feesVerifiedIn)
-                        <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->sender->feesVerifiedIn }}."></i>
-                    @else
-                        <i class="fa fa-question-circle" title="Fee had expired."></i>
-                    @endif
-                    {{ ucfirst($s->action) }}
-                    {{ strtoupper($s->amount->currency) }} {{ $s->amount->value }} from {{ 
+                    <i class="fas fa-paper-plane"></i> {{ strtoupper($s->amount->currency) 
+                    }} {{ $s->amount->value }} from {{ 
                         strtoupper(implode(' ', explode('-', $s->details->sender->identifier))) 
                     }} to {{
                         strtoupper(implode(' ', explode('-', $s->details->receiver->identifier)))
                     }}<br>
                     <small class="text-secondary">
-                        {{ $s->amount->value }} - {{ $s->details->txFee->value }} =  {{ strtoupper($s->result->currency) }} {{ $s->result->value }}
+                        @if ($s->details->sender->feesVerifiedIn)
+                            <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->sender->feesVerifiedIn }}."></i>
+                        @else
+                            <i class="fa fa-question-circle" title="Fee had expired."></i>
+                        @endif
+                        {{ $s->amount->value }} - {{ $s->details->txFee->value }} - {{ rtrim($s->details->exchangesFees, 0) }} = {{ strtoupper($s->result->currency) }} {{ $s->result->value }}
                     </small>
                 @else
-                    {{ ucfirst($s->action) }}
-                    {{-- {{ strtoupper($s->pair) }} @ {{ 
-                        strtoupper(implode(' ', explode('-',$s->exchange)))
-                    }} --}}
+                <i class="fas fa-exchange-alt"></i> {{ ucfirst($s->action) 
+                    }} {{ strtoupper($s->details->pair) }} in {{ 
+                        strtoupper(implode(' ', explode('-',$s->details->exchange)))
+                    }} at {{ rtrim($s->details->ticker, 0) }}<br>
+                    <small class="text-secondary">
+                        @if ($s->details->fee->fees_page_verified_at)
+                            <i class="fa fa-check-circle" title="Fee verified in {{ $s->details->fee->fees_page_verified_at }}."></i>
+                        @else
+                            <i class="fa fa-question-circle" title="Fee to be verified."></i>
+                        @endif
+                        {{ strtoupper($s->amount->currency) }} {{ $s->amount->value 
+                        }} for {{ strtoupper($s->result->currency) }} {{ $s->result->value }} 
+                    </small>
                 @endif
             </dd>
         @endforeach
