@@ -46,8 +46,8 @@
                         strtoupper(implode(' ', explode('-',$s->details->exchange)))
                     }}<br>
                     <small class="text-secondary">
-                        @if ($s->details->fee->fees_page_verified_at)
-                            <i class="fa fa-check-circle" title="Fees verified in {{ $s->details->fee->fees_page_verified_at }}."></i>
+                        @if ($s->details->fee->fees_page_verified_in)
+                            <i class="fa fa-check-circle" title="Fees verified in {{ $s->details->fee->fees_page_verified_in }}."></i>
                         @else
                             <i class="fa fa-question-circle" title="Exchange fees to be verified."></i>
                         @endif
