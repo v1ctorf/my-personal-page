@@ -16,13 +16,15 @@
             <thead>
                 <tr>
                     <th>Currency</th>
+                    <th>In USD</th>
+                    <th>Ticker Verified In</th>
                     <th>Tx Fee</th>
-                    <th>Verified</th>
+                    <th>Fee Verified In</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($currencies as $c)
-                    @isset($c->txFee->value)
+                    @isset($c->ticker)
                     <tr>
                         <td>
                             {{ $c->name }}
@@ -30,22 +32,48 @@
                                 <br><small>(Inactive)</small>
                             @endif
                         </td>
+
                         <td>
-                            <span class="text-uppercase">
-                                {{ $c->identifier }}
-                            </span>{{ rtrim($c->txFee->value, 0) }}
-                            <br><small>
-                                (USD {{ $c->txFee->inUSD }})
-                            </small>
+                            {{ number_format($c->ticker->inUSD, 2) }}
                         </td>
                         <td>
-                            <span>{{ $c->txFee->verifiedIn ?
-                                Carbon\Carbon::parse($c->txFee->verifiedIn)->diffForHumans() :
-                                'no data'}}</span><br><small> 
-                                <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}">
-                                    (Check Fee)
-                                </a>
-                            </small>
+                            @if (strtoupper($c->identifier) != 'USD')
+                                <span>{{ $c->txFee->verifiedIn ?
+                                    Carbon\Carbon::parse($c->ticker->verifiedIn)->diffForHumans() :
+                                    'no data'}}</span><br><small> 
+                                    <a href="{{ route('update-in-usd',['identifier' => $c->identifier]) }}">
+                                        (Check Fee)
+                                    </a>
+                                </small>                                
+                            @else
+                                N/A
+                            @endif
+                        </td>
+
+                        <td>
+                            @if ($c->txFee->value == 0)
+                                N/A
+                            @else
+                                <span class="text-uppercase">
+                                    {{ $c->identifier }}
+                                </span>{{ rtrim($c->txFee->value, 0) }}
+                                <br><small>
+                                    (USD {{ $c->txFee->inUSD }})
+                                </small>                                
+                            @endif
+                        </td>
+                        <td>
+                            @if ($c->txFee->value == 0)
+                                N/A
+                            @else
+                                <span>{{ $c->txFee->verifiedIn ?
+                                    Carbon\Carbon::parse($c->txFee->verifiedIn)->diffForHumans() :
+                                    'no data'}}</span><br><small> 
+                                    <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}">
+                                        (Check Fee)
+                                    </a>
+                                </small>                                
+                            @endif
                         </td>                        
                     </tr>
                     @endisset

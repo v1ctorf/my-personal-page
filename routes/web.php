@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function(){
         Route::prefix('currencies')->group(function(){
             Route::get('', 'ArbitrageController@currencies')->name('currencies');
             Route::get('{identifier}/update-tx-fee', 'ArbitrageController@updateTxFee')->name('update-tx-fee');
+            Route::get('{identifier}/update-in-usd', 'ArbitrageController@updateInUsd')->name('update-in-usd');
         });
         
         Route::prefix('exchanges')->group(function(){

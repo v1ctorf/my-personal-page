@@ -89,6 +89,14 @@ class ArbitrageController extends Controller
     }
 
 
+    public function updateInUsd($identifier)
+    {        
+        $this->client->patch("currencies/{$identifier}/in-usd");
+
+        return redirect()->back();
+    }
+
+
     public function currencies()
     {
         $resp =  $this->client->get('currencies');
