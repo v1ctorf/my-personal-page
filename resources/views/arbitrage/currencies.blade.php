@@ -42,7 +42,7 @@
                                     Carbon\Carbon::parse($c->ticker->verifiedIn)->diffForHumans() :
                                     'no data'}}</span><br><small> 
                                     <a href="{{ route('update-in-usd',['identifier' => $c->identifier]) }}">
-                                        (Check Fee)
+                                        (Update)
                                     </a>
                                 </small>                                
                             @else
@@ -70,7 +70,7 @@
                                     Carbon\Carbon::parse($c->txFee->verifiedIn)->diffForHumans() :
                                     'no data'}}</span><br><small> 
                                     <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}">
-                                        (Check Fee)
+                                        (Update)
                                     </a>
                                 </small>                                
                             @endif
