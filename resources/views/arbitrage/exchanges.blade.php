@@ -28,8 +28,8 @@
                             </a>
                         </td>
                         <td>
-                            {{ $e->feesPageVerifiedAt ?
-                                Carbon\Carbon::parse($e->feesPageVerifiedAt)->diffForHumans() :
+                            {{ $e->feesPageVerifiedIn ?
+                                Carbon\Carbon::parse($e->feesPageVerifiedIn)->diffForHumans() :
                                 'not verified' }}
                         </td>
                     </tr>

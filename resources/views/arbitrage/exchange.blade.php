@@ -19,8 +19,8 @@
                         Exchange Fee Page
                     </a>
                     <small>({{ 
-                        $exchange->feesPageVerifiedAt ?
-                            Carbon\Carbon::parse($exchange->feesPageVerifiedAt)->diffForHumans() :
+                        $exchange->feesPageVerifiedIn ?
+                            Carbon\Carbon::parse($exchange->feesPageVerifiedIn)->diffForHumans() :
                             'Verification Pending'
                     }})</small>   
                 </li>
@@ -48,7 +48,7 @@
 
     <div class="row mt-5">
         <div class="col-md-6 text-left">
-            @if ($exchange->feesPageVerifiedAt)
+            @if ($exchange->feesPageVerifiedIn)
                 <a href="{{ route('check-exchange-fee', ['exchange' => $exchange->identifier]) }}" 
                     class="btn btn-info">
                     Check Updates In Fee Page
