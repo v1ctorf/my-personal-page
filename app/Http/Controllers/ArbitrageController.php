@@ -83,7 +83,7 @@ class ArbitrageController extends Controller
 
     public function updateTxFee($identifier)
     {        
-        $this->client->put("currencies/{$identifier}/tx-fee");
+        $this->client->patch("currencies/{$identifier}/tx-fee");
 
         return redirect()->back();
     }
