@@ -93,7 +93,7 @@ class ArbitrageController extends Controller
     {
         $resp =  $this->client->get('currencies');
         $currencies = json_decode($resp->getBody()->getContents())->data;
-
+        
         return view('arbitrage.currencies', compact('currencies'));
     }
     

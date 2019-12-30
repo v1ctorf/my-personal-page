@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 @foreach ($currencies as $c)
-                    @isset($c->txFee)
+                    @isset($c->txFee->value)
                     <tr>
                         <td>
                             {{ $c->name }}
@@ -33,14 +33,14 @@
                         <td>
                             <span class="text-uppercase">
                                 {{ $c->identifier }}
-                            </span>{{ rtrim($c->txFee, 0) }}
+                            </span>{{ rtrim($c->txFee->value, 0) }}
                             <br><small>
-                                (USD {{ $c->txFeeInUSD }})
+                                (USD {{ $c->txFee->inUSD }})
                             </small>
                         </td>
                         <td>
-                            <span>{{ $c->txFeeVerifiedIn ?
-                                Carbon\Carbon::parse($c->txFeeVerifiedIn)->diffForHumans() :
+                            <span>{{ $c->txFee->verifiedIn ?
+                                Carbon\Carbon::parse($c->txFee->verifiedIn)->diffForHumans() :
                                 'no data'}}</span><br><small> 
                                 <a href="{{ route('update-tx-fee',['identifier' => $c->identifier]) }}">
                                     (Check Fee)
