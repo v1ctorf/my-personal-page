@@ -53,6 +53,9 @@
                     </tr>
                 @endforeach
             </tbody>
+            <caption>
+                Snapshots: {{ $dbSize->snapshots }} MB | Total {{ $dbSize->total }} MB
+            </caption>
         </table>    
     </div>    
 
