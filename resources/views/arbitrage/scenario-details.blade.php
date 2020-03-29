@@ -12,8 +12,8 @@
 
         <dt class="col-md-3">Investment</dt>
         <dd class="col-md-9 text-white">
-            {{ strtoupper($scenario->currency) }} {{ floatval($scenario->investment) }} <span class="text-muted">
-                (USD {{ number_format($scenario->inUSD, 2) }})
+            {{ strtoupper($scenario->investment->a->currency) }} {{ floatval($scenario->investment->a->amount) }} <span class="text-muted">
+                (USD {{ number_format($scenario->investment->a->inUSD, 2) }})
             </span>
         </dt>
 
@@ -36,5 +36,5 @@
                     }})
                 </span>
         </dt>
-    </dl>    
+    </dl>
 </div>
