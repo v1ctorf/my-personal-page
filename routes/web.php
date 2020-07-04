@@ -22,13 +22,13 @@ Route::middleware('auth')->group(function(){
 
     Route::prefix('arbitrage')->group(function(){
         Route::view('', 'arbitrage.index')->name('arbitrage');
-        
+
         Route::prefix('currencies')->group(function(){
             Route::get('', 'ArbitrageController@currencies')->name('currencies');
             Route::get('{identifier}/update-tx-fee', 'ArbitrageController@updateTxFee')->name('update-tx-fee');
             Route::get('{identifier}/update-in-usd', 'ArbitrageController@updateInUsd')->name('update-in-usd');
         });
-        
+
         Route::prefix('exchanges')->group(function(){
             Route::get('', 'ArbitrageController@exchanges')->name('exchanges');
             Route::prefix('{exchange}')->group(function(){
@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function(){
         });
 
         Route::prefix('scenarios')->group(function(){
-            Route::get('', 'ArbitrageController@index')->name('scenarios');
+            Route::view('', 'arbitrage.scenarios')->name('scenarios');
             Route::get('snapshot', 'ArbitrageController@snapshotAll')->name('snapshot-all');
 
             Route::prefix('{name}')->group(function(){
@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function(){
                 Route::get('activate', 'ArbitrageController@activate')->name('activate');
                 Route::get('deactivate', 'ArbitrageController@deactivate')->name('deactivate');
                 Route::get('history', 'ArbitrageController@history')->name('scenario-history');
-            });            
-        });        
+            });
+        });
     });
 });

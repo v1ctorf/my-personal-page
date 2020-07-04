@@ -27,7 +27,6 @@
 
 <body id="page-top">
     <div id="app">
-        <example-component></example-component>
         @yield('content')
         @include('layouts.footer')
     </div>
