@@ -24,7 +24,7 @@
                         {{ scenario.lastPremiumFound }}% <small class="text-white">({{ scenario.updatedAt }})</small>
                     </td>
                     <td>
-                        <a href="#" class="text-white">
+                        <a :href="window.routes.scenario + scenario.name" class="text-white">
                             {{ scenario.name }}
                         </a>
                     </td>
@@ -54,7 +54,17 @@
             }
         },
         mounted() {
-            console.log(window.csrf_token);
+            console.log('SET THE FUCKING HTTPS for API');
+            // console.log(window.csrf_token);
+            // console.log(window.routes);
+            this.getScenarios();
+        },
+        methods: {
+            getScenarios() {
+                axios.get(window.routes.baseUri + window.routes.scenarios).then((response) => {
+                    console.log(response);
+                })
+            }
         }
     }
 </script>

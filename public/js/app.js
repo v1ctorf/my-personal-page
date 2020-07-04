@@ -1777,6 +1777,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log(window.csrf_token);
+    console.log(window.routes);
+    this.getScenarios();
+  },
+  methods: {
+    getScenarios: function getScenarios() {
+      axios.get(window.routes.baseUri + window.routes.scenarios).then(function (response) {
+        console.log(response);
+      });
+    }
   }
 });
 
@@ -37522,13 +37531,22 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("td", [
-              _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
-                _vm._v(
-                  "\n                            " +
-                    _vm._s(_vm.scenario.name) +
-                    "\n                        "
-                )
-              ])
+              _c(
+                "a",
+                {
+                  staticClass: "text-white",
+                  attrs: {
+                    href: _vm.window.routes.scenario + _vm.scenario.name
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.scenario.name) +
+                      "\n                        "
+                  )
+                ]
+              )
             ])
           ])
         }),

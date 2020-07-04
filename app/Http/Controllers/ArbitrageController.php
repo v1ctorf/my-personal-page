@@ -18,7 +18,7 @@ class ArbitrageController extends Controller
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
             ],
-            'timeout'  => 60.0
+            'timeout' => 60.0
         ];
 
         $this->client = new GuzzleClient($options);

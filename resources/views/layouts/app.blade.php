@@ -32,7 +32,13 @@
 
     <script type="text/javascript">
         window.csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-{{--        {{ route('scenario', ['name' => $scenario->name]) }}--}}
+
+        window.routes = {
+            baseUri: "{{ config('app.api_url') }}",
+            scenarios: 'scenarios',
+            'db-size': 'db-size',
+            scenario: 'scenario/'
+        };
     </script>
 
     <script
