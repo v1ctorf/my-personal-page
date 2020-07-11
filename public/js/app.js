@@ -1779,8 +1779,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       scenarios: [],
-      scenarioRoute: window.routes.scenario
+      scenarioRoute: window.routes.scenario,
+      interval: null
     };
+  },
+  created: function created() {
+    this.interval = setInterval(this.getScenarios, 60000);
   },
   mounted: function mounted() {
     // console.log(window.csrf_token);
@@ -1802,6 +1806,9 @@ __webpack_require__.r(__webpack_exports__);
         return currency.toUpperCase() + ' ' + value.toFixed(5);
       }).join('; ');
     }
+  },
+  beforeDestroy: function beforeDestroy() {
+    clearInterval(this.timer);
   }
 });
 

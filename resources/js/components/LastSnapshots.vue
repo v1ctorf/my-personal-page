@@ -57,8 +57,12 @@
         data() {
             return {
                 scenarios: [],
-                scenarioRoute: window.routes.scenario
+                scenarioRoute: window.routes.scenario,
+                interval: null
             }
+        },
+        created() {
+            this.interval = setInterval(this.getScenarios, 60000)
         },
         mounted() {
             // console.log(window.csrf_token);
@@ -69,7 +73,7 @@
             getScenarios() {
                 axios.get(window.routes.baseUri + window.routes.scenarios).then((response) => {
                     this.scenarios = response.data.data;
-                })
+                });
             },
             parseInvestment(investment) {
                 return Object.keys(investment).map(function(exchange){
@@ -79,6 +83,9 @@
                     return currency.toUpperCase() + ' ' + value.toFixed(5);
                 }).join('; ');
             }
+        },
+        beforeDestroy () {
+            clearInterval(this.timer)
         }
     }
 </script>
