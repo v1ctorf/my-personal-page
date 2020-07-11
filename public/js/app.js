@@ -1772,7 +1772,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "LastSnapshots",
   data: function data() {
     return {
-      scenarios: []
+      scenarios: [],
+      scenarioRoute: window.routes.scenario
     };
   },
   mounted: function mounted() {
@@ -1782,8 +1783,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getScenarios: function getScenarios() {
+      var _this = this;
+
       axios.get(window.routes.baseUri + window.routes.scenarios).then(function (response) {
-        console.log(response);
+        _this.scenarios = response.data.data;
       });
     }
   }
@@ -37494,18 +37497,15 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.scenarios, function(sc, i) {
+        _vm._l(_vm.scenarios, function(scenario, i) {
           return _c("tr", { key: i }, [
             _c("td", {
               class: {
-                "text-success": _vm.scenario.active,
-                "text-white": !_vm.scenario.active
+                "text-success": scenario.active,
+                "text-white": !scenario.active
               },
               attrs: {
-                text: {
-                  Active: _vm.scenario.active,
-                  Inactive: !_vm.scenario.active
-                }
+                text: { Active: scenario.active, Inactive: !scenario.active }
               }
             }),
             _vm._v(" "),
@@ -37513,19 +37513,19 @@ var render = function() {
               "td",
               {
                 class: {
-                  "text-danger": _vm.scenario.lastPremiumFound < 0,
-                  "text-success": _vm.scenario.lastPremiumFound > 0.25,
-                  "text-warning": 0 <= _vm.scenario.lastPremiumFound <= 0.25
+                  "text-danger": scenario.lastPremiumFound < 0,
+                  "text-success": scenario.lastPremiumFound > 0.25,
+                  "text-warning": 0 <= scenario.lastPremiumFound <= 0.25
                 }
               },
               [
                 _vm._v(
                   "\n                        " +
-                    _vm._s(_vm.scenario.lastPremiumFound) +
+                    _vm._s(scenario.lastPremiumFound) +
                     "% "
                 ),
                 _c("small", { staticClass: "text-white" }, [
-                  _vm._v("(" + _vm._s(_vm.scenario.updatedAt) + ")")
+                  _vm._v("(" + _vm._s(scenario.updatedAt) + ")")
                 ])
               ]
             ),
@@ -37535,14 +37535,12 @@ var render = function() {
                 "a",
                 {
                   staticClass: "text-white",
-                  attrs: {
-                    href: _vm.window.routes.scenario + _vm.scenario.name
-                  }
+                  attrs: { href: _vm.scenarioRoute + scenario.name }
                 },
                 [
                   _vm._v(
                     "\n                            " +
-                      _vm._s(_vm.scenario.name) +
+                      _vm._s(scenario.name) +
                       "\n                        "
                   )
                 ]

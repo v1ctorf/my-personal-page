@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(sc, i) in scenarios" :key="i">
+                <tr v-for="(scenario, i) in scenarios" :key="i">
                     <td :class="{ 'text-success': scenario.active, 'text-white': !scenario.active }"
                         :text="{ 'Active': scenario.active, 'Inactive': !scenario.active }">
                     </td>
@@ -24,7 +24,7 @@
                         {{ scenario.lastPremiumFound }}% <small class="text-white">({{ scenario.updatedAt }})</small>
                     </td>
                     <td>
-                        <a :href="window.routes.scenario + scenario.name" class="text-white">
+                        <a :href="scenarioRoute + scenario.name" class="text-white">
                             {{ scenario.name }}
                         </a>
                     </td>
@@ -50,7 +50,8 @@
         name: "LastSnapshots",
         data() {
             return {
-                scenarios: []
+                scenarios: [],
+                scenarioRoute: window.routes.scenario
             }
         },
         mounted() {
@@ -61,7 +62,7 @@
         methods: {
             getScenarios() {
                 axios.get(window.routes.baseUri + window.routes.scenarios).then((response) => {
-                    console.log(response);
+                    this.scenarios = response.data.data;
                 })
             }
         }
