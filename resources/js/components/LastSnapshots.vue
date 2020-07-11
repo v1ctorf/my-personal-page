@@ -54,7 +54,6 @@
             }
         },
         mounted() {
-            console.log('SET THE FUCKING HTTPS for API');
             // console.log(window.csrf_token);
             // console.log(window.routes);
             this.getScenarios();

@@ -1776,8 +1776,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log(window.csrf_token);
-    console.log(window.routes);
+    // console.log(window.csrf_token);
+    // console.log(window.routes);
     this.getScenarios();
   },
   methods: {
