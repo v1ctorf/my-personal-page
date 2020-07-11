@@ -1768,6 +1768,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LastSnapshots",
   data: function data() {
@@ -1788,6 +1794,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(window.routes.baseUri + window.routes.scenarios).then(function (response) {
         _this.scenarios = response.data.data;
       });
+    },
+    parseInvestment: function parseInvestment(investment) {
+      return Object.keys(investment).map(function (exchange) {
+        var currency = Object.keys(investment[exchange])[0];
+        var value = parseFloat(investment[exchange][currency]);
+        return currency.toUpperCase() + ' ' + value.toFixed(5);
+      }).join('; ');
     }
   }
 });
@@ -37499,15 +37512,22 @@ var render = function() {
         "tbody",
         _vm._l(_vm.scenarios, function(scenario, i) {
           return _c("tr", { key: i }, [
-            _c("td", {
-              class: {
-                "text-success": scenario.active,
-                "text-white": !scenario.active
+            _c(
+              "td",
+              {
+                class: {
+                  "text-success": scenario.active,
+                  "text-white": !scenario.active
+                }
               },
-              attrs: {
-                text: { Active: scenario.active, Inactive: !scenario.active }
-              }
-            }),
+              [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(scenario.active ? "Active" : "Inactive") +
+                    "\n                    "
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "td",
@@ -37531,21 +37551,24 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("td", [
-              _c(
-                "a",
-                {
-                  staticClass: "text-white",
-                  attrs: { href: _vm.scenarioRoute + scenario.name }
-                },
-                [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(scenario.name) +
-                      "\n                        "
-                  )
-                ]
+              _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(scenario.name) +
+                    "\n                        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.parseInvestment(scenario.investment)) +
+                  "\n                    "
               )
-            ])
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Pending")])
           ])
         }),
         0
