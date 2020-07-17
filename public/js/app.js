@@ -1774,6 +1774,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LastSnapshots",
   data: function data() {
@@ -1787,11 +1789,12 @@ __webpack_require__.r(__webpack_exports__);
     this.interval = setInterval(this.getScenarios, 60000);
   },
   mounted: function mounted() {
-    // console.log(window.csrf_token);
-    // console.log(window.routes);
     this.getScenarios();
   },
   methods: {
+    formatDt: function formatDt(dt) {
+      return '(' + moment(dt).fromNow() + ')';
+    },
     getScenarios: function getScenarios() {
       var _this = this;
 
@@ -37552,7 +37555,11 @@ var render = function() {
                     "% "
                 ),
                 _c("small", { staticClass: "text-white" }, [
-                  _vm._v("(" + _vm._s(scenario.updatedAt) + ")")
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.formatDt(scenario.updatedAt)) +
+                      "\n                        "
+                  )
                 ])
               ]
             ),

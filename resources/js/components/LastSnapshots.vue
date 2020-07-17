@@ -21,7 +21,9 @@
                         'text-success': scenario.lastPremiumFound > 0.25,
                         'text-warning': (0 <= scenario.lastPremiumFound <= 0.25)
                     }">
-                        {{ scenario.lastPremiumFound }}% <small class="text-white">({{ scenario.updatedAt }})</small>
+                        {{ scenario.lastPremiumFound }}% <small class="text-white">
+                            {{ formatDt(scenario.updatedAt) }}
+                        </small>
                     </td>
                     <td>
                         <a href="#" class="text-white">
@@ -65,11 +67,12 @@
             this.interval = setInterval(this.getScenarios, 60000)
         },
         mounted() {
-            // console.log(window.csrf_token);
-            // console.log(window.routes);
             this.getScenarios();
         },
         methods: {
+            formatDt(dt) {
+                return '(' + moment(dt).fromNow() + ')';
+            },
             getScenarios() {
                 axios.get(window.routes.baseUri + window.routes.scenarios).then((response) => {
                     this.scenarios = response.data.data;
