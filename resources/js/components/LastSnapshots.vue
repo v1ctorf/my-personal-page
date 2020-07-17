@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <table class="table table-dark text-center">
+        <table v-if="scenarios.length > 0" class="table table-dark text-center">
             <thead>
                 <tr>
                     <th>Status</th>
@@ -37,8 +37,9 @@
                     <td>Pending</td>
                 </tr>
             </tbody>
-            <caption></caption>
         </table>
+        <caption v-if="isLoading">Loading...</caption>
+        <caption v-else>Updated at {{ lastUpdate }}</caption>
 
 
 
@@ -60,7 +61,9 @@
             return {
                 scenarios: [],
                 scenarioRoute: window.routes.scenario,
-                interval: null
+                interval: null,
+                isLoading: true,
+                lastUpdate: moment().format('YYYY-MM-DD HH:mm:ss')
             }
         },
         created() {
@@ -74,8 +77,11 @@
                 return '(' + moment(dt).fromNow() + ')';
             },
             getScenarios() {
+                this.isLoading = true;
+
                 axios.get(window.routes.baseUri + window.routes.scenarios).then((response) => {
                     this.scenarios = response.data.data;
+                    this.isLoading = false;
                 });
             },
             parseInvestment(investment) {

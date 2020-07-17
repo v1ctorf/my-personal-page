@@ -1776,13 +1776,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LastSnapshots",
   data: function data() {
     return {
       scenarios: [],
       scenarioRoute: window.routes.scenario,
-      interval: null
+      interval: null,
+      isLoading: true,
+      lastUpdate: moment().format('YYYY-MM-DD HH:mm:ss')
     };
   },
   created: function created() {
@@ -1798,8 +1801,10 @@ __webpack_require__.r(__webpack_exports__);
     getScenarios: function getScenarios() {
       var _this = this;
 
+      this.isLoading = true;
       axios.get(window.routes.baseUri + window.routes.scenarios).then(function (response) {
         _this.scenarios = response.data.data;
+        _this.isLoading = false;
       });
     },
     parseInvestment: function parseInvestment(investment) {
@@ -37515,81 +37520,85 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("table", { staticClass: "table table-dark text-center" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.scenarios, function(scenario, i) {
-          return _c("tr", { key: i }, [
-            _c(
-              "td",
-              {
-                class: {
-                  "text-success": scenario.active,
-                  "text-white": !scenario.active
-                }
-              },
-              [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(scenario.active ? "Active" : "Inactive") +
-                    "\n                    "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "td",
-              {
-                class: {
-                  "text-danger": scenario.lastPremiumFound < 0,
-                  "text-success": scenario.lastPremiumFound > 0.25,
-                  "text-warning": 0 <= scenario.lastPremiumFound <= 0.25
-                }
-              },
-              [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(scenario.lastPremiumFound) +
-                    "% "
+    _vm.scenarios.length > 0
+      ? _c("table", { staticClass: "table table-dark text-center" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.scenarios, function(scenario, i) {
+              return _c("tr", { key: i }, [
+                _c(
+                  "td",
+                  {
+                    class: {
+                      "text-success": scenario.active,
+                      "text-white": !scenario.active
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(scenario.active ? "Active" : "Inactive") +
+                        "\n                    "
+                    )
+                  ]
                 ),
-                _c("small", { staticClass: "text-white" }, [
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: {
+                      "text-danger": scenario.lastPremiumFound < 0,
+                      "text-success": scenario.lastPremiumFound > 0.25,
+                      "text-warning": 0 <= scenario.lastPremiumFound <= 0.25
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(scenario.lastPremiumFound) +
+                        "% "
+                    ),
+                    _c("small", { staticClass: "text-white" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.formatDt(scenario.updatedAt)) +
+                          "\n                        "
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(scenario.name) +
+                        "\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
                   _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.formatDt(scenario.updatedAt)) +
-                      "\n                        "
+                    "\n                        " +
+                      _vm._s(_vm.parseInvestment(scenario.investment)) +
+                      "\n                    "
                   )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
-                _vm._v(
-                  "\n                            " +
-                    _vm._s(scenario.name) +
-                    "\n                        "
-                )
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Pending")])
               ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(_vm.parseInvestment(scenario.investment)) +
-                  "\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Pending")])
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("caption")
-    ])
+            }),
+            0
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isLoading
+      ? _c("caption", [_vm._v("Loading...")])
+      : _c("caption", [_vm._v("Updated at " + _vm._s(_vm.lastUpdate))])
   ])
 }
 var staticRenderFns = [
