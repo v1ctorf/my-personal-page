@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <th>Status</th>
-                    <th>Last Premium Found</th>
+                    <th>Last Update</th>
                     <th>Name</th>
                     <th>Investment</th>
                     <th>in USD</th>
@@ -34,14 +34,13 @@
                     <td>
                         {{ parseInvestment(scenario.investment) }}
                     </td>
-                    <td>Pending</td>
+                    <td>{{ scenario.investmentInUSD }}</td>
                 </tr>
             </tbody>
+            <caption v-if="isLoading">Updating...</caption>
+            <caption v-else>Updated at {{ lastUpdate }}</caption>
         </table>
-        <caption v-if="isLoading">Loading...</caption>
-        <caption v-else>Updated at {{ lastUpdate }}</caption>
-
-
+        <div v-if="scenarios.length == 0 && isLoading" class="col-md-12 text-white">Loading...</div>
 
 <!--        <td>-->
 <!--            <a href="{{ route('scenario', ['name' => $scenario->name]) }}" class="btn btn-sm btn-info">-->
@@ -82,6 +81,8 @@
                 axios.get(window.routes.baseUri + window.routes.scenarios).then((response) => {
                     this.scenarios = response.data.data;
                     this.isLoading = false;
+                    this.lastUpdate = moment().format('YYYY-MM-DD HH:mm:ss');
+                    document.title = '[' + response.data.data[0].lastPremiumFound + '] Arbitrage - Scenarios - victorf';
                 });
             },
             parseInvestment(investment) {

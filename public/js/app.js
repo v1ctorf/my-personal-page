@@ -1776,7 +1776,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LastSnapshots",
   data: function data() {
@@ -1805,6 +1804,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(window.routes.baseUri + window.routes.scenarios).then(function (response) {
         _this.scenarios = response.data.data;
         _this.isLoading = false;
+        _this.lastUpdate = moment().format('YYYY-MM-DD HH:mm:ss');
+        document.title = '[' + response.data.data[0].lastPremiumFound + '] Arbitrage - Scenarios - victorf';
       });
     },
     parseInvestment: function parseInvestment(investment) {
@@ -37588,17 +37589,23 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Pending")])
+                _c("td", [_vm._v(_vm._s(scenario.investmentInUSD))])
               ])
             }),
             0
-          )
+          ),
+          _vm._v(" "),
+          _vm.isLoading
+            ? _c("caption", [_vm._v("Updating...")])
+            : _c("caption", [_vm._v("Updated at " + _vm._s(_vm.lastUpdate))])
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.isLoading
-      ? _c("caption", [_vm._v("Loading...")])
-      : _c("caption", [_vm._v("Updated at " + _vm._s(_vm.lastUpdate))])
+    _vm.scenarios.length == 0 && _vm.isLoading
+      ? _c("div", { staticClass: "col-md-12 text-white" }, [
+          _vm._v("Loading...")
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -37610,7 +37617,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Last Premium Found")]),
+        _c("th", [_vm._v("Last Update")]),
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
