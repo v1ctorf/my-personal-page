@@ -1773,9 +1773,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LastSnapshots",
   data: function data() {
@@ -1784,34 +1781,43 @@ __webpack_require__.r(__webpack_exports__);
       scenarioRoute: window.routes.scenario,
       interval: null,
       isLoading: true,
-      lastUpdate: moment().format('YYYY-MM-DD HH:mm:ss')
+      lastUpdate: moment().format('YYYY-MM-DD HH:mm:ss'),
+      pageLoadedAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+      dbSize: null
     };
   },
   created: function created() {
-    this.interval = setInterval(this.getScenarios, 60000);
+    this.interval = setInterval(this.updateData, 60000);
   },
   mounted: function mounted() {
-    this.getScenarios();
+    this.updateData();
   },
   methods: {
     formatDt: function formatDt(dt) {
-      return '(' + moment(dt).fromNow() + ')';
+      return moment(dt).fromNow();
+    },
+    updateData: function updateData() {
+      this.isLoading = true;
+      this.getScenarios();
+      this.getDbSize();
+    },
+    getDbSize: function getDbSize() {
+      this.dbSize = moment().format('YYYY-MM-DD HH:mm:ss');
     },
     getScenarios: function getScenarios() {
       var _this = this;
 
-      this.isLoading = true;
       axios.get(window.routes.baseUri + window.routes.scenarios).then(function (response) {
         _this.scenarios = response.data.data;
-        _this.isLoading = false;
         _this.lastUpdate = moment().format('YYYY-MM-DD HH:mm:ss');
+        _this.isLoading = false;
         document.title = '[' + response.data.data[0].lastPremiumFound + '] Arbitrage - Scenarios - victorf';
       });
     },
     parseInvestment: function parseInvestment(investment) {
       return Object.keys(investment).map(function (exchange) {
-        var currency = Object.keys(investment[exchange])[0];
-        var value = parseFloat(investment[exchange][currency]);
+        var currency = Object.keys(investment[exchange])[0],
+            value = parseFloat(investment[exchange][currency]);
         return currency.toUpperCase() + ' ' + value.toFixed(5);
       }).join('; ');
     }
@@ -37522,29 +37528,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _vm.scenarios.length > 0
-      ? _c("table", { staticClass: "table table-dark text-center" }, [
+      ? _c("table", { staticClass: "table table-dark text-center table-sm" }, [
           _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
             _vm._l(_vm.scenarios, function(scenario, i) {
               return _c("tr", { key: i }, [
-                _c(
-                  "td",
-                  {
-                    class: {
-                      "text-success": scenario.active,
-                      "text-white": !scenario.active
-                    }
-                  },
-                  [
+                _c("td", [
+                  _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
                     _vm._v(
-                      "\n                        " +
-                        _vm._s(scenario.active ? "Active" : "Inactive") +
-                        "\n                    "
+                      "\n                            " +
+                        _vm._s(scenario.name) +
+                        "\n                        "
                     )
-                  ]
-                ),
+                  ]),
+                  !scenario.active
+                    ? _c("small", [_vm._v("(inactive)")])
+                    : _vm._e()
+                ]),
                 _vm._v(" "),
                 _c(
                   "td",
@@ -37559,23 +37561,17 @@ var render = function() {
                     _vm._v(
                       "\n                        " +
                         _vm._s(scenario.lastPremiumFound) +
-                        "% "
+                        "%"
                     ),
-                    _c("small", { staticClass: "text-white" }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.formatDt(scenario.updatedAt)) +
-                          "\n                        "
-                      )
-                    ])
+                    _c("br")
                   ]
                 ),
                 _vm._v(" "),
                 _c("td", [
-                  _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
+                  _c("small", { staticClass: "text-white" }, [
                     _vm._v(
                       "\n                            " +
-                        _vm._s(scenario.name) +
+                        _vm._s(_vm.formatDt(scenario.updatedAt)) +
                         "\n                        "
                     )
                   ])
@@ -37589,15 +37585,25 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(scenario.investmentInUSD))])
+                _c("td", [_vm._v("USD " + _vm._s(scenario.investmentInUSD))])
               ])
             }),
             0
           ),
           _vm._v(" "),
           _vm.isLoading
-            ? _c("caption", [_vm._v("Updating...")])
-            : _c("caption", [_vm._v("Updated at " + _vm._s(_vm.lastUpdate))])
+            ? _c("caption", [
+                _vm._v("\n                Updating...\n            ")
+              ])
+            : _c("caption", [
+                _vm._v(
+                  "\n                Page loaded at " +
+                    _vm._s(_vm.pageLoadedAt) +
+                    " | Updated at " +
+                    _vm._s(_vm.lastUpdate) +
+                    "\n            "
+                )
+              ])
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -37615,17 +37621,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Status")]),
+        _c("th", [_vm._v("Scenario")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Last Update")]),
+        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Last update")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Investment")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("in USD")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Actions")])
+        _c("th", { attrs: { colspan: "2" } }, [
+          _vm._v("Investment (and total in USD)")
+        ])
       ])
     ])
   }
