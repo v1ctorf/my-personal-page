@@ -6,7 +6,8 @@ Vue.prototype.$routes = {
     scenarios: 'scenarios',
     dbSize: 'db-size',
     scenario: 'scenario',
-    snapshotAll: 'scenarios/snapshot'
+    snapshotAllowedOnly: 'scenarios/snapshot',
+    snapshotAll: 'scenarios/snapshot/all',
 };
 
 Vue.prototype.$apiBaseUri = window.apiBaseUri;

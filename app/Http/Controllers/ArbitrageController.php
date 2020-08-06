@@ -48,14 +48,6 @@ class ArbitrageController extends Controller
     }
 
 
-//    public function snapshotAll()
-//    {
-//        $this->client->post("scenarios/snapshot");
-//
-//        return redirect()->back();
-//    }
-
-
     public function activate($scenarioName)
     {
         $this->client->patch("scenarios/{$scenarioName}/activate");

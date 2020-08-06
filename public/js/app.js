@@ -49901,7 +49901,8 @@ Vue.prototype.$routes = {
   scenarios: 'scenarios',
   dbSize: 'db-size',
   scenario: 'scenario',
-  snapshotAll: 'scenarios/snapshot'
+  snapshotAllowedOnly: 'scenarios/snapshot',
+  snapshotAll: 'scenarios/snapshot/all'
 };
 Vue.prototype.$apiBaseUri = window.apiBaseUri;
 Vue.component('last-snapshots', __webpack_require__(/*! ./components/LastSnapshots.vue */ "./resources/js/components/LastSnapshots.vue")["default"]);
