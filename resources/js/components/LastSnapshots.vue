@@ -13,8 +13,7 @@
                 <tbody>
                     <tr v-for="(scenario, i) in scenarios" :key="i">
                         <td>
-                            <a href="#" class="text-white">
-    <!--                            scenarioRoute + scenario.name-->
+                            <a :href="'/arbitrage/scenarios/'+scenario.name" class="text-white">
                                 {{ scenario.name }}
                             </a><small v-if="!scenario.active">(inactive)</small>
                         </td>
@@ -41,7 +40,8 @@
                     Updating...
                 </caption>
                 <caption v-else>
-                    Page loaded at {{ pageLoadedAt }}; Updated at {{ lastUpdate }}; {{ dbSize.snapshots.count }} snapshots ({{ dbSize.snapshots.size }} MB); DB {{ dbSize.total.size }} MB
+                    Page loaded at {{ pageLoadedAt }}; Updated at {{ lastUpdate }};<br>
+                    {{ dbSize.snapshots.count }} snapshots ({{ dbSize.snapshots.size }} MB); DB size: {{ dbSize.total.size }} MB
                 </caption>
             </table>
 

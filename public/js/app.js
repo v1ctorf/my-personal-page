@@ -37546,7 +37546,12 @@ var render = function() {
                     _c("td", [
                       _c(
                         "a",
-                        { staticClass: "text-white", attrs: { href: "#" } },
+                        {
+                          staticClass: "text-white",
+                          attrs: {
+                            href: "/arbitrage/scenarios/" + scenario.name
+                          }
+                        },
                         [
                           _vm._v(
                             "\n                            " +
@@ -37615,11 +37620,15 @@ var render = function() {
                         _vm._s(_vm.pageLoadedAt) +
                         "; Updated at " +
                         _vm._s(_vm.lastUpdate) +
-                        "; " +
+                        ";"
+                    ),
+                    _c("br"),
+                    _vm._v(
+                      "\n                " +
                         _vm._s(_vm.dbSize.snapshots.count) +
                         " snapshots (" +
                         _vm._s(_vm.dbSize.snapshots.size) +
-                        " MB); DB " +
+                        " MB); DB size: " +
                         _vm._s(_vm.dbSize.total.size) +
                         " MB\n            "
                     )
