@@ -14,6 +14,7 @@ Vue.prototype.$apiBaseUri = window.apiBaseUri;
 
 Vue.component('last-snapshots', require('./components/LastSnapshots.vue').default);
 Vue.component('btn-snapshot-all', require('./components/SnapshotAllButton.vue').default);
+Vue.component('scenario', require('./components/Scenario.vue').default);
 
 const app = new Vue({
     el:'#app'
