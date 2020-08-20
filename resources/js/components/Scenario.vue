@@ -31,14 +31,11 @@
                 </a>
             </div>
             <div class="col-md-6 text-right">
-<!--                <a href="{{ route('scenarios') }}" class="btn btn-outline-secondary">-->
-                <a href="#" class="btn btn-outline-secondary">
-                    Back
-                </a>
+                <a :href="this.$routes.scenarios" class="btn btn-outline-secondary">Back</a>
             </div>
         </div>
 
-        <p v-if="scenario == null">Loading...</p>
+        <p v-if="scenario == null" class="text-light">Loading...</p>
     </div>
 </template>
 
@@ -73,3 +70,7 @@
         }
     }
 </script>
+
+<style scoped>
+    .mb-4.text-secondary { cursor: pointer }
+</style>
