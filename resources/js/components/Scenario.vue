@@ -2,6 +2,7 @@
     <div class="container mt-4">
         <h2 class="mb-4 text-secondary" @click="refreshPage">
             {{ name }}
+            <small v-if="scenario && scenario.active == false">(Inactive)</small>
             <small v-if="scenario" :class="{
                 'text-danger' : scenario.lastPremiumFound <= 0,
                 'text-warning': 0 < scenario.lastPremiumFound <= 0.25,
@@ -22,10 +23,11 @@
 
         <div v-if="scenario" class="row">
             <div class="col-md-6 text-left">
-                <a href="#" class="btn" :class="{'btn-outline-light': scenario.active, 'btn-light': !scenario.active }">
-<!--                <a href="{{ route($scenario->active ? 'deactivate' : 'activate', ['name' => $scenario->name]) }}"-->
+                <button type="button" @click="switchActiveFlag" class="btn" :class="{
+                    'btn-outline-light': scenario.active,
+                    'btn-light': !scenario.active }">
                     {{ scenario.active ? 'Deactivate' : 'Activate' }}
-                </a>
+                </button>
 <!--                <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" class="btn btn-success">-->
                 <a href="#" class="btn btn-success">
                     Snapshot
@@ -58,13 +60,27 @@
         },
         methods: {
             getScenarioData() {
-                axios.get(`${this.$apiBaseUri}scenarios/${this.name}`).then(response => {
+                let uri = `${this.$apiBaseUri}scenarios/${this.name}`;
+
+                axios.get(uri).then(response => {
                     this.scenario = response.data.data;
                 });
             },
             refreshPage() {
                 location.reload(true);
-            }
+            },
+            switchActiveFlag() {
+                let uri = `${this.$apiBaseUri}scenarios/${this.name}/activate`,
+                    httpMethod = this.scenario.active ? 'delete' : 'patch';
+
+                axios[httpMethod](uri).then(response => {
+                    if (response.status == 204) {
+                        this.scenario.active = !this.scenario.active;
+                    } else {
+                        throw `switchActiveFlag: can't handle http code ${response.status}`;
+                    }
+                });
+            },
         }
     }
 </script>

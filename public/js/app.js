@@ -1880,6 +1880,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scenario",
   props: ['name'],
@@ -1895,12 +1897,26 @@ __webpack_require__.r(__webpack_exports__);
     getScenarioData: function getScenarioData() {
       var _this = this;
 
-      axios.get("".concat(this.$apiBaseUri, "scenarios/").concat(this.name)).then(function (response) {
+      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name);
+      axios.get(uri).then(function (response) {
         _this.scenario = response.data.data;
       });
     },
     refreshPage: function refreshPage() {
       location.reload(true);
+    },
+    switchActiveFlag: function switchActiveFlag() {
+      var _this2 = this;
+
+      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/activate"),
+          httpMethod = this.scenario.active ? 'delete' : 'patch';
+      axios[httpMethod](uri).then(function (response) {
+        if (response.status == 204) {
+          _this2.scenario.active = !_this2.scenario.active;
+        } else {
+          throw "switchActiveFlag: can't handle http code ".concat(response.status);
+        }
+      });
     }
   }
 });
@@ -38531,6 +38547,10 @@ var render = function() {
       { staticClass: "mb-4 text-secondary", on: { click: _vm.refreshPage } },
       [
         _vm._v("\n            " + _vm._s(_vm.name) + "\n            "),
+        _vm.scenario && _vm.scenario.active == false
+          ? _c("small", [_vm._v("(Inactive)")])
+          : _vm._e(),
+        _vm._v(" "),
         _vm.scenario
           ? _c(
               "small",
@@ -38568,14 +38588,15 @@ var render = function() {
       ? _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6 text-left" }, [
             _c(
-              "a",
+              "button",
               {
                 staticClass: "btn",
                 class: {
                   "btn-outline-light": _vm.scenario.active,
                   "btn-light": !_vm.scenario.active
                 },
-                attrs: { href: "#" }
+                attrs: { type: "button" },
+                on: { click: _vm.switchActiveFlag }
               },
               [
                 _vm._v(
