@@ -6,16 +6,16 @@
             </small>
         </h2>
 
-        <div v-if="scenario != null" class="row">
+        <div v-if="scenario" class="row">
             <scenario-chart :name="name"></scenario-chart>
         </div>
 
-        <div v-if="scenario != null" class="row mt-5">
+        <div v-if="scenario" class="row mt-5">
 <!--            {{&#45;&#45;        @include('arbitrage.scenario-details')&#45;&#45;}}-->
 <!--            {{&#45;&#45;        @include('arbitrage.actions')&#45;&#45;}}-->
         </div>
 
-        <div v-if="scenario != null" class="row">
+        <div v-if="scenario" class="row">
             <div class="col-md-6 text-left">
                 <a href="#" class="btn" :class="{'btn-outline-light': scenario.active, 'btn-light': !scenario.active }">
 <!--                <a href="{{ route($scenario->active ? 'deactivate' : 'activate', ['name' => $scenario->name]) }}"-->
@@ -31,11 +31,11 @@
                 </a>
             </div>
             <div class="col-md-6 text-right">
-                <a :href="this.$routes.scenarios" class="btn btn-outline-secondary">Back</a>
+                <a href="/arbitrage/scenarios" class="btn btn-outline-secondary">Back</a>
             </div>
         </div>
 
-        <p v-if="scenario == null" class="text-light">Loading...</p>
+        <p v-if="!scenario" class="text-light">Loading...</p>
     </div>
 </template>
 

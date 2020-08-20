@@ -38544,7 +38544,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm.scenario != null
+    _vm.scenario
       ? _c(
           "div",
           { staticClass: "row" },
@@ -38553,9 +38553,9 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.scenario != null ? _c("div", { staticClass: "row mt-5" }) : _vm._e(),
+    _vm.scenario ? _c("div", { staticClass: "row mt-5" }) : _vm._e(),
     _vm._v(" "),
-    _vm.scenario != null
+    _vm.scenario
       ? _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6 text-left" }, [
             _c(
@@ -38586,25 +38586,32 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 text-right" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-outline-secondary",
-                attrs: { href: this.$routes.scenarios }
-              },
-              [_vm._v("Back")]
-            )
-          ])
+          _vm._m(0)
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.scenario == null
+    !_vm.scenario
       ? _c("p", { staticClass: "text-light" }, [_vm._v("Loading...")])
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6 text-right" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-outline-secondary",
+          attrs: { href: "/arbitrage/scenarios" }
+        },
+        [_vm._v("Back")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
