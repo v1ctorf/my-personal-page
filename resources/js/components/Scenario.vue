@@ -1,20 +1,17 @@
 <template>
     <div class="container mt-4">
-        <h2 v-if="scenario != null" class="mb-4">
+        <h2 class="mb-4">
             <a href="#" class="text-secondary">
 <!--            <a href="{{ route('scenario', ['name' => $scenario->name]) }}" class="text-secondary">-->
-                {{ scenario.name }}
+                {{ name }}
 <!--            </a><small class="text-{{ $scenario->lastPremiumFound < 0 ? 'danger' : ($scenario->lastPremiumFound > 0.25 ? 'success' : 'warning')}}">-->
-            </a><small class="text-light">
+            </a><small v-if="scenario != null" class="text-light">
                 {{ scenario.lastPremiumFound }}%
             </small>
         </h2>
 
         <div v-if="scenario != null" class="row">
-            <scenario-chart v-if="history" :history="history"></scenario-chart>
-            <div v-else class="col-md-12 text-white">
-                Loading...
-            </div>
+            <scenario-chart :name="name"></scenario-chart>
         </div>
 
         <div v-if="scenario != null" class="row mt-5">
@@ -55,8 +52,7 @@
         props: ['name'],
         data() {
             return {
-                scenario: null,
-                history: null
+                scenario: null
             }
         },
         mounted() {
@@ -66,14 +62,8 @@
             getScenarioData() {
                 axios.get(`${this.$apiBaseUri}scenarios/${this.name}`).then(response => {
                     this.scenario = response.data.data;
-                    this.getHistory();
                 });
-            },
-            getHistory() {
-                axios.get(`${this.$apiBaseUri}scenarios/${this.name}/history`).then(response => {
-                    this.history = response.data.data;
-                });
-            },
+            }
         }
     }
 </script>

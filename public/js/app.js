@@ -1882,16 +1882,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scenario",
   props: ['name'],
   data: function data() {
     return {
-      scenario: null,
-      history: null
+      scenario: null
     };
   },
   mounted: function mounted() {
@@ -1903,15 +1899,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("".concat(this.$apiBaseUri, "scenarios/").concat(this.name)).then(function (response) {
         _this.scenario = response.data.data;
-
-        _this.getHistory();
-      });
-    },
-    getHistory: function getHistory() {
-      var _this2 = this;
-
-      axios.get("".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/history")).then(function (response) {
-        _this2.history = response.data.data;
       });
     }
   }
@@ -1933,19 +1920,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ScenarioChart",
-  props: ['history'],
+  name: 'ScenarioChart',
+  props: ['name'],
+  data: function data() {
+    return {
+      history: null
+    };
+  },
   mounted: function mounted() {
-    this.plotChart();
+    this.getHistory();
   },
   methods: {
+    getHistory: function getHistory() {
+      var _this = this;
+
+      axios.get("".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/history")).then(function (response) {
+        _this.history = response.data.data;
+
+        _this.plotChart();
+      });
+    },
     plotChart: function plotChart() {
       var historyData = this.history;
       var timeFormat = 'MM/DD/YYYY HH:mm:ss';
-      var labels = Object.keys(historyData).map(function (key, index) {
+      var labels = Object.keys(historyData).map(function (key) {
         return moment(historyData[key].createdAt).format(timeFormat);
       });
-      var premium = Object.keys(historyData).map(function (key, index) {
+      var premium = Object.keys(historyData).map(function (key) {
         return historyData[key].premiumPct;
       });
       var chartData = {
@@ -37879,32 +37880,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-4" }, [
-    _vm.scenario != null
-      ? _c("h2", { staticClass: "mb-4" }, [
-          _c("a", { staticClass: "text-secondary", attrs: { href: "#" } }, [
-            _vm._v("\n                " + _vm._s(_vm.scenario.name) + "\n")
-          ]),
-          _c("small", { staticClass: "text-light" }, [
+    _c("h2", { staticClass: "mb-4" }, [
+      _c("a", { staticClass: "text-secondary", attrs: { href: "#" } }, [
+        _vm._v("\n                " + _vm._s(_vm.name) + "\n")
+      ]),
+      _vm.scenario != null
+        ? _c("small", { staticClass: "text-light" }, [
             _vm._v(
               "\n                " +
                 _vm._s(_vm.scenario.lastPremiumFound) +
                 "%\n            "
             )
           ])
-        ])
-      : _vm._e(),
+        : _vm._e()
+    ]),
     _vm._v(" "),
     _vm.scenario != null
       ? _c(
           "div",
           { staticClass: "row" },
-          [
-            _vm.history
-              ? _c("scenario-chart", { attrs: { history: _vm.history } })
-              : _c("div", { staticClass: "col-md-12 text-white" }, [
-                  _vm._v("\n                Loading...\n            ")
-                ])
-          ],
+          [_c("scenario-chart", { attrs: { name: _vm.name } })],
           1
         )
       : _vm._e(),
@@ -37984,7 +37979,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("canvas", { attrs: { id: "historyChart" } })
+  return _c("canvas", {
+    directives: [
+      {
+        name: "show",
+        rawName: "v-show",
+        value: _vm.history,
+        expression: "history"
+      }
+    ],
+    attrs: { id: "historyChart" }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true

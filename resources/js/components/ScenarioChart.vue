@@ -1,24 +1,35 @@
 <template>
-    <canvas id="historyChart"></canvas>
+    <canvas v-show="history" id="historyChart"></canvas>
 </template>
 
 <script>
     export default {
-        name: "ScenarioChart",
-        props: ['history'],
+        name: 'ScenarioChart',
+        props: ['name'],
+        data() {
+            return {
+                history: null
+            }
+        },
         mounted() {
-            this.plotChart()
+            this.getHistory()
         },
         methods: {
+            getHistory() {
+                axios.get(`${this.$apiBaseUri}scenarios/${this.name}/history`).then(response => {
+                    this.history = response.data.data;
+                    this.plotChart();
+                });
+            },
             plotChart() {
                 let historyData = this.history;
                 let timeFormat = 'MM/DD/YYYY HH:mm:ss';
 
-                let labels = Object.keys(historyData).map(function(key, index){
+                let labels = Object.keys(historyData).map(function(key){
                     return moment(historyData[key].createdAt).format(timeFormat)
                 });
 
-                let premium = Object.keys(historyData).map(function(key, index){
+                let premium = Object.keys(historyData).map(function(key){
                     return historyData[key].premiumPct
                 });
 
