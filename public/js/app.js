@@ -1875,13 +1875,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scenario",
   props: ['name'],
   data: function data() {
     return {
-      scenario: null,
-      smallClass: {}
+      scenario: null
     };
   },
   mounted: function mounted() {
@@ -1893,11 +1897,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("".concat(this.$apiBaseUri, "scenarios/").concat(this.name)).then(function (response) {
         _this.scenario = response.data.data;
-        _this.smallClass = {
-          'text-danger': _this.scenario && _this.scenario.lastPremiumFound <= 0,
-          'text-warning': _this.scenario && 0 < _this.scenario.lastPremiumFound <= 0.25,
-          'text-success': _this.scenario && 0.25 < _this.scenario.lastPremiumFound
-        };
       });
     },
     refreshPage: function refreshPage() {
@@ -38531,15 +38530,25 @@ var render = function() {
       "h2",
       { staticClass: "mb-4 text-secondary", on: { click: _vm.refreshPage } },
       [
-        _vm._v("\n            " + _vm._s(_vm.name)),
-        _vm.scenario != null
-          ? _c("small", { class: _vm.smallClass }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.scenario.lastPremiumFound) +
-                  "%\n            "
-              )
-            ])
+        _vm._v("\n            " + _vm._s(_vm.name) + "\n            "),
+        _vm.scenario
+          ? _c(
+              "small",
+              {
+                class: {
+                  "text-danger": _vm.scenario.lastPremiumFound <= 0,
+                  "text-warning": 0 < _vm.scenario.lastPremiumFound <= 0.25,
+                  "text-success": 0.25 < _vm.scenario.lastPremiumFound
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.scenario.lastPremiumFound) +
+                    "%\n            "
+                )
+              ]
+            )
           : _vm._e()
       ]
     ),

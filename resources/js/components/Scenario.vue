@@ -1,7 +1,12 @@
 <template>
     <div class="container mt-4">
         <h2 class="mb-4 text-secondary" @click="refreshPage">
-            {{ name }}<small v-if="scenario != null" :class="smallClass">
+            {{ name }}
+            <small v-if="scenario" :class="{
+                'text-danger' : scenario.lastPremiumFound <= 0,
+                'text-warning': 0 < scenario.lastPremiumFound <= 0.25,
+                'text-success': 0.25 < scenario.lastPremiumFound
+            }">
                 {{ scenario.lastPremiumFound }}%
             </small>
         </h2>
@@ -46,7 +51,6 @@
         data() {
             return {
                 scenario: null,
-                smallClass: {}
             }
         },
         mounted() {
@@ -56,12 +60,6 @@
             getScenarioData() {
                 axios.get(`${this.$apiBaseUri}scenarios/${this.name}`).then(response => {
                     this.scenario = response.data.data;
-
-                    this.smallClass = {
-                        'text-danger': this.scenario && this.scenario.lastPremiumFound <= 0,
-                        'text-warning': this.scenario && 0 < this.scenario.lastPremiumFound <= 0.25,
-                        'text-success': this.scenario && 0.25 < this.scenario.lastPremiumFound
-                    }
                 });
             },
             refreshPage() {
