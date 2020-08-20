@@ -1941,23 +1941,23 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     plotChart: function plotChart() {
-      var historyData = this.history;
-      var timeFormat = 'MM/DD/YYYY HH:mm:ss';
-      var labels = Object.keys(historyData).map(function (key) {
+      var historyData = this.history,
+          timeFormat = 'MM/DD/YYYY HH:mm:ss',
+          labels = Object.keys(historyData).map(function (key) {
         return moment(historyData[key].createdAt).format(timeFormat);
-      });
-      var premium = Object.keys(historyData).map(function (key) {
+      }),
+          premium = Object.keys(historyData).map(function (key) {
         return historyData[key].premiumPct;
-      });
-      var chartData = {
+      }),
+          chartData = {
         type: 'line',
         options: {
           elements: {
             line: {
-              tension: 0 // disables bezier curves
-
+              tension: 0
             }
           },
+          // disables bezier curves
           legend: {
             display: false
           },
@@ -1970,22 +1970,22 @@ __webpack_require__.r(__webpack_exports__);
               }
             }]
           }
+        },
+        data: {
+          labels: labels,
+          datasets: [{
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: premium,
+            fill: false,
+            gridLines: {
+              color: '#CCCCC'
+            }
+          }]
         }
-      };
-      chartData.data = {
-        labels: labels,
-        datasets: [{
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: premium,
-          fill: false,
-          gridLines: {
-            color: '#CCCCC'
-          }
-        }]
-      };
-      var ctx = document.getElementById('historyChart').getContext('2d');
-      var chart = new Chart(ctx, chartData);
+      },
+          ctx = document.getElementById('historyChart').getContext('2d'),
+          chart = new Chart(ctx, chartData);
     }
   }
 });
@@ -37979,17 +37979,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("canvas", {
-    directives: [
-      {
-        name: "show",
-        rawName: "v-show",
-        value: _vm.history,
-        expression: "history"
-      }
-    ],
-    attrs: { id: "historyChart" }
-  })
+  return _c("canvas", { attrs: { id: "historyChart" } })
 }
 var staticRenderFns = []
 render._withStripped = true

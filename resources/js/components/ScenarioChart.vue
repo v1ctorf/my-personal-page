@@ -1,5 +1,5 @@
 <template>
-    <canvas v-show="history" id="historyChart"></canvas>
+    <canvas id="historyChart"></canvas>
 </template>
 
 <script>
@@ -22,55 +22,45 @@
                 });
             },
             plotChart() {
-                let historyData = this.history;
-                let timeFormat = 'MM/DD/YYYY HH:mm:ss';
+                let historyData = this.history,
 
-                let labels = Object.keys(historyData).map(function(key){
-                    return moment(historyData[key].createdAt).format(timeFormat)
-                });
+                    timeFormat = 'MM/DD/YYYY HH:mm:ss',
 
-                let premium = Object.keys(historyData).map(function(key){
-                    return historyData[key].premiumPct
-                });
+                    labels = Object.keys(historyData).map(function(key){
+                        return moment(historyData[key].createdAt).format(timeFormat)
+                    }),
 
-                let chartData = {
-                    type: 'line',
-                    options: {
-                        elements: {
-                            line: {
-                                tension: 0 // disables bezier curves
+                    premium = Object.keys(historyData).map(function(key){
+                        return historyData[key].premiumPct
+                    }),
+
+                    chartData = {
+                        type: 'line',
+                        options: {
+                            elements: { line: { tension: 0 } }, // disables bezier curves
+                            legend: { display: false },
+                            scales: {
+                                xAxes: [{
+                                    type: 'time',
+                                    display: true,
+                                    time: { parser: timeFormat }
+                                }]
                             }
                         },
-                        legend: {
-                            display: false
-                        },
-                        scales: {
-                            xAxes: [{
-                                type: 'time',
-                                display: true,
-                                time: {
-                                    parser: timeFormat
-                                }
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: premium,
+                                fill: false,
+                                gridLines: { color:'#CCCCC' }
                             }]
                         }
-                    }
-                }
+                    },
 
-                chartData.data = {
-                    labels: labels,
-                    datasets: [{
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: premium,
-                        fill: false,
-                        gridLines:{
-                            color:'#CCCCC'
-                        }
-                    }]
-                }
-
-                let ctx = document.getElementById('historyChart').getContext('2d');
-                let chart = new Chart(ctx, chartData);
+                    ctx = document.getElementById('historyChart').getContext('2d'),
+                    chart = new Chart(ctx, chartData);
             },
         }
     }
