@@ -45,22 +45,6 @@ class ArbitrageController extends Controller
     }
 
 
-    public function activate($scenarioName)
-    {
-        $this->client->patch("scenarios/{$scenarioName}/activate");
-
-        return redirect()->back();
-    }
-
-
-    public function deactivate($scenarioName)
-    {
-        $this->client->delete("scenarios/{$scenarioName}/activate");
-
-        return redirect()->back();
-    }
-
-
     public function updateTxFee($identifier)
     {
         $this->client->patch("currencies/{$identifier}/tx-fee");
