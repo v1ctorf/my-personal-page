@@ -11,7 +11,10 @@
         </h2>
 
         <div v-if="scenario != null" class="row">
-            <canvas id="historyChart"></canvas>
+            <scenario-chart v-if="history" :history="history"></scenario-chart>
+            <div v-else class="col-md-12 text-white">
+                Loading...
+            </div>
         </div>
 
         <div v-if="scenario != null" class="row mt-5">
@@ -69,59 +72,7 @@
             getHistory() {
                 axios.get(`${this.$apiBaseUri}scenarios/${this.name}/history`).then(response => {
                     this.history = response.data.data;
-                    this.createChart();
                 });
-            },
-            createChart() {
-                let historyData = this.history;
-                let timeFormat = 'MM/DD/YYYY HH:mm:ss';
-
-                let labels = Object.keys(historyData).map(function(key, index){
-                    return moment(historyData[key].createdAt).format(timeFormat)
-                });
-
-                let premium = Object.keys(historyData).map(function(key, index){
-                    return historyData[key].premiumPct
-                });
-
-                let chartData = {
-                    type: 'line',
-                    options: {
-                        elements: {
-                            line: {
-                                tension: 0 // disables bezier curves
-                            }
-                        },
-                        legend: {
-                            display: false
-                        },
-                        scales: {
-                            xAxes: [{
-                                type: 'time',
-                                display: true,
-                                time: {
-                                    parser: timeFormat
-                                }
-                            }]
-                        }
-                    }
-                }
-
-                chartData.data = {
-                    labels: labels,
-                    datasets: [{
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: premium,
-                        fill: false,
-                        gridLines:{
-                            color:'#CCCCC'
-                        }
-                    }]
-                }
-
-                let ctx = document.getElementById('historyChart').getContext('2d');
-                let chart = new Chart(ctx, chartData);
             },
         }
     }
