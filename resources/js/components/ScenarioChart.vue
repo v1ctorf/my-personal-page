@@ -14,7 +14,7 @@
         mounted() {
             this.getHistoryUpdateChart();
 
-            this.$root.$on('updateChart', () => {
+            this.$root.$on('updateScenarioChart', () => {
                 this.getHistoryUpdateChart();
             });
         },

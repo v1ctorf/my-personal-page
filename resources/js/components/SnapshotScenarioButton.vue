@@ -1,6 +1,6 @@
 <template>
-    <button type="button" class="btn btn-success" @click="takeSnapshot">
-        Snapshot
+    <button type="button" class="btn btn-success" @click="takeSnapshot" :disabled="isLoading">
+        {{ isLoading ? 'Loading...' : 'Snapshot' }}
     </button>
 </template>
 
@@ -8,13 +8,19 @@
     export default {
         name: 'SnapshotScenarioButton',
         props: ['name'],
+        data() {
+            return {
+                isLoading: false
+            }
+        },
         methods: {
             takeSnapshot() {
-                console.log('from proper component');
                 let uri = `${this.$apiBaseUri}scenarios/${this.name}/snapshot`;
+                this.isLoading = true;
 
                 axios.post(uri).then(() => {
-                    this.$root.$emit('updateChart');
+                    this.$root.$emit('updateScenarioChart');
+                    this.isLoading = false;
                 });
             }
         }

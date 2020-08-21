@@ -1834,6 +1834,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SwitchScenarioActivationButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SwitchScenarioActivationButton */ "./resources/js/components/SwitchScenarioActivationButton.vue");
 //
 //
 //
@@ -1881,8 +1882,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Scenario',
+  components: {
+    SwitchScenarioActivationButton: _SwitchScenarioActivationButton__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ['name'],
   data: function data() {
     return {
@@ -1890,34 +1895,25 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.getScenarioData();
+    this.$root.$on('markScenarioAsActive', function (isActive) {
+      _this.scenario.active = isActive;
+    });
   },
   methods: {
     getScenarioData: function getScenarioData() {
-      var _this = this;
+      var _this2 = this;
 
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name);
       axios.get(uri).then(function (response) {
-        _this.scenario = response.data.data;
-        document.title = "[".concat(response.data.data.lastPremiumFound, "] ").concat(_this.name);
+        _this2.scenario = response.data.data;
+        document.title = "[".concat(response.data.data.lastPremiumFound, "] ").concat(_this2.name);
       });
     },
     refreshPage: function refreshPage() {
       location.reload(true);
-    },
-    switchActiveFlag: function switchActiveFlag() {
-      var _this2 = this;
-
-      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/activate"),
-          httpMethod = this.scenario.active ? 'delete' : 'patch';
-      axios[httpMethod](uri).then(function (response) {
-        if (response.status == 204) {
-          _this2.scenario.active = !_this2.scenario.active;
-        } else {
-          alert('error');
-          throw "switchActiveFlag: can't handle http code ".concat(response.status);
-        }
-      });
     }
   }
 });
@@ -1949,7 +1945,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.getHistoryUpdateChart();
-    this.$root.$on('updateChart', function () {
+    this.$root.$on('updateScenarioChart', function () {
       _this.getHistoryUpdateChart();
     });
   },
@@ -2072,14 +2068,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SnapshotScenarioButton',
   props: ['name'],
+  data: function data() {
+    return {
+      isLoading: false
+    };
+  },
   methods: {
     takeSnapshot: function takeSnapshot() {
       var _this = this;
 
-      console.log('from proper component');
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/snapshot");
+      this.isLoading = true;
       axios.post(uri).then(function () {
-        _this.$root.$emit('updateChart');
+        _this.$root.$emit('updateScenarioChart');
+
+        _this.isLoading = false;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SwitchScenarioActivationButton",
+  props: {
+    active: Boolean,
+    name: String
+  },
+  data: function data() {
+    return {
+      isActive: this.active,
+      isLoading: false
+    };
+  },
+  methods: {
+    switchActiveFlag: function switchActiveFlag() {
+      var _this = this;
+
+      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/activate"),
+          httpMethod = this.isActive ? 'delete' : 'patch';
+      this.isLoading = true;
+      axios[httpMethod](uri).then(function (response) {
+        if (response.status == 204) {
+          _this.isActive = !_this.isActive;
+
+          _this.$root.$emit('markScenarioAsActive', _this.isActive);
+
+          _this.isLoading = false;
+        } else {
+          alert('error');
+          throw "switchActiveFlag: can't handle http code ".concat(response.status);
+        }
       });
     }
   }
@@ -38629,25 +38686,9 @@ var render = function() {
             "div",
             { staticClass: "col-md-6 text-left" },
             [
-              _c(
-                "button",
-                {
-                  staticClass: "btn",
-                  class: {
-                    "btn-outline-light": _vm.scenario.active,
-                    "btn-light": !_vm.scenario.active
-                  },
-                  attrs: { type: "button" },
-                  on: { click: _vm.switchActiveFlag }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.scenario.active ? "Deactivate" : "Activate") +
-                      "\n                "
-                  )
-                ]
-              ),
+              _c("de-activate-scenario-btn", {
+                attrs: { active: _vm.scenario.active, name: _vm.scenario.name }
+              }),
               _vm._v(" "),
               _c("snapshot-scenario-btn", { attrs: { name: _vm.name } }),
               _vm._v(" "),
@@ -38770,10 +38811,62 @@ var render = function() {
     "button",
     {
       staticClass: "btn btn-success",
-      attrs: { type: "button" },
+      attrs: { type: "button", disabled: _vm.isLoading },
       on: { click: _vm.takeSnapshot }
     },
-    [_vm._v("\n    Snapshot\n")]
+    [
+      _vm._v(
+        "\n    " + _vm._s(_vm.isLoading ? "Loading..." : "Snapshot") + "\n"
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass: "btn",
+      class: {
+        "btn-outline-light": _vm.isActive,
+        "btn-light": !_vm.isActive
+      },
+      attrs: { type: "button", disabled: _vm.isLoading },
+      on: { click: _vm.switchActiveFlag }
+    },
+    [
+      _vm._v(
+        "\n    " +
+          _vm._s(
+            _vm.isLoading
+              ? "Loading..."
+              : _vm.isActive
+              ? "Deactivate"
+              : "Activate"
+          ) +
+          "\n"
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -50968,6 +51061,7 @@ Vue.component('btn-snapshot-all', __webpack_require__(/*! ./components/SnapshotA
 Vue.component('scenario', __webpack_require__(/*! ./components/Scenario.vue */ "./resources/js/components/Scenario.vue")["default"]);
 Vue.component('scenario-chart', __webpack_require__(/*! ./components/ScenarioChart.vue */ "./resources/js/components/ScenarioChart.vue")["default"]);
 Vue.component('snapshot-scenario-btn', __webpack_require__(/*! ./components/SnapshotScenarioButton.vue */ "./resources/js/components/SnapshotScenarioButton.vue")["default"]);
+Vue.component('de-activate-scenario-btn', __webpack_require__(/*! ./components/SwitchScenarioActivationButton */ "./resources/js/components/SwitchScenarioActivationButton.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
@@ -51367,6 +51461,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnapshotScenarioButton_vue_vue_type_template_id_e13caa1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnapshotScenarioButton_vue_vue_type_template_id_e13caa1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SwitchScenarioActivationButton.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/SwitchScenarioActivationButton.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SwitchScenarioActivationButton_vue_vue_type_template_id_3dcadbd2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true& */ "./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true&");
+/* harmony import */ var _SwitchScenarioActivationButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SwitchScenarioActivationButton.vue?vue&type=script&lang=js& */ "./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SwitchScenarioActivationButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SwitchScenarioActivationButton_vue_vue_type_template_id_3dcadbd2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SwitchScenarioActivationButton_vue_vue_type_template_id_3dcadbd2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3dcadbd2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SwitchScenarioActivationButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SwitchScenarioActivationButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SwitchScenarioActivationButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SwitchScenarioActivationButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true& ***!
+  \***************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SwitchScenarioActivationButton_vue_vue_type_template_id_3dcadbd2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SwitchScenarioActivationButton.vue?vue&type=template&id=3dcadbd2&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SwitchScenarioActivationButton_vue_vue_type_template_id_3dcadbd2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SwitchScenarioActivationButton_vue_vue_type_template_id_3dcadbd2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

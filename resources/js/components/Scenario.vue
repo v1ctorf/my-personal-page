@@ -23,11 +23,10 @@
 
         <div v-if="scenario" class="row">
             <div class="col-md-6 text-left">
-                <button type="button" @click="switchActiveFlag" class="btn" :class="{
-                    'btn-outline-light': scenario.active,
-                    'btn-light': !scenario.active }">
-                    {{ scenario.active ? 'Deactivate' : 'Activate' }}
-                </button>
+                <de-activate-scenario-btn
+                    :active="scenario.active"
+                    :name="scenario.name"
+                ></de-activate-scenario-btn>
 
                 <snapshot-scenario-btn :name="name"></snapshot-scenario-btn>
 
@@ -36,6 +35,7 @@
                     History
                 </a>
             </div>
+
             <div class="col-md-6 text-right">
                 <a href="/arbitrage/scenarios" class="btn btn-outline-secondary">Back</a>
             </div>
@@ -46,8 +46,10 @@
 </template>
 
 <script>
+    import SwitchScenarioActivationButton from "./SwitchScenarioActivationButton";
     export default {
         name: 'Scenario',
+        components: {SwitchScenarioActivationButton},
         props: ['name'],
         data() {
             return {
@@ -56,6 +58,10 @@
         },
         mounted() {
             this.getScenarioData();
+
+            this.$root.$on('markScenarioAsActive', isActive => {
+                this.scenario.active = isActive;
+            })
         },
         methods: {
             getScenarioData() {
@@ -68,19 +74,6 @@
             },
             refreshPage() {
                 location.reload(true);
-            },
-            switchActiveFlag() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.name}/activate`,
-                    httpMethod = this.scenario.active ? 'delete' : 'patch';
-
-                axios[httpMethod](uri).then(response => {
-                    if (response.status == 204) {
-                        this.scenario.active = !this.scenario.active;
-                    } else {
-                        alert('error');
-                        throw `switchActiveFlag: can't handle http code ${response.status}`;
-                    }
-                });
             }
         }
     }
