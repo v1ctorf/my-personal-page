@@ -1882,8 +1882,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Scenario",
+  name: 'Scenario',
   props: ['name'],
   data: function data() {
     return {
@@ -1919,6 +1920,19 @@ __webpack_require__.r(__webpack_exports__);
           throw "switchActiveFlag: can't handle http code ".concat(response.status);
         }
       });
+    },
+    takeSnapshot: function takeSnapshot() {
+      var _this3 = this;
+
+      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/snapshot");
+      axios.post(uri).then(function () {
+        _this3.$root.$emit('updateChart');
+      }); // public function snapshot($scenarioName)
+      // {
+      //     $this->client->post("scenarios/{$scenarioName}/snapshot");
+      //
+      //     return redirect()->back();
+      // }
     }
   }
 });
@@ -1947,16 +1961,21 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getHistory();
+    var _this = this;
+
+    this.getHistoryUpdateChart();
+    this.$root.$on('updateChart', function () {
+      _this.getHistoryUpdateChart();
+    });
   },
   methods: {
-    getHistory: function getHistory() {
-      var _this = this;
+    getHistoryUpdateChart: function getHistoryUpdateChart() {
+      var _this2 = this;
 
       axios.get("".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/history")).then(function (response) {
-        _this.history = response.data.data;
+        _this2.history = response.data.data;
 
-        _this.plotChart();
+        _this2.plotChart();
       });
     },
     plotChart: function plotChart() {
@@ -38609,9 +38628,15 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("a", { staticClass: "btn btn-success", attrs: { href: "#" } }, [
-              _vm._v("\n                    Snapshot\n                ")
-            ]),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: { click: _vm.takeSnapshot }
+              },
+              [_vm._v("\n                    Snapshot\n                ")]
+            ),
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-info", attrs: { href: "#" } }, [
               _vm._v("\n                    History\n                ")

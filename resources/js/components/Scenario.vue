@@ -28,10 +28,11 @@
                     'btn-light': !scenario.active }">
                     {{ scenario.active ? 'Deactivate' : 'Activate' }}
                 </button>
-<!--                <a href="{{ route('snapshot', ['name' => $scenario->name]) }}" class="btn btn-success">-->
-                <a href="#" class="btn btn-success">
+
+                <button type="button" class="btn btn-success" @click="takeSnapshot">
                     Snapshot
-                </a>
+                </button>
+
                 <a class="btn btn-info" href="#">
 <!--                <a class="btn btn-info" href="{{ route('scenario-history', ['name' => $scenario->name]) }}">-->
                     History
@@ -48,7 +49,7 @@
 
 <script>
     export default {
-        name: "Scenario",
+        name: 'Scenario',
         props: ['name'],
         data() {
             return {
@@ -83,6 +84,19 @@
                     }
                 });
             },
+            takeSnapshot() {
+                let uri = `${this.$apiBaseUri}scenarios/${this.name}/snapshot`;
+
+                axios.post(uri).then(() => {
+                    this.$root.$emit('updateChart');
+                });
+                // public function snapshot($scenarioName)
+                // {
+                //     $this->client->post("scenarios/{$scenarioName}/snapshot");
+                //
+                //     return redirect()->back();
+                // }
+            }
         }
     }
 </script>

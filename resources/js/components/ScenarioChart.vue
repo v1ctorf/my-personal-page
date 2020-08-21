@@ -12,10 +12,14 @@
             }
         },
         mounted() {
-            this.getHistory()
+            this.getHistoryUpdateChart();
+
+            this.$root.$on('updateChart', () => {
+                this.getHistoryUpdateChart();
+            });
         },
         methods: {
-            getHistory() {
+            getHistoryUpdateChart() {
                 axios.get(`${this.$apiBaseUri}scenarios/${this.name}/history`).then(response => {
                     this.history = response.data.data;
                     this.plotChart();
