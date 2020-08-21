@@ -29,9 +29,7 @@
                     {{ scenario.active ? 'Deactivate' : 'Activate' }}
                 </button>
 
-                <button type="button" class="btn btn-success" @click="takeSnapshot">
-                    Snapshot
-                </button>
+                <snapshot-scenario-btn :name="name"></snapshot-scenario-btn>
 
                 <a class="btn btn-info" href="#">
 <!--                <a class="btn btn-info" href="{{ route('scenario-history', ['name' => $scenario->name]) }}">-->
@@ -83,19 +81,6 @@
                         throw `switchActiveFlag: can't handle http code ${response.status}`;
                     }
                 });
-            },
-            takeSnapshot() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.name}/snapshot`;
-
-                axios.post(uri).then(() => {
-                    this.$root.$emit('updateChart');
-                });
-                // public function snapshot($scenarioName)
-                // {
-                //     $this->client->post("scenarios/{$scenarioName}/snapshot");
-                //
-                //     return redirect()->back();
-                // }
             }
         }
     }

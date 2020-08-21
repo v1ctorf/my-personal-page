@@ -16,6 +16,7 @@ Vue.component('last-snapshots', require('./components/LastSnapshots.vue').defaul
 Vue.component('btn-snapshot-all', require('./components/SnapshotAllButton.vue').default);
 Vue.component('scenario', require('./components/Scenario.vue').default);
 Vue.component('scenario-chart', require('./components/ScenarioChart.vue').default);
+Vue.component('snapshot-scenario-btn', require('./components/SnapshotScenarioButton.vue').default);
 
 const app = new Vue({
     el:'#app'

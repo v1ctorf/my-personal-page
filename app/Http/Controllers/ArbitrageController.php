@@ -33,15 +33,7 @@ class ArbitrageController extends Controller
 //        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
 //        $latest = json_decode($resp->getBody()->getContents())->data;
 
-        return view('arbitrage.scenario', compact('scenarioName',));
-    }
-
-
-    public function snapshot($scenarioName)
-    {
-        $this->client->post("scenarios/{$scenarioName}/snapshot");
-
-        return redirect()->back();
+        return view('arbitrage.scenario', compact('scenarioName'));
     }
 
 
@@ -106,6 +98,7 @@ class ArbitrageController extends Controller
 
         return redirect()->back();
     }
+
 
     public function verifyExchangeFee($exchange)
     {

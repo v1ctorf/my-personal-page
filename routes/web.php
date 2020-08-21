@@ -48,7 +48,6 @@ Route::prefix('arbitrage')->middleware('auth')->group(function(){
 
         Route::prefix('{name}')->group(function(){
             Route::get('', 'ArbitrageController@show')->name('scenario');
-            Route::get('snapshot', 'ArbitrageController@snapshot')->name('snapshot');
             Route::get('history', 'ArbitrageController@history')->name('scenario-history');
         });
     });
