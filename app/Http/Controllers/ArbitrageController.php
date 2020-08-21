@@ -27,9 +27,6 @@ class ArbitrageController extends Controller
 
     public function show($scenarioName)
     {
-//        $resp = $this->client->get("scenarios/{$scenarioName}");
-//        $scenario = json_decode($resp->getBody()->getContents())->data;
-
 //        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
 //        $latest = json_decode($resp->getBody()->getContents())->data;
 

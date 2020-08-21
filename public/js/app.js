@@ -2058,16 +2058,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioDetails",
   props: {
     scenario: Object
+  },
+  data: function data() {
+    return {
+      investmentDetails: this.parseInvestment(this.scenario.investment),
+      updatedAt: {
+        dt: moment(this.scenario.updatedAt).format('YYYY-MM-DD HH:mm:ss'),
+        fromNow: moment(this.scenario.updatedAt).fromNow()
+      },
+      createdAt: {
+        dt: moment(this.scenario.createdAt).format('YYYY-MM-DD HH:mm:ss'),
+        fromNow: moment(this.scenario.createdAt).fromNow()
+      }
+    };
+  },
+  methods: {
+    parseInvestment: function parseInvestment(investment) {
+      return Object.keys(investment).map(function (exchange) {
+        var currency = Object.keys(investment[exchange])[0],
+            value = parseFloat(investment[exchange][currency]);
+        return currency.toUpperCase() + ' ' + value.toFixed(5);
+      }).join('; ');
+    }
   }
 });
 
@@ -38854,9 +38870,9 @@ var render = function() {
         },
         [
           _vm._v(
-            "\n                " +
+            "\n            " +
               _vm._s(_vm.scenario.active ? "Active" : "Inactive") +
-              "\n            "
+              "\n        "
           )
         ]
       ),
@@ -38865,23 +38881,48 @@ var render = function() {
       _vm._v(" "),
       _c("dd", { staticClass: "col-md-9 text-white" }, [
         _vm._v(
-          "\n                " +
-            _vm._s(_vm.scenario.description) +
-            "\n            "
+          "\n            " + _vm._s(_vm.scenario.description) + "\n        "
         )
       ]),
       _vm._v(" "),
       _c("dt", { staticClass: "col-md-3" }, [_vm._v("Investment")]),
       _vm._v(" "),
-      _c("dd", { staticClass: "col-md-9 text-white" }),
+      _c("dd", { staticClass: "col-md-9 text-white" }, [
+        _vm._v("\n            " + _vm._s(_vm.investmentDetails) + " "),
+        _c("span", { staticClass: "text-muted" }, [
+          _vm._v(
+            "\n                (USD " +
+              _vm._s(_vm.scenario.investmentInUSD) +
+              ")\n            "
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("dt", { staticClass: "col-md-3" }, [_vm._v("Created At")]),
       _vm._v(" "),
-      _c("dd", { staticClass: "col-md-9 text-white" }),
+      _c("dd", { staticClass: "col-md-9 text-white" }, [
+        _vm._v("\n            " + _vm._s(_vm.createdAt.dt) + " "),
+        _c("span", { staticClass: "text-secondary" }, [
+          _vm._v(
+            "\n                (" +
+              _vm._s(_vm.createdAt.fromNow) +
+              ")\n            "
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("dt", { staticClass: "col-md-3" }, [_vm._v("Updated At")]),
       _vm._v(" "),
-      _c("dd", { staticClass: "col-md-9 text-white" })
+      _c("dd", { staticClass: "col-md-9 text-white" }, [
+        _vm._v("\n            " + _vm._s(_vm.updatedAt.dt) + " "),
+        _c("span", { staticClass: "text-secondary" }, [
+          _vm._v(
+            "\n                (" +
+              _vm._s(_vm.updatedAt.fromNow) +
+              ")\n            "
+          )
+        ])
+      ])
     ])
   ])
 }

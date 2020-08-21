@@ -13,28 +13,22 @@
 
             <dt class="col-md-3">Investment</dt>
             <dd class="col-md-9 text-white">
-<!--                {{ strtoupper($scenario->investment->a->currency) }} {{ floatval($scenario->investment->a->amount) }} <span class="text-muted">-->
-<!--                (USD {{ number_format($scenario->investment->a->inUSD, 2) }})-->
-<!--            </span>-->
+                {{ investmentDetails }} <span class="text-muted">
+                    (USD {{ scenario.investmentInUSD }})
+                </span>
             </dd>
 
             <dt class="col-md-3">Created At</dt>
             <dd class="col-md-9 text-white">
-<!--                {{ Carbon\Carbon::parse($scenario->createdAt)->toDayDateTimeString() }} <span class="text-secondary">-->
-<!--                    ({{ $scenario->createdAt ?-->
-<!--                        Carbon\Carbon::parse($scenario->createdAt)->diffForHumans() :-->
-<!--                        'no data'-->
-<!--                    }})-->
-<!--                </span>-->
+                {{ createdAt.dt }} <span class="text-secondary">
+                    ({{ createdAt.fromNow }})
+                </span>
             </dd>
 
             <dt class="col-md-3">Updated At</dt>
             <dd class="col-md-9 text-white">
-<!--                {{ Carbon\Carbon::parse($scenario->updatedAt)->toDayDateTimeString() }} <span class="text-secondary">-->
-<!--                    ({{ $scenario->updatedAt ?-->
-<!--                        Carbon\Carbon::parse($scenario->updatedAt)->diffForHumans() :-->
-<!--                        'no data'-->
-<!--                    }})-->
+                {{ updatedAt.dt }} <span class="text-secondary">
+                    ({{ updatedAt.fromNow }})
                 </span>
             </dd>
         </dl>
@@ -47,6 +41,29 @@
         name: "ScenarioDetails",
         props: {
             scenario: Object
+        },
+        data() {
+            return {
+                investmentDetails: this.parseInvestment(this.scenario.investment),
+                updatedAt: {
+                    dt: moment(this.scenario.updatedAt).format('YYYY-MM-DD HH:mm:ss'),
+                    fromNow: moment(this.scenario.updatedAt).fromNow(),
+                },
+                createdAt: {
+                    dt: moment(this.scenario.createdAt).format('YYYY-MM-DD HH:mm:ss'),
+                    fromNow: moment(this.scenario.createdAt).fromNow(),
+                },
+            }
+        },
+        methods: {
+            parseInvestment(investment) {
+                return Object.keys(investment).map(function(exchange){
+                    let currency = Object.keys(investment[exchange])[0],
+                        value = parseFloat(investment[exchange][currency]);
+
+                    return currency.toUpperCase() + ' ' + value.toFixed(5);
+                }).join('; ');
+            }
         }
     }
 </script>
