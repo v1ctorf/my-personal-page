@@ -12,13 +12,13 @@ Vue.prototype.$routes = {
 
 Vue.prototype.$apiBaseUri = window.apiBaseUri;
 
-Vue.component('last-snapshots', require('./components/LastSnapshots.vue').default);
-Vue.component('btn-snapshot-all', require('./components/SnapshotAllButton.vue').default);
-Vue.component('scenario', require('./components/Scenario.vue').default);
-Vue.component('scenario-chart', require('./components/ScenarioChart.vue').default);
-Vue.component('snapshot-scenario-btn', require('./components/SnapshotScenarioButton.vue').default);
-Vue.component('de-activate-scenario-btn', require('./components/SwitchScenarioActivationButton').default);
-Vue.component('scenario-details', require('./components/ScenarioDetails').default);
+Vue.component('last-snapshots', require('./components/projects/arbitrage/LastSnapshots.vue').default);
+Vue.component('btn-snapshot-all', require('./components/projects/arbitrage/SnapshotAllButton.vue').default);
+Vue.component('scenario', require('./components/projects/arbitrage/Scenario.vue').default);
+Vue.component('scenario-chart', require('./components/projects/arbitrage/ScenarioChart.vue').default);
+Vue.component('snapshot-scenario-btn', require('./components/projects/arbitrage/SnapshotScenarioButton.vue').default);
+Vue.component('de-activate-scenario-btn', require('./components/projects/arbitrage/SwitchScenarioActivationButton').default);
+Vue.component('scenario-details', require('./components/projects/arbitrage/ScenarioDetails').default);
 
 const app = new Vue({
     el:'#app'

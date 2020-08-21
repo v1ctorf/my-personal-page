@@ -18,8 +18,9 @@
                 let uri = `${this.$apiBaseUri}scenarios/${this.name}/snapshot`;
                 this.isLoading = true;
 
-                axios.post(uri).then(() => {
+                axios.post(uri).then(response => {
                     this.$root.$emit('updateScenarioChart');
+                    this.$root.$emit('updateScenarioData', response.data.data);
                     this.isLoading = false;
                 });
             }

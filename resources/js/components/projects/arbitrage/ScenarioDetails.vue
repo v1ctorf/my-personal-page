@@ -42,6 +42,11 @@
         props: {
             scenario: Object
         },
+        mounted() {
+            this.$root.$on('updateScenarioData', data => {
+                console.log(data.data);
+            });
+        },
         data() {
             return {
                 investmentDetails: this.parseInvestment(this.scenario.investment),
