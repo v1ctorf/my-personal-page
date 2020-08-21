@@ -1900,6 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name);
       axios.get(uri).then(function (response) {
         _this.scenario = response.data.data;
+        document.title = "[".concat(response.data.data.lastPremiumFound, "] ").concat(_this.name);
       });
     },
     refreshPage: function refreshPage() {
@@ -1914,6 +1915,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.status == 204) {
           _this2.scenario.active = !_this2.scenario.active;
         } else {
+          alert('error');
           throw "switchActiveFlag: can't handle http code ".concat(response.status);
         }
       });

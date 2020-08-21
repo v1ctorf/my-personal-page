@@ -64,6 +64,7 @@
 
                 axios.get(uri).then(response => {
                     this.scenario = response.data.data;
+                    document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
                 });
             },
             refreshPage() {
@@ -77,6 +78,7 @@
                     if (response.status == 204) {
                         this.scenario.active = !this.scenario.active;
                     } else {
+                        alert('error');
                         throw `switchActiveFlag: can't handle http code ${response.status}`;
                     }
                 });
