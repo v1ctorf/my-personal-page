@@ -28,7 +28,7 @@
 <body id="page-top">
     <div id="app">
         @yield('content')
-        @include('layouts.footer')
+        <welcome-footer></welcome-footer>
     </div>
 
     <script src="{{secure_asset('vendor/jquery/jquery.min.js')}}"></script>

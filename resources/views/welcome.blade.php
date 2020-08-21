@@ -2,7 +2,7 @@
 
 @section('content')
     @include('layouts.navbar')
-    @include('welcome.masthead')
+    <welcome-masthead></welcome-masthead>
     @include('welcome.about')
     @include('welcome.recent_work')
     @include('welcome.contact')

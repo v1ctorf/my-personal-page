@@ -41,18 +41,18 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <div class="row" style="margin-top:100px;">
             <div class="col-lg-6 col-md-6 text-center">
-                
+
                 <img src="{{ secure_asset('img/photo2.jpg') }}" class="rounded-circle" style="max-height:250px;">
-                
+
                 <h4 class="h4 mt-3">{{__('Who am I?')}}</h4>
                 <div class="row">
                     <div class="col-md-10 offset-md-1" style="font-size:95%">
                         <p class="text-secondary mb-0">
-                            {{__('I have 7 years of work experience in software development and a degree in Bachelor of Technology in IT.')}}
+                            {{__('I have 8 years of work experience in software development and a degree in Bachelor of Technology in IT.')}}
                         </p>
                         <p class="text-secondary">
                             {{__('I love to build solutions quickly, measure their results and learn what customers really want.')}}
@@ -65,32 +65,30 @@
             </div>
             @php
                 $skills = [
-                    'HTML' => 90,
-                    'CSS' => 80,
-                    'Bootstrap' => 90,                    
-                    'JavaScript' => 80,
                     'PHP' => 90,
-                    'Laravel' => 80,
-                    'Java' => 50,
                     'Python' => 60,
+                    'Java' => 50,
+                    'Laravel' => 90,
+                    'JavaScript' => 80,
+                    'Vue.js' => 80,
                     'Heroku' => 70,
                     'MySQL' => 80,
                 ];
             @endphp
             <div class="col-lg-6 col-md-6" id="skills">
                 @foreach ($skills as $skill => $pct)
-                    
+
                     <div class="progress mb-2" style="height: 30px;">
-                        <div class="progress-bar bg-info text-left" role="progressbar" 
+                        <div class="progress-bar bg-info text-left" role="progressbar"
                             style="width: {{$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
                             <span class="ml-2 font-weight-bolder text-monospace text-uppercase">{{$skill}}</span>
                         </div>
-                        <div class="progress-bar bg-light text-right" role="progressbar" 
+                        <div class="progress-bar bg-light text-right" role="progressbar"
                             style="width: {{100-$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
                             <span class="mr-2 font-weight-bolder text-monospace text-uppercase text-secondary">{{$pct}}%</span>
                         </div>
                     </div>
-                
+
                 @endforeach
             </div>
         </div>

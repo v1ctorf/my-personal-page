@@ -20,6 +20,9 @@ Vue.component('snapshot-scenario-btn', require('./components/projects/arbitrage/
 Vue.component('de-activate-scenario-btn', require('./components/projects/arbitrage/SwitchScenarioActivationButton').default);
 Vue.component('scenario-details', require('./components/projects/arbitrage/ScenarioDetails').default);
 
+Vue.component('welcome-footer', require('./components/welcome/Footer').default);
+Vue.component('welcome-masthead', require('./components/welcome/Masthead').default);
+
 const app = new Vue({
     el:'#app'
 });
