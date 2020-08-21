@@ -2011,6 +2011,68 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ScenarioDetails.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ScenarioDetails.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ScenarioDetails",
+  props: {
+    scenario: Object
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnapshotAllButton.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SnapshotAllButton.vue?vue&type=script&lang=js& ***!
@@ -38678,7 +38740,14 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.scenario ? _c("div", { staticClass: "row mt-5" }) : _vm._e(),
+    _vm.scenario
+      ? _c(
+          "div",
+          { staticClass: "row mt-5" },
+          [_c("scenario-details", { attrs: { scenario: _vm.scenario } })],
+          1
+        )
+      : _vm._e(),
     _vm._v(" "),
     _vm.scenario
       ? _c("div", { staticClass: "row" }, [
@@ -38747,6 +38816,74 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("canvas", { attrs: { id: "historyChart" } })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ScenarioDetails.vue?vue&type=template&id=e7ed3012&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ScenarioDetails.vue?vue&type=template&id=e7ed3012& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-6" }, [
+    _c("dl", { staticClass: "row text-secondary" }, [
+      _c("dt", { staticClass: "col-md-3" }, [_vm._v("Status")]),
+      _vm._v(" "),
+      _c(
+        "dd",
+        {
+          staticClass: "col-md-9",
+          class: {
+            "text-success": _vm.scenario.active,
+            "text-danger": !_vm.scenario.active
+          }
+        },
+        [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.scenario.active ? "Active" : "Inactive") +
+              "\n            "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("dt", { staticClass: "col-md-3" }, [_vm._v("Description")]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "col-md-9 text-white" }, [
+        _vm._v(
+          "\n                " +
+            _vm._s(_vm.scenario.description) +
+            "\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("dt", { staticClass: "col-md-3" }, [_vm._v("Investment")]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "col-md-9 text-white" }),
+      _vm._v(" "),
+      _c("dt", { staticClass: "col-md-3" }, [_vm._v("Created At")]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "col-md-9 text-white" }),
+      _vm._v(" "),
+      _c("dt", { staticClass: "col-md-3" }, [_vm._v("Updated At")]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "col-md-9 text-white" })
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51062,6 +51199,7 @@ Vue.component('scenario', __webpack_require__(/*! ./components/Scenario.vue */ "
 Vue.component('scenario-chart', __webpack_require__(/*! ./components/ScenarioChart.vue */ "./resources/js/components/ScenarioChart.vue")["default"]);
 Vue.component('snapshot-scenario-btn', __webpack_require__(/*! ./components/SnapshotScenarioButton.vue */ "./resources/js/components/SnapshotScenarioButton.vue")["default"]);
 Vue.component('de-activate-scenario-btn', __webpack_require__(/*! ./components/SwitchScenarioActivationButton */ "./resources/js/components/SwitchScenarioActivationButton.vue")["default"]);
+Vue.component('scenario-details', __webpack_require__(/*! ./components/ScenarioDetails */ "./resources/js/components/ScenarioDetails.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
@@ -51323,6 +51461,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioChart_vue_vue_type_template_id_ed4efa5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioChart_vue_vue_type_template_id_ed4efa5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ScenarioDetails.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/ScenarioDetails.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ScenarioDetails_vue_vue_type_template_id_e7ed3012___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScenarioDetails.vue?vue&type=template&id=e7ed3012& */ "./resources/js/components/ScenarioDetails.vue?vue&type=template&id=e7ed3012&");
+/* harmony import */ var _ScenarioDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScenarioDetails.vue?vue&type=script&lang=js& */ "./resources/js/components/ScenarioDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ScenarioDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ScenarioDetails_vue_vue_type_template_id_e7ed3012___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ScenarioDetails_vue_vue_type_template_id_e7ed3012___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ScenarioDetails.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ScenarioDetails.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/ScenarioDetails.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioDetails.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ScenarioDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ScenarioDetails.vue?vue&type=template&id=e7ed3012&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/ScenarioDetails.vue?vue&type=template&id=e7ed3012& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_template_id_e7ed3012___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioDetails.vue?vue&type=template&id=e7ed3012& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ScenarioDetails.vue?vue&type=template&id=e7ed3012&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_template_id_e7ed3012___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_template_id_e7ed3012___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

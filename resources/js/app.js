@@ -18,6 +18,7 @@ Vue.component('scenario', require('./components/Scenario.vue').default);
 Vue.component('scenario-chart', require('./components/ScenarioChart.vue').default);
 Vue.component('snapshot-scenario-btn', require('./components/SnapshotScenarioButton.vue').default);
 Vue.component('de-activate-scenario-btn', require('./components/SwitchScenarioActivationButton').default);
+Vue.component('scenario-details', require('./components/ScenarioDetails').default);
 
 const app = new Vue({
     el:'#app'
