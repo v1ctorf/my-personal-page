@@ -47,7 +47,10 @@ Route::prefix('arbitrage')->middleware('auth')->group(function(){
         Route::get('snapshot', 'ArbitrageController@snapshotAll')->name('snapshot-all');
 
         Route::prefix('{name}')->group(function(){
-            Route::get('', 'ArbitrageController@show')->name('scenario');
+            Route::get('', function($name){
+                return view('arbitrage.scenario', ['scenarioName' => $name]);
+            })->name('scenario');
+
             Route::get('history', 'ArbitrageController@history')->name('scenario-history');
         });
     });

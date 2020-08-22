@@ -25,15 +25,6 @@ class ArbitrageController extends Controller
     }
 
 
-    public function show($scenarioName)
-    {
-//        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
-//        $latest = json_decode($resp->getBody()->getContents())->data;
-
-        return view('arbitrage.scenario', compact('scenarioName'));
-    }
-
-
     public function updateTxFee($identifier)
     {
         $this->client->patch("currencies/{$identifier}/tx-fee");

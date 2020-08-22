@@ -19,6 +19,7 @@ Vue.component('scenario-chart', require('./components/projects/arbitrage/Scenari
 Vue.component('snapshot-scenario-btn', require('./components/projects/arbitrage/SnapshotScenarioButton.vue').default);
 Vue.component('de-activate-scenario-btn', require('./components/projects/arbitrage/SwitchScenarioActivationButton').default);
 Vue.component('scenario-details', require('./components/projects/arbitrage/ScenarioDetails').default);
+Vue.component('scenario-actions', require('./components/projects/arbitrage/ScenarioActions').default);
 
 Vue.component('welcome-footer', require('./components/welcome/Footer').default);
 Vue.component('welcome-masthead', require('./components/welcome/Masthead').default);
