@@ -1901,6 +1901,9 @@ __webpack_require__.r(__webpack_exports__);
     this.$root.$on('markScenarioAsActive', function (isActive) {
       _this.scenario.active = isActive;
     });
+    this.$root.$on('updateScenarioData', function () {
+      _this.getScenarioData();
+    });
   },
   methods: {
     getScenarioData: function getScenarioData() {
@@ -2063,25 +2066,18 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     scenario: Object
   },
-  mounted: function mounted() {
-    this.$root.$on('updateScenarioData', function (data) {
-      console.log(data.data);
-    });
-  },
   data: function data() {
     return {
-      investmentDetails: this.parseInvestment(this.scenario.investment),
-      updatedAt: {
-        dt: moment(this.scenario.updatedAt).format('YYYY-MM-DD HH:mm:ss'),
-        fromNow: moment(this.scenario.updatedAt).fromNow()
-      },
-      createdAt: {
-        dt: moment(this.scenario.createdAt).format('YYYY-MM-DD HH:mm:ss'),
-        fromNow: moment(this.scenario.createdAt).fromNow()
-      }
+      investmentDetails: this.parseInvestment(this.scenario.investment)
     };
   },
   methods: {
+    parseDt: function parseDt(scenarioDt) {
+      return moment(scenarioDt).format('YYYY-MM-DD HH:mm:ss');
+    },
+    parseDtFromNow: function parseDtFromNow(scenarioDt) {
+      return moment(scenarioDt).fromNow();
+    },
     parseInvestment: function parseInvestment(investment) {
       return Object.keys(investment).map(function (exchange) {
         var currency = Object.keys(investment[exchange])[0],
@@ -2162,10 +2158,12 @@ __webpack_require__.r(__webpack_exports__);
 
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.name, "/snapshot");
       this.isLoading = true;
-      axios.post(uri).then(function (response) {
+      axios.post(uri).then(function () {
         _this.$root.$emit('updateScenarioChart');
 
-        _this.$root.$emit('updateScenarioData', response.data.data);
+        _this.$root.$emit('updateScenarioData');
+
+        _this.$root.$emit('updateScenarioDetails');
 
         _this.isLoading = false;
       });
@@ -39019,11 +39017,13 @@ var render = function() {
       _c("dt", { staticClass: "col-md-3" }, [_vm._v("Created At")]),
       _vm._v(" "),
       _c("dd", { staticClass: "col-md-9 text-white" }, [
-        _vm._v("\n            " + _vm._s(_vm.createdAt.dt) + " "),
+        _vm._v(
+          "\n            " + _vm._s(_vm.parseDt(_vm.scenario.createdAt)) + " "
+        ),
         _c("span", { staticClass: "text-secondary" }, [
           _vm._v(
             "\n                (" +
-              _vm._s(_vm.createdAt.fromNow) +
+              _vm._s(_vm.parseDtFromNow(_vm.scenario.createdAt)) +
               ")\n            "
           )
         ])
@@ -39032,11 +39032,13 @@ var render = function() {
       _c("dt", { staticClass: "col-md-3" }, [_vm._v("Updated At")]),
       _vm._v(" "),
       _c("dd", { staticClass: "col-md-9 text-white" }, [
-        _vm._v("\n            " + _vm._s(_vm.updatedAt.dt) + " "),
+        _vm._v(
+          "\n            " + _vm._s(_vm.parseDt(_vm.scenario.updatedAt)) + " "
+        ),
         _c("span", { staticClass: "text-secondary" }, [
           _vm._v(
             "\n                (" +
-              _vm._s(_vm.updatedAt.fromNow) +
+              _vm._s(_vm.parseDtFromNow(_vm.scenario.updatedAt)) +
               ")\n            "
           )
         ])

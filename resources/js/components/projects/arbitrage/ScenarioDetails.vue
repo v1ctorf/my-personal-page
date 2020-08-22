@@ -20,15 +20,15 @@
 
             <dt class="col-md-3">Created At</dt>
             <dd class="col-md-9 text-white">
-                {{ createdAt.dt }} <span class="text-secondary">
-                    ({{ createdAt.fromNow }})
+                {{ parseDt(scenario.createdAt) }} <span class="text-secondary">
+                    ({{ parseDtFromNow(scenario.createdAt) }})
                 </span>
             </dd>
 
             <dt class="col-md-3">Updated At</dt>
             <dd class="col-md-9 text-white">
-                {{ updatedAt.dt }} <span class="text-secondary">
-                    ({{ updatedAt.fromNow }})
+                {{ parseDt(scenario.updatedAt) }} <span class="text-secondary">
+                    ({{ parseDtFromNow(scenario.updatedAt) }})
                 </span>
             </dd>
         </dl>
@@ -42,25 +42,18 @@
         props: {
             scenario: Object
         },
-        mounted() {
-            this.$root.$on('updateScenarioData', data => {
-                console.log(data.data);
-            });
-        },
         data() {
             return {
                 investmentDetails: this.parseInvestment(this.scenario.investment),
-                updatedAt: {
-                    dt: moment(this.scenario.updatedAt).format('YYYY-MM-DD HH:mm:ss'),
-                    fromNow: moment(this.scenario.updatedAt).fromNow(),
-                },
-                createdAt: {
-                    dt: moment(this.scenario.createdAt).format('YYYY-MM-DD HH:mm:ss'),
-                    fromNow: moment(this.scenario.createdAt).fromNow(),
-                },
             }
         },
         methods: {
+            parseDt(scenarioDt) {
+                return moment(scenarioDt).format('YYYY-MM-DD HH:mm:ss')
+            },
+            parseDtFromNow(scenarioDt) {
+                return moment(scenarioDt).fromNow()
+            },
             parseInvestment(investment) {
                 return Object.keys(investment).map(function(exchange){
                     let currency = Object.keys(investment[exchange])[0],

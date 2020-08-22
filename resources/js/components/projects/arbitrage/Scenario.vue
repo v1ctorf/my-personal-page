@@ -61,7 +61,11 @@
 
             this.$root.$on('markScenarioAsActive', isActive => {
                 this.scenario.active = isActive;
-            })
+            });
+
+            this.$root.$on('updateScenarioData', () => {
+                this.getScenarioData();
+            });
         },
         methods: {
             getScenarioData() {

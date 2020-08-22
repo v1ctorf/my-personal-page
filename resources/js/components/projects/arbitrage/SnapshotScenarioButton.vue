@@ -16,11 +16,13 @@
         methods: {
             takeSnapshot() {
                 let uri = `${this.$apiBaseUri}scenarios/${this.name}/snapshot`;
+
                 this.isLoading = true;
 
-                axios.post(uri).then(response => {
+                axios.post(uri).then(() => {
                     this.$root.$emit('updateScenarioChart');
-                    this.$root.$emit('updateScenarioData', response.data.data);
+                    this.$root.$emit('updateScenarioData');
+                    this.$root.$emit('updateScenarioDetails');
                     this.isLoading = false;
                 });
             }
