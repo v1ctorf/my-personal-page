@@ -2090,10 +2090,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioSteps.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioSteps.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2118,22 +2118,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ScenarioStepTrade",
+  props: ['step']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2154,6 +2154,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ScenarioStepTransfer",
+  props: ['step']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioSteps.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioSteps.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioSteps",
   props: ['scenario'],
   mounted: function mounted() {
@@ -2161,7 +2189,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      steps: null
+      steps: []
     };
   },
   methods: {
@@ -39282,6 +39310,95 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("dd", { staticClass: "col-md-10 text-white" }, [
+    _c("i", { staticClass: "fas fa-exchange-alt" }),
+    _vm._v(
+      " " +
+        _vm._s(
+          _vm.step.action[0].toUpperCase() + _vm.step.action.substring(1)
+        ) +
+        " " +
+        _vm._s(_vm.step.details.pair.toUpperCase()) +
+        " in " +
+        _vm._s(
+          _vm.step.details.exchange
+            .split("-")
+            .join(" ")
+            .toUpperCase()
+        ) +
+        "\n\n"
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("dd", { staticClass: "col-md-10 text-white" }, [
+    _c("i", { staticClass: "fas fa-paper-plane" }),
+    _vm._v(
+      " " +
+        _vm._s(_vm.step.amount.currency.toUpperCase()) +
+        " " +
+        _vm._s(_vm.step.amount.value) +
+        " from " +
+        _vm._s(
+          _vm.step.details.sender.identifier
+            .split("-")
+            .join(" ")
+            .toUpperCase()
+        ) +
+        " to " +
+        _vm._s(
+          _vm.step.details.receiver.identifier
+            .split("-")
+            .join(" ")
+            .toUpperCase()
+        ) +
+        "\n\n    "
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioSteps.vue?vue&type=template&id=2d5a1e07&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioSteps.vue?vue&type=template&id=2d5a1e07&scoped=true& ***!
@@ -39308,15 +39425,9 @@ var render = function() {
               _vm._v("Step " + _vm._s(i + 1))
             ]),
             _vm._v(" "),
-            _c("dd", { staticClass: "col-md-10 text-white" }, [
-              _c("i", {
-                staticClass: "fas",
-                class: {
-                  "fa-paper-plane": step.action == "transfer",
-                  "fa-exchange-alt": step.action != "transfer"
-                }
-              })
-            ])
+            step.action == "transfer"
+              ? _c("scenario-step-transfer", { attrs: { step: step } })
+              : _c("scenario-step-trade", { attrs: { step: step } })
           ]
         })
       ],
@@ -51898,6 +52009,8 @@ Vue.component('snapshot-scenario-btn', __webpack_require__(/*! ./components/proj
 Vue.component('de-activate-scenario-btn', __webpack_require__(/*! ./components/projects/arbitrage/SwitchScenarioActivationButton */ "./resources/js/components/projects/arbitrage/SwitchScenarioActivationButton.vue")["default"]);
 Vue.component('scenario-details', __webpack_require__(/*! ./components/projects/arbitrage/ScenarioDetails */ "./resources/js/components/projects/arbitrage/ScenarioDetails.vue")["default"]);
 Vue.component('scenario-steps', __webpack_require__(/*! ./components/projects/arbitrage/ScenarioSteps */ "./resources/js/components/projects/arbitrage/ScenarioSteps.vue")["default"]);
+Vue.component('scenario-step-trade', __webpack_require__(/*! ./components/projects/arbitrage/ScenarioStepTrade */ "./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue")["default"]);
+Vue.component('scenario-step-transfer', __webpack_require__(/*! ./components/projects/arbitrage/ScenarioStepTransfer */ "./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue")["default"]);
 Vue.component('welcome-footer', __webpack_require__(/*! ./components/welcome/Footer */ "./resources/js/components/welcome/Footer.vue")["default"]);
 Vue.component('footer-icon', __webpack_require__(/*! ./components/welcome/FooterIcon */ "./resources/js/components/welcome/FooterIcon.vue")["default"]);
 Vue.component('welcome-masthead', __webpack_require__(/*! ./components/welcome/Masthead */ "./resources/js/components/welcome/Masthead.vue")["default"]);
@@ -52232,6 +52345,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_template_id_27eb65a2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioDetails_vue_vue_type_template_id_27eb65a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ScenarioStepTrade_vue_vue_type_template_id_71949f50_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true& */ "./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true&");
+/* harmony import */ var _ScenarioStepTrade_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScenarioStepTrade.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ScenarioStepTrade_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ScenarioStepTrade_vue_vue_type_template_id_71949f50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ScenarioStepTrade_vue_vue_type_template_id_71949f50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "71949f50",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projects/arbitrage/ScenarioStepTrade.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTrade_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioStepTrade.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTrade_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true& ***!
+  \*********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTrade_vue_vue_type_template_id_71949f50_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTrade.vue?vue&type=template&id=71949f50&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTrade_vue_vue_type_template_id_71949f50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTrade_vue_vue_type_template_id_71949f50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ScenarioStepTransfer_vue_vue_type_template_id_2eea3127_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true& */ "./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true&");
+/* harmony import */ var _ScenarioStepTransfer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScenarioStepTransfer.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ScenarioStepTransfer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ScenarioStepTransfer_vue_vue_type_template_id_2eea3127_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ScenarioStepTransfer_vue_vue_type_template_id_2eea3127_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2eea3127",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTransfer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioStepTransfer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTransfer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true&":
+/*!************************************************************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true& ***!
+  \************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTransfer_vue_vue_type_template_id_2eea3127_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioStepTransfer.vue?vue&type=template&id=2eea3127&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTransfer_vue_vue_type_template_id_2eea3127_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioStepTransfer_vue_vue_type_template_id_2eea3127_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

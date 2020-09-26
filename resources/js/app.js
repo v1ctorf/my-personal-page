@@ -20,6 +20,8 @@ Vue.component('snapshot-scenario-btn', require('./components/projects/arbitrage/
 Vue.component('de-activate-scenario-btn', require('./components/projects/arbitrage/SwitchScenarioActivationButton').default);
 Vue.component('scenario-details', require('./components/projects/arbitrage/ScenarioDetails').default);
 Vue.component('scenario-steps', require('./components/projects/arbitrage/ScenarioSteps').default);
+Vue.component('scenario-step-trade', require('./components/projects/arbitrage/ScenarioStepTrade').default);
+Vue.component('scenario-step-transfer', require('./components/projects/arbitrage/ScenarioStepTransfer').default);
 
 Vue.component('welcome-footer', require('./components/welcome/Footer').default);
 Vue.component('footer-icon', require('./components/welcome/FooterIcon').default);
