@@ -73,6 +73,7 @@
                     'Vue.js' => 80,
                     'Heroku' => 70,
                     'MySQL' => 80,
+                    'Shell Script' => 50,
                 ];
             @endphp
             <div class="col-lg-6 col-md-6" id="skills">

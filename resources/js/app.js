@@ -22,6 +22,7 @@ Vue.component('scenario-details', require('./components/projects/arbitrage/Scena
 Vue.component('scenario-actions', require('./components/projects/arbitrage/ScenarioActions').default);
 
 Vue.component('welcome-footer', require('./components/welcome/Footer').default);
+Vue.component('footer-icon', require('./components/welcome/FooterIcon').default);
 Vue.component('welcome-masthead', require('./components/welcome/Masthead').default);
 
 const app = new Vue({

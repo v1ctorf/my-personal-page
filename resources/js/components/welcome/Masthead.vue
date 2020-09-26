@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white font-weight-light mb-5">
-                        I am a Senior Software Developer and I can help you to design, build and maintain your web applications.
+                        I am a Senior Software Developer and I can help you to design, build and maintain solutions for your business.
                     </p>
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">View My Work</a>
                 </div>

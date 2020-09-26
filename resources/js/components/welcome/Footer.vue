@@ -1,43 +1,8 @@
 <template>
-    <!-- Footer -->
     <footer class="bg-dark py-4">
         <div class="container">
             <div class="row text-center">
-                <div class="col mb-2">
-                    <a href="https://linkedin.com/in/fvictor" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin-in fa-2x text-secondary"></i>
-                    </a>
-                </div>
-                <div class="col mb-2">
-                    <a href="https://github.com/v1ctorf/" target="_blank" title="Github">
-                        <i class="fab fa-github fa-2x text-secondary"></i>
-                    </a>
-                </div>
-                <div class="col mb-2">
-                    <a href="https://bitbucket.org/v1ctorf/" target="_blank" title="BitBucket">
-                        <i class="fab fa-bitbucket fa-2x text-secondary"></i>
-                    </a>
-                </div>
-                <div class="col mb-2">
-                    <a href="https://stackoverflow.com/users/1810183/victor-f" target="_blank" title="StackOverflow">
-                        <i class="fab fa-stack-overflow fa-2x text-secondary"></i>
-                    </a>
-                </div>
-                <div class="col mb-2">
-                    <a href="https://www.hackerrank.com/v1ctorf" target="_blank" title="HackerRank">
-                        <i class="fab fa-hackerrank fa-2x text-secondary"></i>
-                    </a>
-                </div>
-                <div class="col mb-2">
-                    <a href="https://www.goodreads.com/victorf" target="_blank" title="Goodreads">
-                        <i class="fab fa-goodreads fa-2x text-secondary"></i>
-                    </a>
-                </div>
-                <div class="col mb-2">
-                    <a href="https://www.chess.com/member/victorfs" target="_blank" title="Chess.com">
-                        <i class="fas fa-chess fa-2x text-secondary"></i>
-                    </a>
-                </div>
+                <footer-icon v-for="(icon, i) in icons" :key="i" :icon="icon"></footer-icon>
             </div>
             <hr>
             <div class="row text-center mt-4">
@@ -51,7 +16,42 @@
 
 <script>
     export default {
-        name: "Footer"
+        name: "Footer",
+        data() {
+            return {
+                icons: [
+                    {
+                        url:"https://linkedin.com/in/fvictor",
+                        title:"LinkedIn",
+                        fa:"fab fa-linkedin-in"
+                    },{
+                        url:"https://github.com/v1ctorf/",
+                        title:"Github",
+                        fa:"fab fa-github"
+                    },{
+                        url:"https://bitbucket.org/v1ctorf/",
+                        title:"BitBucket",
+                        fa:"fab fa-bitbucket"
+                    },{
+                        url:"https://stackoverflow.com/users/1810183/victor-f",
+                        title:"StackOverflow",
+                        fa:"fab fa-stack-overflow"
+                    },{
+                        url:"https://www.hackerrank.com/v1ctorf",
+                        title:"HackerRank",
+                        fa:"fab fa-hackerrank"
+                    },{
+                        url:"https://www.goodreads.com/victorf",
+                        title:"Goodreads",
+                        fa:"fab fa-goodreads"
+                    },{
+                        url:"https://www.chess.com/member/victorfs",
+                        title:"Chess.com",
+                        fa:"fas fa-chess"
+                    }
+                ]
+            }
+        }
     }
 </script>
 
