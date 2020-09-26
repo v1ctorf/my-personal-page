@@ -1,12 +1,13 @@
 <template>
     <div class="col-md-6">
-        <dl class="row text-secondary">
+        <dl v-if="steps.length > 0" class="row text-secondary">
             <template v-for="(step, i) in steps">
                 <dt class="col-md-2 text-capitalize">Step {{ i + 1 }}</dt>
                 <scenario-step-transfer v-if="step.action == 'transfer'" :step="step"></scenario-step-transfer>
                 <scenario-step-trade v-else :step="step"></scenario-step-trade>
             </template>
         </dl>
+        <p v-else class="text-white">Loading...</p>
     </div>
 </template>
 

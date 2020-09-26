@@ -2115,9 +2115,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioStepTrade",
   props: ['step']
@@ -2151,8 +2148,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioStepTransfer",
   props: ['step']
@@ -2169,6 +2164,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -39341,8 +39337,44 @@ var render = function() {
             .join(" ")
             .toUpperCase()
         ) +
-        "\n\n"
-    )
+        "\n    "
+    ),
+    _c("br"),
+    _c("small", { staticClass: "text-secondary" }, [
+      _vm.step.details.fee.fees_page_verified_in
+        ? _c("i", {
+            staticClass: "fa fa-check-circle",
+            attrs: {
+              title:
+                "Fees verified in " +
+                _vm.step.details.fee.fees_page_verified_in +
+                "."
+            }
+          })
+        : _c("i", {
+            staticClass: "fa fa-question-circle",
+            attrs: { title: "Exchange fees to be verified." }
+          }),
+      _vm._v(
+        " (" +
+          _vm._s(_vm.step.amount.currency.toUpperCase()) +
+          " " +
+          _vm._s(parseFloat(_vm.step.amount.value).toString()) +
+          " " +
+          _vm._s(_vm.step.action == "buy" ? "/" : "*") +
+          " " +
+          _vm._s(_vm.step.result.currency.toUpperCase()) +
+          " " +
+          _vm._s(parseFloat(_vm.step.details.ticker).toString()) +
+          ") - " +
+          _vm._s(parseFloat(_vm.step.details.fee.percentage).toString()) +
+          "% = " +
+          _vm._s(_vm.step.result.currency.toUpperCase()) +
+          " " +
+          _vm._s(parseFloat(_vm.step.result.value).toString()) +
+          "\n    "
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -39388,8 +39420,38 @@ var render = function() {
             .join(" ")
             .toUpperCase()
         ) +
-        "\n\n    "
-    )
+        "\n    "
+    ),
+    _c("br"),
+    _c("small", { staticClass: "text-secondary" }, [
+      _vm.step.details.sender.feesVerifiedIn
+        ? _c("i", {
+            staticClass: "fa fa-check-circle",
+            attrs: {
+              title:
+                "Fee verified in " +
+                _vm.step.details.sender.feesVerifiedIn +
+                "."
+            }
+          })
+        : _c("i", {
+            staticClass: "fa fa-question-circle",
+            attrs: { title: "Fee had expired." }
+          }),
+      _vm._v(
+        " " +
+          _vm._s(parseFloat(_vm.step.amount.value).toString()) +
+          " - " +
+          _vm._s(parseFloat(_vm.step.details.txFee.value).toString()) +
+          " - " +
+          _vm._s(parseFloat(_vm.step.details.exchangesFees).toString()) +
+          " = " +
+          _vm._s(_vm.step.result.currency.toUpperCase()) +
+          " " +
+          _vm._s(parseFloat(_vm.step.result.value).toString()) +
+          "\n    "
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -39415,24 +39477,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-6" }, [
-    _c(
-      "dl",
-      { staticClass: "row text-secondary" },
-      [
-        _vm._l(_vm.steps, function(step, i) {
-          return [
-            _c("dt", { staticClass: "col-md-2 text-capitalize" }, [
-              _vm._v("Step " + _vm._s(i + 1))
-            ]),
-            _vm._v(" "),
-            step.action == "transfer"
-              ? _c("scenario-step-transfer", { attrs: { step: step } })
-              : _c("scenario-step-trade", { attrs: { step: step } })
-          ]
-        })
-      ],
-      2
-    )
+    _vm.steps.length > 0
+      ? _c(
+          "dl",
+          { staticClass: "row text-secondary" },
+          [
+            _vm._l(_vm.steps, function(step, i) {
+              return [
+                _c("dt", { staticClass: "col-md-2 text-capitalize" }, [
+                  _vm._v("Step " + _vm._s(i + 1))
+                ]),
+                _vm._v(" "),
+                step.action == "transfer"
+                  ? _c("scenario-step-transfer", { attrs: { step: step } })
+                  : _c("scenario-step-trade", { attrs: { step: step } })
+              ]
+            })
+          ],
+          2
+        )
+      : _c("p", { staticClass: "text-white" }, [_vm._v("Loading...")])
   ])
 }
 var staticRenderFns = []
