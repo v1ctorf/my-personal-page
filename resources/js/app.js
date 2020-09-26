@@ -24,6 +24,7 @@ Vue.component('scenario-actions', require('./components/projects/arbitrage/Scena
 Vue.component('welcome-footer', require('./components/welcome/Footer').default);
 Vue.component('footer-icon', require('./components/welcome/FooterIcon').default);
 Vue.component('welcome-masthead', require('./components/welcome/Masthead').default);
+Vue.component('skills-chart', require('./components/welcome/SkillsChart').default);
 
 const app = new Vue({
     el:'#app'

@@ -63,35 +63,9 @@
                     </div>
                 </div>
             </div>
-            @php
-                $skills = [
-                    'PHP' => 90,
-                    'Python' => 60,
-                    'Java' => 50,
-                    'Laravel' => 90,
-                    'JavaScript' => 80,
-                    'Vue.js' => 80,
-                    'Heroku' => 70,
-                    'MySQL' => 80,
-                    'Shell Script' => 50,
-                ];
-            @endphp
-            <div class="col-lg-6 col-md-6" id="skills">
-                @foreach ($skills as $skill => $pct)
 
-                    <div class="progress mb-2" style="height: 30px;">
-                        <div class="progress-bar bg-info text-left" role="progressbar"
-                            style="width: {{$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                            <span class="ml-2 font-weight-bolder text-monospace text-uppercase">{{$skill}}</span>
-                        </div>
-                        <div class="progress-bar bg-light text-right" role="progressbar"
-                            style="width: {{100-$pct}}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                            <span class="mr-2 font-weight-bolder text-monospace text-uppercase text-secondary">{{$pct}}%</span>
-                        </div>
-                    </div>
+            <skills-chart></skills-chart>
 
-                @endforeach
-            </div>
         </div>
     </div>
 </section>
