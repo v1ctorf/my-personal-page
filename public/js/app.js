@@ -1882,6 +1882,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Scenario',
@@ -1937,7 +1938,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ScenarioActions" //        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
+  name: "ScenarioActions",
+  props: ['scenario'],
+  mounted: function mounted() {
+    this.getLatestHistory();
+  },
+  data: function data() {
+    return {
+      actions: null
+    };
+  },
+  methods: {
+    getLatestHistory: function getLatestHistory() {
+      var _this = this;
+
+      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.scenario.name, "/history/latest");
+      axios.get(uri).then(function (response) {
+        _this.actions = response.data.data.steps; // document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
+      });
+    }
+  } //        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
   //        $latest = json_decode($resp->getBody()->getContents())->data;
 
 });
@@ -39032,7 +39052,11 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "row mt-5" },
-          [_c("scenario-details", { attrs: { scenario: _vm.scenario } })],
+          [
+            _c("scenario-details", { attrs: { scenario: _vm.scenario } }),
+            _vm._v(" "),
+            _c("scenario-actions", { attrs: { scenario: _vm.scenario } })
+          ],
           1
         )
       : _vm._e(),

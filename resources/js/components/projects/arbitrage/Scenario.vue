@@ -18,6 +18,7 @@
 
         <div v-if="scenario" class="row mt-5">
             <scenario-details :scenario="scenario"></scenario-details>
+            <scenario-actions :scenario="scenario"></scenario-actions>
 <!--            {{&#45;&#45;        @include('arbitrage.actions')&#45;&#45;}}-->
         </div>
 
