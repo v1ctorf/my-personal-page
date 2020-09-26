@@ -2194,12 +2194,10 @@ __webpack_require__.r(__webpack_exports__);
 
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.scenario.name, "/history/latest");
       axios.get(uri).then(function (response) {
-        _this.steps = response.data.data.steps; // document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
+        _this.steps = response.data.data.steps;
       });
     }
-  } //        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
-  //        $latest = json_decode($resp->getBody()->getContents())->data;
-
+  }
 });
 
 /***/ }),

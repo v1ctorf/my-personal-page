@@ -29,12 +29,10 @@
 
                 axios.get(uri).then(response => {
                     this.steps = response.data.data.steps;
-                    // document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
+
                 });
             }
         }
-        //        $resp = $this->client->get("scenarios/{$scenarioName}/history/latest");
-//        $latest = json_decode($resp->getBody()->getContents())->data;
     }
 </script>
 
