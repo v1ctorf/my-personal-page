@@ -7,49 +7,48 @@
         <p v-if="history.length == 0" class="text-white">Loading...</p>
 
         <div v-else class="row">
-            <table class="table table-dark text-center table-sm table-hover text-center mt-3">
-                <thead class="thead-dark">
-                    <tr>
-                        <th rowspan="2">Created At</th>
-                        <th colspan="3">Investment</th>
-                        <th colspan="3">Result</th>
-                        <th colspan="3">Premium</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">USD</th>
-                        <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
-                        <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
-                        <th scope="col">USD</th>
-                        <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
-                        <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
-                        <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
-                        <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
-                        <th scope="col">USD %</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="snapshot in history" :class="getPremiumCssClass(snapshot.premiumPct)">
-                        <td>{{ getDt(snapshot.createdAt) }}</td>
-                        <td>{{ snapshot.inUSD }}</td>
-                        <td>{{ snapshot.investment[investment.a.exchange][investment.a.currency] }}</td>
-                        <td>{{ snapshot.investment[investment.b.exchange][investment.b.currency] }}</td>
-                        <td>{{ snapshot.resultInUSD }}</td>
-                        <td>{{ snapshot.result[investment.a.currency] }}</td>
-                        <td>{{ snapshot.result[investment.b.currency] }}</td>
-                        <td>{{ snapshot.premium[investment.a.currency] }}</td>
-                        <td>{{ snapshot.premium[investment.b.currency] }}</td>
-                        <td>{{ snapshot.premiumPct }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-dark text-center table-sm table-hover text-center mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th rowspan="2">Created At</th>
+                            <th colspan="3">Investment</th>
+                            <th colspan="3">Result</th>
+                            <th colspan="3">Premium</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">USD</th>
+                            <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
+                            <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
+                            <th scope="col">diff USD</th>
+                            <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
+                            <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
+                            <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
+                            <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
+                            <th scope="col">var USD %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="snapshot in history" :class="getPremiumCssClass(snapshot.premiumPct)">
+                            <td>{{ getDt(snapshot.createdAt) }}</td>
+                            <td>{{ snapshot.inUSD }}</td>
+                            <td>{{ fmt(snapshot.investment[investment.a.exchange][investment.a.currency]) }}</td>
+                            <td>{{ fmt(snapshot.investment[investment.b.exchange][investment.b.currency]) }}</td>
+                            <td>{{ snapshot.resultInUSD }}</td>
+                            <td>{{ fmt(snapshot.result[investment.a.currency]) }}</td>
+                            <td>{{ fmt(snapshot.result[investment.b.currency]) }}</td>
+                            <td>{{ fmt(snapshot.premium[investment.a.currency]) }}</td>
+                            <td>{{ fmt(snapshot.premium[investment.b.currency]) }}</td>
+                            <td>{{ snapshot.premiumPct }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div class="row">
+        <div v-if="history.length > 0" class="row">
             <div class="col-md-12 text-right">
-                <a href="#" class="btn btn-outline-secondary">
-<!--                <a href="{{ route('scenario', ['name' => $scenario->name]) }}" class="btn btn-outline-secondary">-->
-                    Back
-                </a>
+                <a :href="`/arbitrage/scenarios/${scenarioName}`" class="btn btn-outline-secondary">Back</a>
             </div>
         </div>
     </div>
@@ -72,6 +71,9 @@
             this.getHistory();
         },
         methods: {
+            fmt(value) {
+                return parseFloat(value).toString()
+            },
             setCurrencies(snapshot) {
                 let exchanges = Object.keys(snapshot.investment);
 

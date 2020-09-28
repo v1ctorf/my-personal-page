@@ -2154,7 +2154,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioHistory",
   props: ['scenarioName'],
@@ -2171,6 +2170,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getHistory();
   },
   methods: {
+    fmt: function fmt(value) {
+      return parseFloat(value).toString();
+    },
     setCurrencies: function setCurrencies(snapshot) {
       var exchanges = Object.keys(snapshot.investment);
       this.investment.a = {
@@ -39498,117 +39500,154 @@ var render = function() {
     _vm.history.length == 0
       ? _c("p", { staticClass: "text-white" }, [_vm._v("Loading...")])
       : _c("div", { staticClass: "row" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "table table-dark text-center table-sm table-hover text-center mt-3"
-            },
-            [
-              _c("thead", { staticClass: "thead-dark" }, [
-                _vm._m(0),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "table table-dark text-center table-sm table-hover text-center mt-3"
+              },
+              [
+                _c("thead", { staticClass: "thead-dark" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("diff USD")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("var USD %")])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("USD %")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.history, function(snapshot) {
-                  return _c(
-                    "tr",
-                    { class: _vm.getPremiumCssClass(snapshot.premiumPct) },
-                    [
-                      _c("td", [_vm._v(_vm._s(_vm.getDt(snapshot.createdAt)))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            snapshot.investment[_vm.investment.a.exchange][
-                              _vm.investment.a.currency
-                            ]
+                _c(
+                  "tbody",
+                  _vm._l(_vm.history, function(snapshot) {
+                    return _c(
+                      "tr",
+                      { class: _vm.getPremiumCssClass(snapshot.premiumPct) },
+                      [
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.getDt(snapshot.createdAt)))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.fmt(
+                                snapshot.investment[_vm.investment.a.exchange][
+                                  _vm.investment.a.currency
+                                ]
+                              )
+                            )
                           )
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            snapshot.investment[_vm.investment.b.exchange][
-                              _vm.investment.b.currency
-                            ]
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.fmt(
+                                snapshot.investment[_vm.investment.b.exchange][
+                                  _vm.investment.b.currency
+                                ]
+                              )
+                            )
                           )
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(snapshot.result[_vm.investment.a.currency])
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(snapshot.result[_vm.investment.b.currency])
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(snapshot.premium[_vm.investment.a.currency])
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(snapshot.premium[_vm.investment.b.currency])
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(snapshot.premiumPct))])
-                    ]
-                  )
-                }),
-                0
-              )
-            ]
-          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.fmt(
+                                snapshot.result[_vm.investment.a.currency]
+                              )
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.fmt(
+                                snapshot.result[_vm.investment.b.currency]
+                              )
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.fmt(
+                                snapshot.premium[_vm.investment.a.currency]
+                              )
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.fmt(
+                                snapshot.premium[_vm.investment.b.currency]
+                              )
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(snapshot.premiumPct))])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]
+            )
+          ])
         ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm.history.length > 0
+      ? _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 text-right" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-outline-secondary",
+                attrs: { href: "/arbitrage/scenarios/" + _vm.scenarioName }
+              },
+              [_vm._v("Back")]
+            )
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -39624,20 +39663,6 @@ var staticRenderFns = [
       _c("th", { attrs: { colspan: "3" } }, [_vm._v("Result")]),
       _vm._v(" "),
       _c("th", { attrs: { colspan: "3" } }, [_vm._v("Premium")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-right" }, [
-        _c(
-          "a",
-          { staticClass: "btn btn-outline-secondary", attrs: { href: "#" } },
-          [_vm._v("\n                    Back\n                ")]
-        )
-      ])
     ])
   }
 ]
