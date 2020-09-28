@@ -2185,8 +2185,16 @@ __webpack_require__.r(__webpack_exports__);
 
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.scenarioName, "/history");
       axios.get(uri).then(function (response) {
-        _this.history = response.data.data; // document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
+        _this.history = response.data.data;
       });
+    },
+    getPremiumCssClass: function getPremiumCssClass(premiumPct) {
+      if (premiumPct > 0.3) return 'table-success';
+      if (premiumPct >= 0) return 'table-warning';
+      return 'text-white';
+    },
+    getDt: function getDt(dt) {
+      return moment(dt).format('YYYY-MM-DD HH:mm:ss');
     }
   }
 });
@@ -39483,46 +39491,52 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "table",
-        {
-          staticClass:
-            "table table-dark table-borderless table-hover table-sm text-center mt-3"
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
+    _vm.history.length == 0
+      ? _c("p", { staticClass: "text-white" }, [_vm._v("Loading...")])
+      : _c("div", { staticClass: "row" }, [
           _c(
-            "tbody",
-            _vm._l(_vm.history, function(snapshot) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(snapshot.createdAt))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(snapshot.premiumPct))])
-              ])
-            }),
-            0
+            "table",
+            {
+              staticClass:
+                "table table-dark text-center table-sm table-hover text-center mt-3"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.history, function(snapshot) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(_vm.getDt(snapshot.createdAt)))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { class: _vm.getPremiumCssClass(snapshot.premiumPct) },
+                      [_vm._v(_vm._s(snapshot.premiumPct))]
+                    )
+                  ])
+                }),
+                0
+              )
+            ]
           )
-        ]
-      )
-    ]),
+        ]),
     _vm._v(" "),
     _vm._m(1)
   ])

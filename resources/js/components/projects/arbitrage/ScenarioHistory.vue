@@ -4,8 +4,10 @@
             <a href="#" class="text-secondary">{{`${scenarioName} - History`}}</a>
         </h2>
 
-        <div class="row">
-            <table class="table table-dark table-borderless table-hover table-sm text-center mt-3">
+        <p v-if="history.length == 0" class="text-white">Loading...</p>
+
+        <div v-else class="row">
+            <table class="table table-dark text-center table-sm table-hover text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
                         <th rowspan="2">Created At</th>
@@ -27,7 +29,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="snapshot in history">
-                        <td>{{ snapshot.createdAt }}</td>
+                        <td>{{ getDt(snapshot.createdAt) }}</td>
                         <td>{{ snapshot.inUSD }}</td>
                         <td></td>
                         <td></td>
@@ -36,12 +38,10 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>{{ snapshot.premiumPct }}</td>
+                        <td :class="getPremiumCssClass(snapshot.premiumPct)">{{ snapshot.premiumPct }}</td>
                     </tr>
 <!--                    @foreach (json_decode($history)->data as $h)-->
 <!--                        <tr class="-->
-<!--                                {{ $h->premiumPct > 0.3 ? 'table-success' : ( $h->premiumPct >= 0 ? 'table-warning' : '')}}-->
-<!--                                {{ $h->premiumPct > 0 ? 'text-dark' : ''}}-->
 <!--                                ">-->
 <!--                            <td>{{ Carbon\Carbon::parse($h->createdAt)->format('Y-m-d H:i:s') }}</td>-->
 <!--                            <td>{{ number_format($h->investment, 6) }}</td>-->
@@ -87,8 +87,17 @@
 
                 axios.get(uri).then(response => {
                     this.history = response.data.data;
-                    // document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
                 });
+            },
+            getPremiumCssClass(premiumPct) {
+                if (premiumPct > 0.3) return 'table-success';
+
+                if (premiumPct >= 0) return 'table-warning';
+
+                return 'text-white';
+            },
+            getDt(dt) {
+                return moment(dt).format('YYYY-MM-DD HH:mm:ss');
             }
         }
     }
