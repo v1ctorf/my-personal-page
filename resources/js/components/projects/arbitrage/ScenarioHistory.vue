@@ -17,41 +17,29 @@
                     </tr>
                     <tr>
                         <th scope="col">USD</th>
-                        <th scope="col">A</th>
-                        <th scope="col">B</th>
+                        <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
+                        <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
                         <th scope="col">USD</th>
-                        <th scope="col">A</th>
-                        <th scope="col">B</th>
-                        <th scope="col">A</th>
-                        <th scope="col">B</th>
+                        <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
+                        <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
+                        <th scope="col">{{ investment.a.currency.toUpperCase() }}</th>
+                        <th scope="col">{{ investment.b.currency.toUpperCase() }}</th>
                         <th scope="col">USD %</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="snapshot in history">
+                    <tr v-for="snapshot in history" :class="getPremiumCssClass(snapshot.premiumPct)">
                         <td>{{ getDt(snapshot.createdAt) }}</td>
                         <td>{{ snapshot.inUSD }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ snapshot.investment[investment.a.exchange][investment.a.currency] }}</td>
+                        <td>{{ snapshot.investment[investment.b.exchange][investment.b.currency] }}</td>
                         <td>{{ snapshot.resultInUSD }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td :class="getPremiumCssClass(snapshot.premiumPct)">{{ snapshot.premiumPct }}</td>
+                        <td>{{ snapshot.result[investment.a.currency] }}</td>
+                        <td>{{ snapshot.result[investment.b.currency] }}</td>
+                        <td>{{ snapshot.premium[investment.a.currency] }}</td>
+                        <td>{{ snapshot.premium[investment.b.currency] }}</td>
+                        <td>{{ snapshot.premiumPct }}</td>
                     </tr>
-<!--                    @foreach (json_decode($history)->data as $h)-->
-<!--                        <tr class="-->
-<!--                                ">-->
-<!--                            <td>{{ Carbon\Carbon::parse($h->createdAt)->format('Y-m-d H:i:s') }}</td>-->
-<!--                            <td>{{ number_format($h->investment, 6) }}</td>-->
-<!--                            <td>{{ $h->result }}</td>-->
-<!--                            <td>{{ $h->inUSD }}</td>-->
-<!--                            <td>{{ $h->resultInUSD }}</td>-->
-<!--                            <td>{{ $h->premium }}</td>-->
-<!--                            <td>{{ $h->premiumPct }}</td>-->
-<!--                        </tr>-->
-<!--                    @endforeach-->
                 </tbody>
             </table>
         </div>
@@ -74,25 +62,41 @@
         data() {
             return {
                 history: [],
-
+                investment: {
+                    a: null,
+                    b: null
+                }
             }
         },
         mounted() {
-            // alert(this.scenarioName)
             this.getHistory();
         },
         methods: {
+            setCurrencies(snapshot) {
+                let exchanges = Object.keys(snapshot.investment);
+
+                this.investment.a = {
+                    currency: Object.keys(snapshot.investment[exchanges[0]])[0],
+                    exchange: exchanges[0]
+                }
+
+                this.investment.b = {
+                    currency: Object.keys(snapshot.investment[exchanges[1]])[0],
+                    exchange: exchanges[1]
+                }
+            },
             getHistory() {
                 let uri = `${this.$apiBaseUri}scenarios/${this.scenarioName}/history`;
 
                 axios.get(uri).then(response => {
                     this.history = response.data.data;
+                    this.setCurrencies(this.history[0]);
                 });
             },
             getPremiumCssClass(premiumPct) {
-                if (premiumPct > 0.3) return 'table-success';
+                if (premiumPct > 0.3) return 'text-success';
 
-                if (premiumPct >= 0) return 'table-warning';
+                if (premiumPct >= 0) return 'text-warning';
 
                 return 'text-white';
             },
@@ -102,7 +106,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

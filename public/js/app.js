@@ -2155,42 +2155,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioHistory",
   props: ['scenarioName'],
   data: function data() {
     return {
-      history: []
+      history: [],
+      investment: {
+        a: null,
+        b: null
+      }
     };
   },
   mounted: function mounted() {
-    // alert(this.scenarioName)
     this.getHistory();
   },
   methods: {
+    setCurrencies: function setCurrencies(snapshot) {
+      var exchanges = Object.keys(snapshot.investment);
+      this.investment.a = {
+        currency: Object.keys(snapshot.investment[exchanges[0]])[0],
+        exchange: exchanges[0]
+      };
+      this.investment.b = {
+        currency: Object.keys(snapshot.investment[exchanges[1]])[0],
+        exchange: exchanges[1]
+      };
+    },
     getHistory: function getHistory() {
       var _this = this;
 
       var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.scenarioName, "/history");
       axios.get(uri).then(function (response) {
         _this.history = response.data.data;
+
+        _this.setCurrencies(_this.history[0]);
       });
     },
     getPremiumCssClass: function getPremiumCssClass(premiumPct) {
-      if (premiumPct > 0.3) return 'table-success';
-      if (premiumPct >= 0) return 'table-warning';
+      if (premiumPct > 0.3) return 'text-success';
+      if (premiumPct >= 0) return 'text-warning';
       return 'text-white';
     },
     getDt: function getDt(dt) {
@@ -39469,10 +39473,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39501,36 +39505,102 @@ var render = function() {
                 "table table-dark text-center table-sm table-hover text-center mt-3"
             },
             [
-              _vm._m(0),
+              _c("thead", { staticClass: "thead-dark" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.investment.a.currency.toUpperCase()))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.investment.b.currency.toUpperCase()))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("USD %")])
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "tbody",
                 _vm._l(_vm.history, function(snapshot) {
-                  return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(_vm.getDt(snapshot.createdAt)))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { class: _vm.getPremiumCssClass(snapshot.premiumPct) },
-                      [_vm._v(_vm._s(snapshot.premiumPct))]
-                    )
-                  ])
+                  return _c(
+                    "tr",
+                    { class: _vm.getPremiumCssClass(snapshot.premiumPct) },
+                    [
+                      _c("td", [_vm._v(_vm._s(_vm.getDt(snapshot.createdAt)))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            snapshot.investment[_vm.investment.a.exchange][
+                              _vm.investment.a.currency
+                            ]
+                          )
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            snapshot.investment[_vm.investment.b.exchange][
+                              _vm.investment.b.currency
+                            ]
+                          )
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(snapshot.result[_vm.investment.a.currency])
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(snapshot.result[_vm.investment.b.currency])
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(snapshot.premium[_vm.investment.a.currency])
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(snapshot.premium[_vm.investment.b.currency])
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(snapshot.premiumPct))])
+                    ]
+                  )
                 }),
                 0
               )
@@ -39546,36 +39616,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-dark" }, [
-      _c("tr", [
-        _c("th", { attrs: { rowspan: "2" } }, [_vm._v("Created At")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Investment")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Result")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Premium")])
-      ]),
+    return _c("tr", [
+      _c("th", { attrs: { rowspan: "2" } }, [_vm._v("Created At")]),
       _vm._v(" "),
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("A")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("A")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("A")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("USD %")])
-      ])
+      _c("th", { attrs: { colspan: "3" } }, [_vm._v("Investment")]),
+      _vm._v(" "),
+      _c("th", { attrs: { colspan: "3" } }, [_vm._v("Result")]),
+      _vm._v(" "),
+      _c("th", { attrs: { colspan: "3" } }, [_vm._v("Premium")])
     ])
   },
   function() {
@@ -52717,7 +52765,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ScenarioHistory_vue_vue_type_template_id_93e64218_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true& */ "./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true&");
+/* harmony import */ var _ScenarioHistory_vue_vue_type_template_id_93e64218___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScenarioHistory.vue?vue&type=template&id=93e64218& */ "./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&");
 /* harmony import */ var _ScenarioHistory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScenarioHistory.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -52729,11 +52777,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _ScenarioHistory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ScenarioHistory_vue_vue_type_template_id_93e64218_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ScenarioHistory_vue_vue_type_template_id_93e64218_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ScenarioHistory_vue_vue_type_template_id_93e64218___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ScenarioHistory_vue_vue_type_template_id_93e64218___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "93e64218",
+  null,
   null
   
 )
@@ -52759,19 +52807,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true&":
-/*!*******************************************************************************************************************!*\
-  !*** ./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true& ***!
-  \*******************************************************************************************************************/
+/***/ "./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioHistory_vue_vue_type_template_id_93e64218_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioHistory_vue_vue_type_template_id_93e64218_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioHistory_vue_vue_type_template_id_93e64218___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ScenarioHistory.vue?vue&type=template&id=93e64218& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/arbitrage/ScenarioHistory.vue?vue&type=template&id=93e64218&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioHistory_vue_vue_type_template_id_93e64218___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioHistory_vue_vue_type_template_id_93e64218_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScenarioHistory_vue_vue_type_template_id_93e64218___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
