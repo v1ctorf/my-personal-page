@@ -2156,11 +2156,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScenarioHistory",
   props: ['scenarioName'],
+  data: function data() {
+    return {
+      history: []
+    };
+  },
   mounted: function mounted() {
-    alert(this.scenarioName);
+    // alert(this.scenarioName)
+    this.getHistory();
+  },
+  methods: {
+    getHistory: function getHistory() {
+      var _this = this;
+
+      var uri = "".concat(this.$apiBaseUri, "scenarios/").concat(this.scenarioName, "/history");
+      axios.get(uri).then(function (response) {
+        _this.history = response.data.data; // document.title = `[${ response.data.data.lastPremiumFound }] ${this.name}`;
+      });
+    }
   }
 });
 
@@ -39449,9 +39476,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "container mt-4" }, [
+    _c("h2", { staticClass: "mb-4" }, [
+      _c("a", { staticClass: "text-secondary", attrs: { href: "#" } }, [
+        _vm._v(_vm._s(_vm.scenarioName + " - History"))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "table",
+        {
+          staticClass:
+            "table table-dark table-borderless table-hover table-sm text-center mt-3"
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.history, function(snapshot) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(snapshot.createdAt))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(snapshot.inUSD))]),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(snapshot.resultInUSD))]),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(snapshot.premiumPct))])
+              ])
+            }),
+            0
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { rowspan: "2" } }, [_vm._v("Created At")]),
+        _vm._v(" "),
+        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Investment")]),
+        _vm._v(" "),
+        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Result")]),
+        _vm._v(" "),
+        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Premium")])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("A")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("USD")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("A")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("A")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("USD %")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-right" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-outline-secondary", attrs: { href: "#" } },
+          [_vm._v("\n                    Back\n                ")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
