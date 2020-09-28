@@ -22,6 +22,7 @@ Vue.component('scenario-details', require('./components/projects/arbitrage/Scena
 Vue.component('scenario-steps', require('./components/projects/arbitrage/ScenarioSteps').default);
 Vue.component('scenario-step-trade', require('./components/projects/arbitrage/ScenarioStepTrade').default);
 Vue.component('scenario-step-transfer', require('./components/projects/arbitrage/ScenarioStepTransfer').default);
+Vue.component('scenario-history', require('./components/projects/arbitrage/ScenarioHistory').default);
 
 Vue.component('welcome-footer', require('./components/welcome/Footer').default);
 Vue.component('footer-icon', require('./components/welcome/FooterIcon').default);

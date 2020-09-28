@@ -50,7 +50,7 @@ class ArbitrageController extends Controller
     }
 
 
-    public function history($scenarioName)
+    public function history($name)
     {
         $resp = $this->client->get("scenarios/{$scenarioName}");
         $scenario = json_decode($resp->getBody()->getContents())->data;
@@ -58,7 +58,7 @@ class ArbitrageController extends Controller
         $resp = $this->client->get("scenarios/{$scenarioName}/history");
         $history = $resp->getBody()->getContents();
 
-        return view('arbitrage.history-table', compact('scenario','history'));
+        return view('arbitrage.history-table', compact('name'));
     }
 
 

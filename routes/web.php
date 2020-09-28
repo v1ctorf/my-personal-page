@@ -51,7 +51,9 @@ Route::prefix('arbitrage')->middleware('auth')->group(function(){
                 return view('arbitrage.scenario', ['scenarioName' => $name]);
             })->name('scenario');
 
-            Route::get('history', 'ArbitrageController@history')->name('scenario-history');
+            Route::get('history', function($name){
+                return view('arbitrage.history-table', ['scenarioName' => $name]);
+            })->name('scenario-history');
         });
     });
 });

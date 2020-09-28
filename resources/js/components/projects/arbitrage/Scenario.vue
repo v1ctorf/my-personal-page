@@ -30,8 +30,7 @@
 
                 <snapshot-scenario-btn :name="name"></snapshot-scenario-btn>
 
-                <a class="btn btn-info" href="#">
-<!--                <a class="btn btn-info" href="{{ route('scenario-history', ['name' => $scenario->name]) }}">-->
+                <a class="btn btn-info" :href="`${scenario.name}/history`">
                     History
                 </a>
             </div>
