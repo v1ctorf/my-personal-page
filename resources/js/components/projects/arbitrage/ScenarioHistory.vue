@@ -88,7 +88,7 @@
                 }
             },
             getHistory() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.scenarioName}/history`;
+                let uri = `${this.$apiBaseUri}/scenarios/${this.scenarioName}/history`;
 
                 axios.get(uri).then(response => {
                     this.history = response.data.data;

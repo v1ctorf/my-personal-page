@@ -21,7 +21,7 @@
         },
         methods: {
             switchActiveFlag() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.name}/activate`,
+                let uri = `${this.$apiBaseUri}/scenarios/${this.name}/activate`,
                     httpMethod = this.isActive ? 'delete' : 'patch';
 
                 this.isLoading = true;

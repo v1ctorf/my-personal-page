@@ -3,11 +3,11 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 Vue.prototype.$routes = {
-    scenarios: 'scenarios',
-    dbSize: 'db-size',
-    scenario: 'scenario',
-    snapshotAllowedOnly: 'scenarios/snapshot',
-    snapshotAll: 'scenarios/snapshot/all',
+    scenarios: '/scenarios',
+    dbSize: '/db-size',
+    scenario: '/scenario',
+    snapshotAllowedOnly: '/scenarios/snapshot',
+    snapshotAll: '/scenarios/snapshot/all',
 };
 
 Vue.prototype.$apiBaseUri = window.apiBaseUri;

@@ -15,7 +15,7 @@
         },
         methods: {
             takeSnapshot() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.name}/snapshot`;
+                let uri = `${this.$apiBaseUri}/scenarios/${this.name}/snapshot`;
 
                 this.isLoading = true;
 

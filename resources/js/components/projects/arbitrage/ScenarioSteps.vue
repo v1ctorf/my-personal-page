@@ -25,7 +25,7 @@
         },
         methods: {
             getLatestHistory() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.scenario.name}/history/latest`;
+                let uri = `${this.$apiBaseUri}/scenarios/${this.scenario.name}/history/latest`;
 
                 axios.get(uri).then(response => {
                     this.steps = response.data.data.steps;

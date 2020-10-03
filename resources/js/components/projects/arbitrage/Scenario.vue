@@ -68,7 +68,7 @@
         },
         methods: {
             getScenarioData() {
-                let uri = `${this.$apiBaseUri}scenarios/${this.name}`;
+                let uri = `${this.$apiBaseUri}/scenarios/${this.name}`;
 
                 axios.get(uri).then(response => {
                     this.scenario = response.data.data;
