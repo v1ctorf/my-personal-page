@@ -5,8 +5,8 @@
                 <div class="col-lg-10 align-self-end">
                     <h1 class="text-white font-weight-bold d-none d-sm-block">
                         Olá, I'm Victor Ferreira Silva,
-                        <br>a software developer from Brazil
-                        <br>currently based in Dublin.
+                        <br>a software developer
+                        <br>from Brazil based in Dublin.
                     </h1>
                     <h3 class="text-white font-weight-bold d-block d-sm-none">
                         Olá, I'm
