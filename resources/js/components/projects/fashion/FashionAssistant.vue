@@ -4,8 +4,14 @@
 
 <script>
 export default {
-    name: "FashionAssistant"
+    name: "FashionAssistant",
+    data() {
+        return {
+            wishlist: [
 
+            ]
+        }
+    }
 }
 </script>
 
