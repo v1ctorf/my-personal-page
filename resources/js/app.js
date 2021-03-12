@@ -29,6 +29,8 @@ Vue.component('footer-icon', require('./components/welcome/FooterIcon').default)
 Vue.component('welcome-masthead', require('./components/welcome/Masthead').default);
 Vue.component('skills-chart', require('./components/welcome/SkillsChart').default);
 
+Vue.component('fashion-assistant', require('./components/projects/fashion/FashionAssistant').default);
+
 const app = new Vue({
     el:'#app'
 });
