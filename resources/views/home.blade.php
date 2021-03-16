@@ -32,16 +32,6 @@
                             </a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <a href="{{ route('arbitrage') }}">
-                                Arbitrage
-                            </a>
-                        </li>
-                        <li class="list-group-item bg-dark">
-                            <a href="{{ route('fashion') }}">
-                                Fashion
-                            </a>
-                        </li>
-                        <li class="list-group-item bg-dark">
                             <a href="{{route('logout')}}" class="text-muted">
                                 Logout
                             </a>
