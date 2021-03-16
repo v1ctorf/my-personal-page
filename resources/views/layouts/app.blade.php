@@ -30,10 +30,7 @@
         </main>
     </div>
 
-    <script type="text/javascript">
-        window.csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        window.apiBaseUri = "{{ config('app.api_url') }}";
-    </script>
+    @include('layouts.routes')
 
     <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
