@@ -16,4 +16,3 @@ Route::resource('post', 'PostController');
 Route::get('post/{criteria}', 'PostController@show');
 
 Route::view('home', 'home')->name('home')->middleware('auth');
-

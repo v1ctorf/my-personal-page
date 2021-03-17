@@ -9,7 +9,6 @@
 @stop
 
 @section('content')
-    @include('layouts.navbar')
     <header>
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center text-center">
@@ -25,7 +24,7 @@
                     </h4>
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-light font-weight-light mb-5">posted by <a href="{{ url('/#about') }}" 
+                    <p class="text-light font-weight-light mb-5">posted by <a href="{{ url('/#about') }}"
                         target="_blank" class="text-light">
                         victorf</a> on {{ date('F d, Y - H:i', strtotime($post->created_at)) }}
                     </p>

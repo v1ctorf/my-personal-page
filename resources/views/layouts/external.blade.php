@@ -27,6 +27,7 @@
 
 <body id="page-top">
     <div id="app">
+        <welcome-navbar :auth="{{ json_encode(Auth::check()) }}"></welcome-navbar>
         @yield('content')
         <welcome-footer></welcome-footer>
     </div>

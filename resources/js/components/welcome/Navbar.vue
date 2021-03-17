@@ -1,5 +1,4 @@
 <template>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" :href="url.pagetop">victorf</a>
@@ -51,9 +50,6 @@
                     home: window.routes.home
                 }
             }
-        },
-        mounted() {
-            console.log('ok');
         }
     }
 </script>
