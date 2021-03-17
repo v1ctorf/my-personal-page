@@ -1903,6 +1903,27 @@ __webpack_require__.r(__webpack_exports__);
         home: window.routes.home
       }
     };
+  },
+  created: function created() {
+    window.addEventListener('scroll', this.handleScroll());
+  },
+  mounted: function mounted() {// console.log(this.$refs);
+  },
+  methods: {
+    handleScroll: function handleScroll() {
+      console.log('handleScroll', new Date());
+      var navbar = this.$refs.mainnavbar;
+
+      if (navbar === undefined) {
+        return;
+      }
+
+      console.log(navbar.clientLeft, navbar.clientTop); // console.log(this.$refs.mainnavbar);
+      // const left = this.$refs.mainnavbar.getBoundingClientRect().left
+      // const top = this.$refs.mainnavbar.getBoundingClientRect().top
+      //
+      // console.log(top, left);
+    }
   }
 });
 
@@ -38385,6 +38406,7 @@ var render = function() {
   return _c(
     "nav",
     {
+      ref: "mainnavbar",
       staticClass: "navbar navbar-expand-lg navbar-light fixed-top py-3",
       attrs: { id: "mainNav" }
     },

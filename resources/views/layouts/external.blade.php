@@ -19,8 +19,8 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
         rel='stylesheet' type='text/css'>
 
-    <link href="{{secure_asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
-    <link href="{{secure_asset('css/creative.min.css')}}" rel="stylesheet">
+    <link href="{{ secure_asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/creative.min.css')}}" rel="stylesheet">
 
     @yield('style')
 </head>
@@ -34,10 +34,10 @@
 
     @include('layouts.routes')
 
-    <script src="{{secure_asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{secure_asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{secure_asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    <script src="{{secure_asset('js/creative.min.js')}}"></script>
+    <script src="{{ secure_asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ secure_asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ secure_asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ secure_asset('js/creative.min.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 

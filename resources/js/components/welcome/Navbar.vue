@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" ref="mainnavbar">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" :href="url.pagetop">victorf</a>
 
@@ -49,6 +49,30 @@
                     blog: window.routes.blog,
                     home: window.routes.home
                 }
+            }
+        },
+        created() {
+            window.addEventListener('scroll', this.handleScroll());
+        },
+        mounted() {
+
+            // console.log(this.$refs);
+        },
+        methods: {
+            handleScroll() {
+                console.log('handleScroll', new Date());
+                let navbar = this.$refs.mainnavbar;
+
+                if (navbar === undefined) {
+                    return;
+                }
+
+                console.log(navbar.clientLeft, navbar.clientTop);
+                // console.log(this.$refs.mainnavbar);
+                // const left = this.$refs.mainnavbar.getBoundingClientRect().left
+                // const top = this.$refs.mainnavbar.getBoundingClientRect().top
+                //
+                // console.log(top, left);
             }
         }
     }
