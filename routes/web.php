@@ -17,8 +17,6 @@ Route::get('post/{criteria}', 'PostController@show');
 
 Route::view('home', 'home')->name('home')->middleware('auth');
 
-Route::view('fashion', 'etc.fashion')->name('fashion');
-
 Route::prefix('arbitrage')->middleware('auth')->group(function(){
     Route::view('', 'arbitrage.index')->name('arbitrage');
 
