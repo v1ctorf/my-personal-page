@@ -3,7 +3,7 @@
 
 <head>
     @if(env('APP_ENV') == 'production')
-        @include('layouts.ga')
+
     @endif
 
     <meta charset="utf-8">
