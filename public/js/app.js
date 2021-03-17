@@ -1901,28 +1901,19 @@ __webpack_require__.r(__webpack_exports__);
         contact: window.routes.contact,
         blog: window.routes.blog,
         home: window.routes.home
-      }
+      },
+      isScrolled: false
     };
   },
   created: function created() {
-    window.addEventListener('scroll', this.handleScroll());
+    window.addEventListener('scroll', this.handleScroll);
   },
-  mounted: function mounted() {// console.log(this.$refs);
+  destroyed: function destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll: function handleScroll() {
-      console.log('handleScroll', new Date());
-      var navbar = this.$refs.mainnavbar;
-
-      if (navbar === undefined) {
-        return;
-      }
-
-      console.log(navbar.clientLeft, navbar.clientTop); // console.log(this.$refs.mainnavbar);
-      // const left = this.$refs.mainnavbar.getBoundingClientRect().left
-      // const top = this.$refs.mainnavbar.getBoundingClientRect().top
-      //
-      // console.log(top, left);
+      this.isScrolled = document.getElementById('app').getBoundingClientRect().top < -100;
     }
   }
 });
@@ -38406,8 +38397,8 @@ var render = function() {
   return _c(
     "nav",
     {
-      ref: "mainnavbar",
       staticClass: "navbar navbar-expand-lg navbar-light fixed-top py-3",
+      class: { "navbar-scrolled": _vm.isScrolled },
       attrs: { id: "mainNav" }
     },
     [

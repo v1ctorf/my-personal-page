@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" ref="mainnavbar">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" :class="{'navbar-scrolled': isScrolled}" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" :href="url.pagetop">victorf</a>
 
@@ -48,31 +48,19 @@
                     contact: window.routes.contact,
                     blog: window.routes.blog,
                     home: window.routes.home
-                }
+                },
+                isScrolled: false
             }
         },
         created() {
-            window.addEventListener('scroll', this.handleScroll());
+            window.addEventListener('scroll', this.handleScroll);
         },
-        mounted() {
-
-            // console.log(this.$refs);
+        destroyed() {
+            window.removeEventListener('scroll', this.handleScroll);
         },
         methods: {
             handleScroll() {
-                console.log('handleScroll', new Date());
-                let navbar = this.$refs.mainnavbar;
-
-                if (navbar === undefined) {
-                    return;
-                }
-
-                console.log(navbar.clientLeft, navbar.clientTop);
-                // console.log(this.$refs.mainnavbar);
-                // const left = this.$refs.mainnavbar.getBoundingClientRect().left
-                // const top = this.$refs.mainnavbar.getBoundingClientRect().top
-                //
-                // console.log(top, left);
+                this.isScrolled = (document.getElementById('app').getBoundingClientRect().top < -100);
             }
         }
     }
