@@ -7,6 +7,7 @@
         portfolio: "{{ url('/#portfolio') }}",
         contact: "{{ url('/#contact') }}",
         blog: "{{ route('blog') }}",
-        home: "{{ route('home') }}"
+        home: "{{ route('home') }}",
+        asset: "{{ secure_asset('/') }}"
     }
 </script>
