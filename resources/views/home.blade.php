@@ -36,7 +36,6 @@
                                 Logout
                             </a>
                         </li>
-
                     </ul>
                 </div>
             </div>

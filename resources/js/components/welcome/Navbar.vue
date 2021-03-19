@@ -11,26 +11,15 @@
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" :href="url.about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" :href="url.portfolio">Recent Work</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" :href="url.contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" :href="url.blog">Blog</a>
-                    </li>
-                    <li v-if="auth" class="nav-item">
-                        <a class="nav-link" :href="url.home">Dashboard</a>
+                    <li v-for="(opt, i) in responsiveMenu" :key="i" class="nav-item">
+                        <a class="nav-link js-scroll-trigger" :href="opt.url" @click="handleResponsiveMenu">
+                            {{ opt.title }}
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 </template>
 
 <script>
@@ -49,7 +38,8 @@
                     blog: window.routes.blog,
                     home: window.routes.home
                 },
-                isScrolled: false
+                isScrolled: false,
+                responsiveMenu: []
             }
         },
         created() {
@@ -58,9 +48,34 @@
         destroyed() {
             window.removeEventListener('scroll', this.handleScroll);
         },
+        mounted() {
+            this.loadResponsiveMenu();
+        },
         methods: {
             handleScroll() {
                 this.isScrolled = (document.getElementById('app').getBoundingClientRect().top < -100);
+            },
+            loadResponsiveMenu() {
+                let menu = [
+                    { title: 'About', url: this.url.about },
+                    { title: 'Recent Work', url: this.url.portfolio },
+                    { title: 'Contact', url: this.url.contact },
+                    { title: 'Blog', url: this.url.blog },
+                    { title: 'Dashboard', url: this.url.home, auth: true }
+                ];
+
+                let hasAuth = this.auth;
+
+                this.responsiveMenu = menu.filter(function (opt) {
+                    return opt.auth === undefined || hasAuth == opt.auth;
+                });
+            },
+            handleResponsiveMenu() {
+                // console.log(new Date());
+                // Closes responsive menu when a scroll trigger link is clicked
+                // $('.js-scroll-trigger').click(function() {
+                //     $('.navbar-collapse').collapse('hide');
+                // });
             }
         }
     }

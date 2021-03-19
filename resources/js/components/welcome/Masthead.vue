@@ -13,7 +13,7 @@
                         <br>Victor Ferreira Silva,
                         <br>a software developer
                         <br>from Brazil
-                        <br>currently based in Dublin.
+                        <br>based in Dublin.
                     </h3>
                     <hr class="divider my-4">
                 </div>
