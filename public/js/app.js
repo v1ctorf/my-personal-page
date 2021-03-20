@@ -2195,6 +2195,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar",
   props: {
@@ -2204,14 +2205,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       url: {
         pagetop: window.routes.pagetop,
-        about: window.routes.about,
-        portfolio: window.routes.portfolio,
-        contact: window.routes.contact,
+        about: '/#about',
+        portfolio: '/#portfolio',
+        contact: '/#contact',
         blog: window.routes.blog,
         home: window.routes.home
       },
       isScrolled: false,
-      responsiveMenu: []
+      responsiveMenu: [],
+      expandedMenu: false
     };
   },
   created: function created() {
@@ -2250,11 +2252,9 @@ __webpack_require__.r(__webpack_exports__);
         return opt.auth === undefined || hasAuth == opt.auth;
       });
     },
-    handleResponsiveMenu: function handleResponsiveMenu() {// console.log(new Date());
-      // Closes responsive menu when a scroll trigger link is clicked
-      // $('.js-scroll-trigger').click(function() {
-      //     $('.navbar-collapse').collapse('hide');
-      // });
+    handleResponsiveMenu: function handleResponsiveMenu() {
+      console.log(new Date());
+      this.expandedMenu = !this.expandedMenu;
     }
   }
 });
@@ -38917,15 +38917,25 @@ var render = function() {
             staticClass: "navbar-brand js-scroll-trigger",
             attrs: { href: _vm.url.pagetop }
           },
-          [_vm._v("victorf")]
+          [_vm._v("\n            victorf\n        ")]
         ),
         _vm._v(" "),
-        _vm._m(0),
+        _c(
+          "button",
+          {
+            staticClass: "navbar-toggler navbar-toggler-right",
+            class: { collapsed: !_vm.expandedMenu },
+            attrs: { type: "button" },
+            on: { click: _vm.handleResponsiveMenu }
+          },
+          [_c("span", { staticClass: "navbar-toggler-icon" })]
+        ),
         _vm._v(" "),
         _c(
           "div",
           {
             staticClass: "collapse navbar-collapse",
+            class: { show: _vm.expandedMenu },
             attrs: { id: "navbarResponsive" }
           },
           [
@@ -38959,28 +38969,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler navbar-toggler-right",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarResponsive",
-          "aria-controls": "navbarResponsive",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
