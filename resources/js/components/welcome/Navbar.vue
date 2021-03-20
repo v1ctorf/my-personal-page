@@ -1,15 +1,16 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" :class="{'navbar-scrolled': isScrolled}" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" :href="url.pagetop">victorf</a>
+            <a class="navbar-brand js-scroll-trigger" :href="url.pagetop">
+                victorf
+            </a>
 
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" :class="{ 'collapsed': !expandedMenu }"
+                type="button" @click="handleResponsiveMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" :class="{ 'show': expandedMenu }" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li v-for="(opt, i) in responsiveMenu" :key="i" class="nav-item">
                         <a class="nav-link js-scroll-trigger" :href="opt.url" @click="handleResponsiveMenu">
@@ -32,14 +33,15 @@
             return {
                 url: {
                     pagetop: window.routes.pagetop,
-                    about: window.routes.about,
-                    portfolio: window.routes.portfolio,
-                    contact: window.routes.contact,
+                    about: '/#about',
+                    portfolio: '/#portfolio',
+                    contact: '/#contact',
                     blog: window.routes.blog,
                     home: window.routes.home
                 },
                 isScrolled: false,
-                responsiveMenu: []
+                responsiveMenu: [],
+                expandedMenu: false
             }
         },
         created() {
@@ -71,11 +73,7 @@
                 });
             },
             handleResponsiveMenu() {
-                // console.log(new Date());
-                // Closes responsive menu when a scroll trigger link is clicked
-                // $('.js-scroll-trigger').click(function() {
-                //     $('.navbar-collapse').collapse('hide');
-                // });
+                this.expandedMenu = !this.expandedMenu;
             }
         }
     }

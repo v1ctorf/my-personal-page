@@ -10,6 +10,7 @@ Vue.component('welcome-masthead', require('./components/welcome/Masthead').defau
 Vue.component('skills-chart', require('./components/welcome/SkillsChart').default);
 Vue.component('welcome-navbar', require('./components/welcome/Navbar').default);
 Vue.component('about-section', require('./components/welcome/AboutSection').default);
+Vue.component('portfolio-section', require('./components/welcome/PortfolioSection').default);
 
 const app = new Vue({
     el:'#app'
